@@ -198,6 +198,7 @@ local plugins = {
     -- nvim-mason-lspconfig
     {
         "williamboman/mason-lspconfig.nvim",
+        after = "mason.nvim",
         config = function()
             require("config.nvim-mason-lspconfig")
         end
