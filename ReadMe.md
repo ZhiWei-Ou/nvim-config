@@ -26,7 +26,7 @@ more details: [snip_instruction](config/nvim-luasnip.lua)
 | key | description |
 |:---:|:-----------:|
 |Ctrl+s|Save File|
-|Ctrl+\\|Vertical Split|
+|Ctrl+\ |Vertical Split|
 |Ctrl+t|Open Inner Terminal(default display in bottom|
 |Option+b|Open or Close Directory Browser|
 |Ctrl+k Ctrl+p|Open Telescope entry|
@@ -51,17 +51,17 @@ cmake(CMake), bashls(Shell), bufls(Protobuf), yamlls(YAML)
 |6|cmp-nvim-lsp||
 |7|cmp-nvim-lua||
 |8|cmp-path||
-|9|cmp-luasnipt||
-|10|codeium||
-|11|dressing||
-|12|dressing||
-|13|github-nvim-theme||
-|14|gitsigns||
+|9|cmp-luasnipt|[nvim-luasnip.lua](lua/config/nvim-luasnip.lua)|
+|10|codeium|[nvim-codeium](lua/config/nvim-codeium.lua)|
+|11|dressing|[nvim-dressing](lua/config/nvim-dressing.lua)|
+|12|vim-visual-multi||
+|13|github-nvim-theme|[nvim-github-theme](lua/config/nvim-github-theme.lua)|
+|14|gitsigns|[nvim-gitsigns](lua/config/nvim-gitsigns.lua)|
 |15|lspkind-nvim||
-|16|lualine-nvim||
-|17|mason-lspconfig||
-|18|mason||
-|19|nvim-cmp||
+|16|lualine-nvim|[nvim-lualine](lua/config/nvim-lualine.lua)|
+|17|mason-lspconfig|[nvim-mason-lspconfig](lua/config/nvim-mason-lspconfig.lua)|
+|18|mason|[nvim-mason](lua/config/nvim-mason.lua)|
+|19|nvim-cmp|[nvim-cmp](lua/config/nvim-cmp.lua)|
 |20|nvim-lspconfig||
 |21|nvim-spectre||
 |22|nvim-surround||
@@ -72,6 +72,5 @@ cmake(CMake), bashls(Shell), bufls(Protobuf), yamlls(YAML)
 |27|ouroboros||
 |28|packer.nvim||
 |29|plenary.nvim||
-|30|telescope.nvim||
-|31|toggleterm.nvim||
-|32|vim-visual-multi||
+|30|telescope.nvim|[nvim-telescopt](lua/config/nvim-telescope.lua)|
+|31|toggleterm.nvim|[nvim-toggleterm](lua/config/nvim-toggleterm.lua)|
