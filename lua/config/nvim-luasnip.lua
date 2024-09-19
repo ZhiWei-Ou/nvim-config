@@ -61,7 +61,8 @@ ls.setup({
 local author = "Ouzw"
 local self_mail = "ouzw.mail@gmail.com"
 local company_mail = "ouzhiwei@jointcharging.com"
-local copyright = "Copyright (c) Joint"
+local self_copyright = "© 2024 [ZhiWei-Ou]. All rights reserved."
+local company_copyright = "Copyright (c) Joint"
 local function get_base_file_name(upper)
     if (upper) then
         return vim.fn.expand("%:t:r"):upper()
@@ -69,12 +70,22 @@ local function get_base_file_name(upper)
     return vim.fn.expand("%:t:r")
 end
 
+vim.keymap.set({"i"}, "<C-K>", function() ls.expand() end, {silent = true})
+
+vim.keymap.set({"i", "s"}, "<C-E>", function()
+	if ls.choice_active() then
+		ls.change_choice(1)
+	end
+end, {silent = true})
+
 ls.add_snippets("all", {
     s("hpp", {
         t({"/*"}),
-        t({"", " * " .. copyright}),
-        t({"", " * Author " .. author}),
         c(1, {
+            t({"", " * " .. self_copyright}),
+            t({"", " * " .. company_copyright}),}),
+        t({"", " * Author " .. author}),
+        c(2, {
             t({"", " * Mail " .. company_mail}),
             t({"", " * Mail " .. self_mail}),}),
         t({"", " * Date " .. os.date("%Y-%m-%d %H:%M:%S")}),
@@ -85,9 +96,11 @@ ls.add_snippets("all", {
     }),
     s("cpp", {
         t({"/*"}),
-        t({"", " * " .. copyright}),
-        t({"", " * Author " .. author}),
         c(1, {
+            t({"", " * " .. self_copyright}),
+            t({"", " * " .. company_copyright}),}),
+        t({"", " * Author " .. author}),
+        c(2, {
             t({"", " * Mail " .. company_mail}),
             t({"", " * Mail " .. self_mail}),}),
         t({"", " * Date " .. os.date("%Y-%m-%d %H:%M:%S")}),
@@ -97,7 +110,9 @@ ls.add_snippets("all", {
     }),
     s("c", {
         t({"/*"}),
-        t({"", " * " .. copyright}),
+        c(1, {
+            t({"", " * " .. self_copyright}),
+            t({"", " * " .. company_copyright}),}),
         t({"", " * Author " .. author}),
         c(1, {
             t({"", " * Mail " .. company_mail}),
@@ -109,9 +124,11 @@ ls.add_snippets("all", {
     }),
     s("h", {
         t({"/*"}),
-        t({"", " * " .. copyright}),
-        t({"", " * Author " .. author}),
         c(1, {
+            t({"", " * " .. self_copyright}),
+            t({"", " * " .. company_copyright}),}),
+        t({"", " * Author " .. author}),
+        c(2, {
             t({"", " * Mail " .. company_mail}),
             t({"", " * Mail " .. self_mail}),}),
         t({"", " * Date " .. os.date("%Y-%m-%d %H:%M:%S")}),
