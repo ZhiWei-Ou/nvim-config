@@ -58,87 +58,281 @@ ls.setup({
 	end,
 })
 
-local author = "Ouzw"
-local self_mail = "ouzw.mail@gmail.com"
-local company_mail = "ouzhiwei@jointcharging.com"
-local self_copyright = "© 2024 [ZhiWei-Ou]. All rights reserved."
-local company_copyright = "Copyright (c) Joint"
-local function get_base_file_name(upper)
-    if (upper) then
-        return vim.fn.expand("%:t:r"):upper()
+local function get_base_file_name(uppercase)
+    local filepath = vim.api.nvim_buf_get_name(0)
+
+    local filename = vim.fn.fnamemodify(filepath, ":t:r")
+
+    if uppercase then
+        filename = filename:upper()
     end
-    return vim.fn.expand("%:t:r")
+
+    return filename
 end
 
-vim.keymap.set({"i"}, "<C-K>", function() ls.expand() end, {silent = true})
+-- vim.keymap.set({"i", "s"}, "<C-K>", function() ls.expand() end, {silent = true})
+--
+-- vim.keymap.set({"i", "s"}, "<C-E>", function()
+-- 	if ls.choice_active() then
+-- 		ls.change_choice(1)
+-- 	end
+-- end, {silent = true})
+--
+--
 
-vim.keymap.set({"i", "s"}, "<C-E>", function()
-	if ls.choice_active() then
-		ls.change_choice(1)
-	end
-end, {silent = true})
+local author = "Ouzw"
+local self_mail = "ouzw.mail@gmail.com"
+local self_copyright = "© 2024 [ZhiWei-Ou]. All rights reserved."
+
+local company_copyright = "nil"
+local company_mail = "nil"
 
 ls.add_snippets("all", {
-    s("hpp", {
-        t({"/*"}),
-        c(1, {
-            t({"", " * " .. self_copyright}),
-            t({"", " * " .. company_copyright}),}),
-        t({"", " * Author " .. author}),
-        c(2, {
-            t({"", " * Mail " .. company_mail}),
-            t({"", " * Mail " .. self_mail}),}),
-        t({"", " * Date " .. os.date("%Y-%m-%d %H:%M:%S")}),
-        t({"", " *"}),
-        t({"", " */"}),
-        t({"", "#pragma once"}),
-        t({"", ""}),
+    -- /*
+    --  * @Copyright (c) 2022 [ZhiWei-Ou]. All rights reserved.
+    --  * @file foo.h
+    --  * @author Ouzw
+    --  * @date 2022-01-01
+    --
+    --  * @brief arg
+    --  */
+    --  #pragma once
+    --
+    s("hpph", {
+        t(
+            {
+                '/*',
+                ' * ' .. self_copyright,
+                '',
+            }
+        ),
+        f(
+            function()
+                return " * @file " .. get_base_file_name(false) .. ".hpp"
+            end,
+            {}
+        ),
+        t(
+            {
+                '',
+                ' * @author ' .. author,
+                ' * @mail ' .. self_mail,
+                ''
+            }
+        ),
+        f (
+            function()
+                return " * @date " .. os.date("%Y-%m-%d %H:%M:%S")
+            end,
+            {}
+        ),
+        t({'', '', ' * @brief '}),
+        i(1),
+        t(
+            {
+                '',
+                ' */',
+                '#pragma once',
+                '',
+            }
+        ),
+
     }),
-    s("cpp", {
-        t({"/*"}),
-        c(1, {
-            t({"", " * " .. self_copyright}),
-            t({"", " * " .. company_copyright}),}),
-        t({"", " * Author " .. author}),
-        c(2, {
-            t({"", " * Mail " .. company_mail}),
-            t({"", " * Mail " .. self_mail}),}),
-        t({"", " * Date " .. os.date("%Y-%m-%d %H:%M:%S")}),
-        t({"", " *"}),
-        t({"", " */"}),
-        t({"", ""}),
+
+
+    -- /*
+    --  * @Copyright (c) 2022 [ZhiWei-Ou]. All rights reserved.
+    --  * @file foo.cpp
+    --  * @author Ouzw
+    --  * @date 2022-01-01
+    --
+    --  * @brief arg
+    --  */
+    s("cpph", {
+        t(
+            {
+                '/*',
+                ' * ' .. self_copyright,
+                '',
+            }
+        ),
+        f(
+            function()
+                return " * @file " .. get_base_file_name(false) .. ".cpp"
+            end,
+            {}
+        ),
+        t(
+            {
+                '',
+                ' * @author ' .. author,
+                ' * @mail ' .. self_mail,
+                ''
+            }
+        ),
+        f (
+            function()
+                return " * @date " .. os.date("%Y-%m-%d %H:%M:%S")
+            end,
+            {}
+        ),
+        t({'', '', ' * @brief '}),
+        i(1),
+        t(
+            {
+                '',
+                ' */',
+                '',
+            }
+        ),
+
     }),
-    s("c", {
-        t({"/*"}),
-        c(1, {
-            t({"", " * " .. self_copyright}),
-            t({"", " * " .. company_copyright}),}),
-        t({"", " * Author " .. author}),
-        c(1, {
-            t({"", " * Mail " .. company_mail}),
-            t({"", " * Mail " .. self_mail}),}),
-        t({"", " * Date " .. os.date("%Y-%m-%d %H:%M:%S")}),
-        t({"", " *"}),
-        t({"", " */"}),
-        t({"", ""}),
+
+    -- /*
+    --  * @Copyright (c) 2022 [ZhiWei-Ou]. All rights reserved.
+    --  * @file foo.c
+    --  * @author Ouzw
+    --  * @date 2022-01-01
+    --
+    --  * @brief arg
+    --  */
+    s("ch", {
+        t(
+            {
+                '/*',
+                ' * ' .. self_copyright,
+                '',
+            }
+        ),
+        f(
+            function()
+                return " * @file " .. get_base_file_name(false) .. ".c"
+            end,
+            {}
+        ),
+        t(
+            {
+                '',
+                ' * @author ' .. author,
+                ' * @mail ' .. self_mail,
+                ''
+            }
+        ),
+        f (
+            function()
+                return " * @date " .. os.date("%Y-%m-%d %H:%M:%S")
+            end,
+            {}
+        ),
+        t({'', '', ' * @brief '}),
+        i(1),
+        t(
+            {
+                '',
+                ' */',
+                '',
+            }
+        ),
+
     }),
-    s("h", {
-        t({"/*"}),
-        c(1, {
-            t({"", " * " .. self_copyright}),
-            t({"", " * " .. company_copyright}),}),
-        t({"", " * Author " .. author}),
-        c(2, {
-            t({"", " * Mail " .. company_mail}),
-            t({"", " * Mail " .. self_mail}),}),
-        t({"", " * Date " .. os.date("%Y-%m-%d %H:%M:%S")}),
-        t({"", " *"}),
-        t({"", " */"}),
-        t({"", "#ifndef __" .. get_base_file_name(true) .. "_H__"}),
-        t({"", "#define __" .. get_base_file_name(true) .. "_H__"}),
+
+    -- /*
+    --  * @Copyright (c) 2022 [ZhiWei-Ou]. All rights reserved.
+    --  * @file foo.h
+    --  * @author Ouzw
+    --  * @date 2022-01-01
+    --
+    --  * @brief arg
+    --  */
+    --  #ifndef FOO_H
+    --  #define FOO_H
+    --
+    --  #ifdef __cplusplus
+    --  extern "C" {
+    --  #endif
+    --
+    --  #ifdef __cplusplus
+    --  }
+    --  #endif
+    --  #endif /* FOO_H */
+    s("hh", {
+        t(
+            {
+                '/*',
+                ' * ' .. self_copyright,
+                -- ' * @Copyright (c) 2022 [ZhiWei-Ou]. All rights reserved.',
+                '',
+            }
+        ),
+        f(
+            function()
+                return " * @file " .. get_base_file_name(false) .. ".h"
+            end,
+            {}
+        ),
+        t(
+            {
+                '',
+                ' * @author ' .. author,
+                ' * @mail ' .. self_mail,
+                '',
+            }
+        ),
+        f(
+            function()
+                return " * @date " .. os.date("%Y-%m-%d %H:%M:%S")
+            end,
+            {}
+        ),
+        t(
+            {
+                '',
+                ' *',
+                ' * @brief ',
+            }
+        ),
+        i(1),
+        t(
+            {
+                '',
+                ' */',
+                ''
+            }
+        ),
+        f(
+            function() 
+                return "#ifndef __" .. get_base_file_name(true):upper() .. "_H__"
+            end, 
+            {}
+        ),
         t({"", ""}),
-        t({"", "#endif /* __" .. get_base_file_name(true) .. "_H__ */"}),
-        t({"", ""}),
+        f(
+            function()
+                return "#define __" .. get_base_file_name(true):upper() .. "_H__"
+            end,
+            {}
+        ),
+        t(
+            {
+                '',
+                '',
+                '#ifdef __cplusplus',
+                'extern "C" {',
+                '#endif',
+                '',
+                '',
+                '#ifdef __cplusplus',
+                '}',
+                '#endif',
+                '',
+            }
+        ),
+        f(
+            function()
+                return "#endif /* __" .. get_base_file_name(true):upper() .. "_H__ */"
+            end,
+            {}
+        ),
     }),
 })
 
