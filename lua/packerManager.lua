@@ -255,6 +255,17 @@ local plugins = {
             require("config.nvim-lualine")
         end
     },
+
+    -- emoji
+    {
+        'xiyaowong/telescope-emoji.nvim',
+        requires = {
+            {'nvim-telescope/telescope.nvim'},
+        },
+        config = function ()
+            require('telescope').load_extension('emoji') 
+        end
+    },
 }
 
 -- Install your plugins here

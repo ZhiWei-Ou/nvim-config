@@ -74,3 +74,7 @@ cmake(CMake), bashls(Shell), bufls(Protobuf), yamlls(YAML)
 |29|plenary.nvim||
 |30|telescope.nvim|[nvim-telescopt](lua/config/nvim-telescope.lua)|
 |31|toggleterm.nvim|[nvim-toggleterm](lua/config/nvim-toggleterm.lua)|
+
+
+## Telescope
+1. `:Telescope emoji` to search emoji
