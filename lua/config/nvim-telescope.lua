@@ -13,12 +13,18 @@ require('telescope').setup{
             n = {
             },
         },
-        file_ignore_patterns = { "node_modules", ".git/", "build/", "out/" }
+        file_ignore_patterns = { "node_modules", ".git/", "build/", "out/" },
+        prompt_prefix = "🔍 ",
+        selection_caret = "➤ ",
     },
     pickers = {
-        find_files = {
-            -- theme = "dropdown",
-            prompt_prefix= "🔍",
+        builtin = {
+           theme = "dropdown",
+           previewer = false,
+           layout_config = {
+               width = 0.8,
+               height = 0.5,
+           },
         },
     },
     extensions = {
@@ -43,5 +49,6 @@ vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>lua require("telescope.builtin").fin
 -- 搜索匹配字符串
 vim.api.nvim_set_keymap('n', '<C-F>', '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true, silent = true })
 -- 工具集
-vim.api.nvim_set_keymap('n', '<C-K><C-p>', '<cmd>Telescope<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-K><C-p>', '<cmd>lua require("telescope.builtin").builtin{include_extensions = true}<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-K><C-p>', '<cmd>Telescope<CR>', { noremap = true, silent = true })
 
