@@ -266,6 +266,18 @@ local plugins = {
             require('telescope').load_extension('emoji') 
         end
     },
+
+    -- dashboard
+    {
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup {
+                require('config.nvim-dashboard')
+            }
+        end,
+        requires = {'nvim-tree/nvim-web-devicons'}
+    }
 }
 
 -- Install your plugins here
