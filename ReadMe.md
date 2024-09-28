@@ -2,7 +2,16 @@
 NVIM `v0.10.0`
 Build type: `Release`
 LuaJIT `2.1.1716656478`
-[demo-video](./assets/nvim-demo.mov)
+
+# 💈 Media
+![Portal](./assets/protal.jpg)
+![editor](./assets/source_code.jpg)
+![edited](./assets/auto_complete.jpg)
+![colorscheme](./assets/change_colorscheme.jpg)
+![file_browser](./assets/find_file.jpg)
+![normal_terminal](./assets/normal_termainal.jpg)
+![float_terminal](./assets/float_terminal.jpg)
+~~[demo-video](./assets/nvim-demo.mov)~~
 
 ## Platform
 Use terminal app is MacOS default terminal.
