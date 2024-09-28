@@ -1,6 +1,8 @@
 -- 设置 LSP 客户端
 local lspconfig = require('lspconfig')
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- 1. label_clangd
 -- 2. label_cmake
 -- 3. label_lua_ls
@@ -16,27 +18,36 @@ local lspconfig = require('lspconfig')
 lspconfig.clangd.setup{}
 -- 配置 LSP 快捷键
 local on_attach = function(client, bufnr)
-  local buf_set_keymap = function(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local opts = { noremap=true, silent=true }
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = "double"  --  'single', 'double', 'rounded', 'solid', 'shadow'
-  })
+    vim.keymap.set('i', 'gh', function() vim.lsp.buf.signature_help() end, {buffer=true})
+    vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+    vim.lsp.handlers['signature_help'], {
+        border = 'single',
+        close_events = {"CursorMoved", "BufHidden", "InsertCharPre"},
+    })
 
-  -- 定义 gd 跳转到定义
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  
-  -- 定义 gh 显示悬停信息
-  buf_set_keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    local buf_set_keymap = function(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+    local opts = { noremap=true, silent=true }
 
-  -- 定义 gr 显示引用
-  -- @Note: 这个是不会自动关闭的，也不打算让其自动关闭.
-  -- 需要关闭，手动使用 `:cclose`
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "double"  --  'single', 'double', 'rounded', 'solid', 'shadow'
+    })
 
-  -- 定义 gt 显示类型
-  buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    -- 定义 gd 跳转到定义
+    buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+
+    -- 定义 gh 显示悬停信息
+    buf_set_keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+
+    -- 定义 gr 显示引用
+    -- @Note: 这个是不会自动关闭的，也不打算让其自动关闭.
+    -- 需要关闭，手动使用 `:cclose`
+    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+
+    -- 定义 gt 显示类型
+    buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 end
+
 -- 将 on_attach 传递给语言服务器设置
 lspconfig.clangd.setup{
   on_attach = on_attach,
@@ -59,6 +70,7 @@ lspconfig.lua_ls.setup {
 -- label_gopls
 lspconfig.gopls.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
       gopls = {
           analyses = {
