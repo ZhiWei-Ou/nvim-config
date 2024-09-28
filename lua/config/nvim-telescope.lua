@@ -7,15 +7,20 @@ require('telescope').setup{
     defaults = {
         mappings = {
             i = {
-                ["<C-p>"] = require('telescope.builtin').find_files,       -- 工作区搜索文件
-                ["<C-F>"] = require('telescope.builtin').live_grep,        -- 工作区匹配字符串
+                -- ["<C-p>"] = require('telescope.builtin').find_files,       -- 工作区搜索文件
+                -- ["<C-F>"] = require('telescope.builtin').live_grep,        -- 工作区匹配字符串
             },
             n = {
+                -- ["<C-p>"] = require('telescope.builtin').find_files,       -- 工作区搜索文件
+                -- ["<C-F>"] = require('telescope.builtin').live_grep,        -- 工作区匹配字符串
             },
         },
         file_ignore_patterns = { "node_modules", ".git/", "build/", "out/" },
         prompt_prefix = "🔍 ",
         selection_caret = "➤ ",
+        multi_icon = " ",
+        wrap_results = true,
+        results_title = "Results",
     },
     pickers = {
         builtin = {
