@@ -52,7 +52,16 @@ lspconfig.lua_ls.setup {
 
 -- label_gopls
 lspconfig.gopls.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  settings = {
+      gopls = {
+          analyses = {
+              unusedparams = true,
+          },
+          staticcheck = true,
+          gofumpt = true,
+      },
+  },
 }
 -- label_gopls endl
 
