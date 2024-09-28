@@ -293,6 +293,14 @@ local plugins = {
             require('render-markdown').setup({})
         end,
     },
+
+    -- Motion Plugin: Leap
+    {
+        'ggandor/leap.nvim',
+        config = function()
+            require('config.nvim-leap')
+        end
+    },
 }
 
 -- Install your plugins here
