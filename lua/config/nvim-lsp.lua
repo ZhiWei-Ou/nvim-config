@@ -9,7 +9,7 @@ local lspconfig = require('lspconfig')
 -- 6. marksman
 -- 7. label_yamlls
 -- 8. label_bashls
--- 9. label_pbls
+-- 9. label_bufls
 
 -- label_clangd
 -- 配置 clangd 语言服务器
@@ -109,8 +109,9 @@ lspconfig.bashls.setup {
 }
 -- label_bashls endl    
 
--- label_pbls
+-- label_bufls
 lspconfig.bufls.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  filetypes = { "proto" },
 }
--- label_pbls endl
+-- label_bufls endl
