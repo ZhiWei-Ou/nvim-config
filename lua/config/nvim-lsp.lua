@@ -63,6 +63,25 @@ lspconfig.gopls.setup {
       },
   },
 }
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function()
+        -- tidy go imports on save
+          local params = vim.lsp.util.make_range_params()
+          params.context = { only = { "source.organizeImports" } }
+          local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
+          for _, res in pairs(result or {}) do
+            for _, r in pairs(res.result or {}) do
+              if r.edit then
+                vim.lsp.util.apply_workspace_edit(r.edit, "utf-16")
+              end
+            end
+          end
+        -- Save File then format code
+        vim.lsp.buf.format({ async = false })
+    end,
+    buffer = bufnr,
+})
 -- label_gopls endl
 
 
