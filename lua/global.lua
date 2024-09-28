@@ -21,7 +21,9 @@ vim.o.clipboard = 'unnamedplus'  -- 启用系统剪贴板
 vim.o.showmatch = true           -- 显示匹配的括号
 
 
-vim.g.base16_theme = 'onedark'  -- 默认主题
+-- vim.g.base16_theme = 'onedark'  -- 默认主题
+-- 2024-09-28 19:35:08
+-- vim.g.base16_theme = 'tokyonight-moon'  -- 默认主题
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

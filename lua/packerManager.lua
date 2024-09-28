@@ -155,9 +155,9 @@ local plugins = {
         config = function()
             require("config.nvim-github-theme")
         end,
-        run = function()
-            vim.cmd('colorscheme github_dark_dimmed')
-        end
+        -- run = function()
+        --     vim.cmd('colorscheme github_dark_dimmed')
+        -- end
     },
 
     -- nvim-ouroboros
@@ -277,7 +277,12 @@ local plugins = {
             }
         end,
         requires = {'nvim-tree/nvim-web-devicons'}
-    }
+    },
+
+    -- ColorTheme: TokyoNight
+    {
+        'folke/tokyonight.nvim'
+    },
 }
 
 -- Install your plugins here
