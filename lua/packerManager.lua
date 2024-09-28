@@ -283,6 +283,16 @@ local plugins = {
     {
         'folke/tokyonight.nvim'
     },
+
+    -- MarkDown Render Plugin
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        after = { 'nvim-treesitter' },
+        requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+        config = function()
+            require('render-markdown').setup({})
+        end,
+    },
 }
 
 -- Install your plugins here
