@@ -306,7 +306,7 @@ local plugins = {
     {
         "nvim-zh/colorful-winsep.nvim",
         config = function ()
-            require('config.nvim-winsep.lua')
+            require('config.nvim-winsep')
 
             -- Use Default Setup
             -- require('colorful-winsep').setup()

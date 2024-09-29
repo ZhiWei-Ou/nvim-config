@@ -1,6 +1,7 @@
 require('dashboard').setup {
-    theme = 'hyper',
-    confij = {
+    theme = 'doom',
+
+    confin = {
         week_header = {
             enable = false,
         },
