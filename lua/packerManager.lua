@@ -301,6 +301,17 @@ local plugins = {
             require('config.nvim-leap')
         end
     },
+
+    -- Nvim Windows Split Plugin: colorful-winsep
+    {
+        "nvim-zh/colorful-winsep.nvim",
+        config = function ()
+            require('config.nvim-winsep.lua')
+
+            -- Use Default Setup
+            -- require('colorful-winsep').setup()
+        end
+    },
 }
 
 -- Install your plugins here
