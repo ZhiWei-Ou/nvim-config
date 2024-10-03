@@ -19,7 +19,6 @@ lspconfig.clangd.setup{}
 -- 配置 LSP 快捷键
 local on_attach = function(client, bufnr)
 
-    vim.keymap.set('i', 'gh', function() vim.lsp.buf.signature_help() end, {buffer=true})
     vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
     vim.lsp.handlers['signature_help'], {
         border = 'single',
@@ -33,16 +32,27 @@ local on_attach = function(client, bufnr)
         border = "double"  --  'single', 'double', 'rounded', 'solid', 'shadow'
     })
 
+    vim.lsp.handlers["textDocument/references"] = vim.lsp.with(
+        vim.lsp.handlers.references,
+        { border = "double"}
+    )
+
     -- 定义 gd 跳转到定义
     buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
 
-    -- 定义 gh 显示悬停信息
+    -- 定义 gh 插入模式下的 signature help
+    buf_set_keymap('i', 'gh', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+
+    -- 定义 gh 普通模式下的 hove
     buf_set_keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
     -- 定义 gr 显示引用
     -- @Note: 这个是不会自动关闭的，也不打算让其自动关闭.
     -- 需要关闭，手动使用 `:cclose`
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    --
+    -- @ Now we use `telescope`, We don't need to close it
+    buf_set_keymap('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<CR>', opts)
 
     -- 定义 gt 显示类型
     buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
