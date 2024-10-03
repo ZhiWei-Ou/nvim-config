@@ -143,3 +143,19 @@ lspconfig.bufls.setup {
   filetypes = { "proto" },
 }
 -- label_bufls endl
+--
+--
+--
+--
+--
+--
+
+vim.o.updatetime = 500  -- CursorHold & CursorHoldI Expect Time (ms)
+vim.api.nvim_exec([[
+  augroup LspHighlight
+    autocmd!
+    autocmd CursorHold  *.c,*.h,*.cpp,*.hpp,*.cc,*.hh,*.go,*.lua,*.sh lua vim.lsp.buf.document_highlight()
+    autocmd CursorHoldI *.c,*.h,*.cpp,*.hpp,*.cc,*.hh,*.go,*.lua,*.sh lua vim.lsp.buf.document_highlight()
+    autocmd CursorMoved *.c,*.h,*.cpp,*.hpp,*.cc,*.hh,*.go,*.lua,*.sh lua vim.lsp.buf.clear_references()
+  augroup END
+]], false)
