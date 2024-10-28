@@ -263,7 +263,7 @@ local plugins = {
             {'nvim-telescope/telescope.nvim'},
         },
         config = function ()
-            require('telescope').load_extension('emoji') 
+            require('telescope').load_extension('emoji')
         end
     },
 
@@ -297,6 +297,14 @@ local plugins = {
         'ggandor/leap.nvim',
         config = function()
             require('config.nvim-leap')
+        end
+    },
+
+    -- Scrollbar
+    {
+        'petertriho/nvim-scrollbar',
+        config = function()
+            require('config.nvim-scrollbar')
         end
     }
 }
