@@ -2,7 +2,7 @@ require("global")
 require("packerManager")
 require("keymaps")
 
-vim.cmd('colorscheme tokyonight-moon')
+vim.cmd('colorscheme tokyonight-storm')
 
 vim.api.nvim_create_autocmd("FileType", {
   -- pattern = {"*.c", "*.h", "*.cpp", "*.hpp", "*.tpp", "*.cc", "*.hh"},

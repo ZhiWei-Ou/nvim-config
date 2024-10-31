@@ -3,6 +3,9 @@
 --
 --
 
+local builtin = require('telescope.builtin')
+local themes = require('telescope.themes')
+
 require('telescope').setup{
     defaults = {
         mappings = {
@@ -15,6 +18,7 @@ require('telescope').setup{
                 -- ["<C-F>"] = require('telescope.builtin').live_grep,        -- 工作区匹配字符串
             },
         },
+        find_command = {'fd', '--type', 'f', '--strip-cwd-prefix'},
         file_ignore_patterns = { "node_modules", ".git/", "build/", "out/" },
         prompt_prefix = "🔍 ",
         selection_caret = "➤ ",
@@ -49,8 +53,8 @@ require('telescope').setup{
 }
 
 -- 模糊搜索
--- 搜索文件
-vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>lua require("telescope.builtin").find_files()<CR>', { noremap = true, silent = true })
+-- 搜索文件 {find_command={"fd", "--type", "f", "--strip-cwd-prefix"}}
+vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>lua require("telescope.builtin").find_files({find_command={"rg", "--files", "-i"}})<CR>', { noremap = true, silent = true })
 -- 搜索匹配字符串
 vim.api.nvim_set_keymap('n', '<C-F>', '<cmd>lua require("telescope.builtin").live_grep()<CR>', { noremap = true, silent = true })
 -- 工具集
