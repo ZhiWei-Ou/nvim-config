@@ -12,6 +12,9 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- 7. label_yamlls
 -- 8. label_bashls
 -- 9. label_bufls
+-- 10. label_denols
+-- 11. label_cssls
+-- 12. label_html
 
 -- label_clangd
 -- 配置 clangd 语言服务器
@@ -138,13 +141,31 @@ lspconfig.bashls.setup {
 -- label_bashls endl    
 
 -- label_bufls
-lspconfig.bufls.setup {
+lspconfig.buf_ls.setup {
   on_attach = on_attach,
   filetypes = { "proto" },
 }
 -- label_bufls endl
---
---
+
+-- label_denols
+lspconfig.denols.setup {
+  on_attach = on_attach,
+  filetypes = { "ts", "tsx", "js", "jsx", "cjs", "mjs", "ts", "tsx", "json" },
+}
+-- label_denols endl
+
+-- label_cssls
+lspconfig.cssls.setup {
+  on_attach = on_attach
+}
+-- label_cssls endl
+
+-- label_html
+lspconfig.html.setup {
+  on_attach = on_attach
+}
+-- label_html endl
+
 --
 --
 --
