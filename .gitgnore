@@ -1,2 +1,4 @@
 *.log
 .cache
+packer_compiled.lua
+.DS_Store
