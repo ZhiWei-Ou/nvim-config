@@ -306,6 +306,15 @@ local plugins = {
         config = function()
             require('config.nvim-scrollbar')
         end
+    },
+
+    -- trouble 
+    {
+        'folke/trouble.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+            require('config.nvim-trouble')
+        end
     }
 }
 
