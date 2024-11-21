@@ -4,7 +4,7 @@ Build type: `Release`
 LuaJIT `2.1.1716656478`
 
 # 💈 Media
-~~[demo-video](./assets/nvim-demo.mov)~~
+~~[demo-video](./assets/display.mp4)~~
 
 ## Platform
 Use terminal app is MacOS default terminal.
