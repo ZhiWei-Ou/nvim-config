@@ -304,14 +304,22 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: ouroboros
-time([[Config for ouroboros]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26config.nvim-ouroboros\frequire\0", "config", "ouroboros")
-time([[Config for ouroboros]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27config.nvim-toggleterm\frequire\0", "config", "toggleterm.nvim")
+time([[Config for toggleterm.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25config.nvim-gitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
 -- Config for: lualine.nvim
 time([[Config for lualine.nvim]], true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24config.nvim-lualine\frequire\0", "config", "lualine.nvim")
 time([[Config for lualine.nvim]], false)
+-- Config for: nvim-surround
+time([[Config for nvim-surround]], true)
+try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18nvim-surround\frequire\0", "config", "nvim-surround")
+time([[Config for nvim-surround]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27config.nvim-treesitter\frequire\0", "config", "nvim-treesitter")
@@ -320,26 +328,30 @@ time([[Config for nvim-treesitter]], false)
 time([[Config for codeium.vim]], true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24config.nvim-codeium\frequire\0", "config", "codeium.vim")
 time([[Config for codeium.vim]], false)
--- Config for: bufferline.nvim
-time([[Config for bufferline.nvim]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27config.nvim-bufferline\frequire\0", "config", "bufferline.nvim")
-time([[Config for bufferline.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26config.nvim-telescope\frequire\0", "config", "telescope.nvim")
-time([[Config for telescope.nvim]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16config.tree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
 -- Config for: LuaSnip
 time([[Config for LuaSnip]], true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24config.nvim-luasnip\frequire\0", "config", "LuaSnip")
 time([[Config for LuaSnip]], false)
+-- Config for: ouroboros
+time([[Config for ouroboros]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26config.nvim-ouroboros\frequire\0", "config", "ouroboros")
+time([[Config for ouroboros]], false)
+-- Config for: leap.nvim
+time([[Config for leap.nvim]], true)
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.nvim-leap\frequire\0", "config", "leap.nvim")
+time([[Config for leap.nvim]], false)
+-- Config for: nvim-scrollbar
+time([[Config for nvim-scrollbar]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26config.nvim-scrollbar\frequire\0", "config", "nvim-scrollbar")
+time([[Config for nvim-scrollbar]], false)
 -- Config for: mason.nvim
 time([[Config for mason.nvim]], true)
 try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22config.nvim-mason\frequire\0", "config", "mason.nvim")
 time([[Config for mason.nvim]], false)
--- Config for: nvim-surround
-time([[Config for nvim-surround]], true)
-try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18nvim-surround\frequire\0", "config", "nvim-surround")
-time([[Config for nvim-surround]], false)
 -- Config for: dressing.nvim
 time([[Config for dressing.nvim]], true)
 try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25config.nvim-dressing\frequire\0", "config", "dressing.nvim")
@@ -348,54 +360,42 @@ time([[Config for dressing.nvim]], false)
 time([[Config for cmake-tools.nvim]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\28config.nvim-cmake-tools\frequire\0", "config", "cmake-tools.nvim")
 time([[Config for cmake-tools.nvim]], false)
--- Config for: telescope-emoji.nvim
-time([[Config for telescope-emoji.nvim]], true)
-try_loadstring("\27LJ\2\nJ\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\nemoji\19load_extension\14telescope\frequire\0", "config", "telescope-emoji.nvim")
-time([[Config for telescope-emoji.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.nvim-lsp\frequire\0", "config", "nvim-lspconfig")
-time([[Config for nvim-lspconfig]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\25config.nvim-gitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.nvim-cmp\frequire\0", "config", "nvim-cmp")
 time([[Config for nvim-cmp]], false)
--- Config for: github-nvim-theme
-time([[Config for github-nvim-theme]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\29config.nvim-github-theme\frequire\0", "config", "github-nvim-theme")
-time([[Config for github-nvim-theme]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27config.nvim-toggleterm\frequire\0", "config", "toggleterm.nvim")
-time([[Config for toggleterm.nvim]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20config.nvim-lsp\frequire\0", "config", "nvim-lspconfig")
+time([[Config for nvim-lspconfig]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27config.nvim-bufferline\frequire\0", "config", "bufferline.nvim")
+time([[Config for bufferline.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26config.nvim-telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24config.nvim-trouble\frequire\0", "config", "trouble.nvim")
 time([[Config for trouble.nvim]], false)
--- Config for: leap.nvim
-time([[Config for leap.nvim]], true)
-try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21config.nvim-leap\frequire\0", "config", "leap.nvim")
-time([[Config for leap.nvim]], false)
--- Config for: nvim-spectre
-time([[Config for nvim-spectre]], true)
-try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24config.nvim-spectre\frequire\0", "config", "nvim-spectre")
-time([[Config for nvim-spectre]], false)
--- Config for: nvim-scrollbar
-time([[Config for nvim-scrollbar]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26config.nvim-scrollbar\frequire\0", "config", "nvim-scrollbar")
-time([[Config for nvim-scrollbar]], false)
+-- Config for: telescope-emoji.nvim
+time([[Config for telescope-emoji.nvim]], true)
+try_loadstring("\27LJ\2\nJ\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\nemoji\19load_extension\14telescope\frequire\0", "config", "telescope-emoji.nvim")
+time([[Config for telescope-emoji.nvim]], false)
+-- Config for: github-nvim-theme
+time([[Config for github-nvim-theme]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\29config.nvim-github-theme\frequire\0", "config", "github-nvim-theme")
+time([[Config for github-nvim-theme]], false)
 -- Config for: nvim-web-devicons
 time([[Config for nvim-web-devicons]], true)
 try_loadstring("\27LJ\2\n8\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\29config.nvim-web-devicons\frequire\0", "config", "nvim-web-devicons")
 time([[Config for nvim-web-devicons]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16config.tree\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
+-- Config for: nvim-spectre
+time([[Config for nvim-spectre]], true)
+try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24config.nvim-spectre\frequire\0", "config", "nvim-spectre")
+time([[Config for nvim-spectre]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd render-markdown.nvim ]]

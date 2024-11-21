@@ -7,6 +7,7 @@ require('lualine').setup {
     disabled_filetypes = {
       statusline = {},
       winbar = {},
+      'dashboard',
     },
     ignore_focus = {},
     always_divide_middle = true,
@@ -39,6 +40,10 @@ require('lualine').setup {
   extensions = {
       'trouble',
       'fugitive',
-      'nvim-tree'
+      'nvim-tree',
+      'mason',
+      'man',
+      'toggleterm',
+      'oil',
   }
 }

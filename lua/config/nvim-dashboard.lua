@@ -19,6 +19,8 @@ require('dashboard').setup {
     },
     config = {
         header = vim.split(logo, "\n"),
+        project = { enable = false, },
+        mru = { enable = false, },
         week_header = {
             enable = false,
         },
