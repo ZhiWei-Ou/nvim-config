@@ -7,7 +7,7 @@ LuaJIT `2.1.1716656478`
 
 # 💈 Media
 
-https://github.com/user-attachments/assets/1e9f9aca-81d2-4556-8638-f46309ea9353"
+https://github.com/user-attachments/assets/1e9f9aca-81d2-4556-8638-f46309ea9353
 
 ## Platform
 Use terminal app is MacOS default terminal.
