@@ -7,7 +7,7 @@ LuaJIT `2.1.1716656478`
 https://github.com/ZhiWei-Ou/nvim-config/blob/main/assets/display.mp4
 
 <video width="640" height="360" controls>
-  <source src="https://raw.githubusercontent.com/ZhiWei-Ou/nvim-config/blob/main/assets/display.mp4"
+  <source src="https://github.com/user-attachments/assets/1e9f9aca-81d2-4556-8638-f46309ea9353"
   type="video/mp4">
   Your browser does not support the video tag.
 </video>
