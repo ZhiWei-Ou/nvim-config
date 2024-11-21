@@ -4,10 +4,14 @@ Build type: `Release`
 LuaJIT `2.1.1716656478`
 
 # 💈 Media
+https://github.com/ZhiWei-Ou/nvim-config/blob/main/assets/display.mp4
+
 <video width="640" height="360" controls>
-  <source src="./assets/display.mp4" type="video/mp4">
+  <source src="https://raw.githubusercontent.com/ZhiWei-Ou/nvim-config/blob/main/assets/display.mp4"
+  type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
 
 ## Platform
 Use terminal app is MacOS default terminal.
