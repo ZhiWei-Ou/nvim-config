@@ -1,6 +1,5 @@
 # Neovim Configuration
 NVIM `v0.10.0`
-
 Build type: `Release`
 
 LuaJIT `2.1.1716656478`
@@ -52,3 +51,16 @@ cmake(CMake), bashls(Shell), bufls(Protobuf), yamlls(YAML)
 
 ## Telescope
 1. `:Telescope emoji` to search emoji
+
+## Problem
+### LSP
+- mason.cmake_language_server error.
+   ```bash
+   apt install python3 python3-pip python3.10-venv
+   ```
+### LinuxPort
+- clipboard is not work in wsl2.ubuntu2204.
+    ```bash
+    apt install xclip xsel wl-clipboard
+    ```
+
