@@ -3,7 +3,7 @@ require("cmake-tools").setup {
   cmake_command = "cmake", -- this is used to specify cmake command path
   ctest_command = "ctest", -- this is used to specify ctest command path
   cmake_use_preset = true,
-  cmake_regenerate_on_save = true, -- auto generate when save CMakeLists.txt
+  cmake_regenerate_on_save = false, -- auto generate when save CMakeLists.txt
   cmake_generate_options = { "-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE", "--no-warn-unused-cli", "-GUnix Makefiles" }, -- this will be passed when invoke `CMakeGenerate`
   cmake_build_options = {"-j 10"}, -- this will be passed when invoke `CMakeBuild`
   -- support macro expansion:
