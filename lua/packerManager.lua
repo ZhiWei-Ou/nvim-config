@@ -67,7 +67,7 @@ local plugins = {
     {
         "nvim-tree/nvim-web-devicons",
         config = function()
-            require("config.nvim-web-devicons")
+            require("config.nvim-web-icon")
         end
     },
 

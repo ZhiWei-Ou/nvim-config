@@ -1,3 +1,10 @@
+-- local icon, color = require'nvim-web-devicons'.get_icons_by_operating_system()
+
+-- print(vim.inspect(icon.apple))
+
+
+
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -8,6 +15,8 @@ require('lualine').setup {
       statusline = {},
       winbar = {},
       'dashboard',
+      'trouble',
+      'toggleterm',
     },
     ignore_focus = {},
     always_divide_middle = true,
@@ -20,17 +29,62 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_b = {
+        -- {'branch', color = {fg = '#a9a1e1'}},
+        -- 'diff',
+        'branch',
+        'diagnostics',
+    },
+    lualine_c = {
+        -- {'filename', color = {fg = '#a9a1e1'}},
+        {'filename', separator = { left = '', right = '' }},
+        {
+            function()
+                return '%='
+
+            end,
+            -- separator = { left = '', right = '' },
+            separator = { left = '', right = '' },
+        },
+        {
+            -- Lsp server name .
+            function()
+                local msg = 'No Active Lsp'
+                local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
+                local clients = vim.lsp.get_clients()
+                if next(clients) == nil then
+                    return msg
+                end
+                for _, client in ipairs(clients) do
+                    local filetypes = client.config.filetypes
+                    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                        return client.name
+                    end
+                end
+                return msg
+            end,
+            -- separator = { left = '', right = '' },
+            separator = { left = '', right = '' },
+            icon = '  LSP:',
+            color = { fg = '#98be65', gui = 'bold' },
+        }
+    },
+    -- lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {
+        {'encoding', fmt = string.upper, color = {fg = '#98be65'}},
+        { 'fileformat', icons_enabled = false, fmt = string.upper, color = {fg = '#98be65'}},
+        'filetype'
+    },
     lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_z = {
+        {'filesize', cond = function() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end, }
+    }
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
     lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_x = {'hostname'},
     lualine_y = {},
     lualine_z = {}
   },
