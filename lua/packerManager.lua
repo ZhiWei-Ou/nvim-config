@@ -152,12 +152,6 @@ local plugins = {
     -- nvim-github-theme
     {
         'projekt0n/github-nvim-theme' ,
-        config = function()
-            require("config.nvim-github-theme")
-        end,
-        -- run = function()
-        --     vim.cmd('colorscheme github_dark_dimmed')
-        -- end
     },
 
     -- nvim-ouroboros
