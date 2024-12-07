@@ -15,6 +15,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- 11. label_cssls
 -- 12. label_html
 -- 13. label_buf_ls
+-- 14. label_dockerls
 
 -- label_clangd
 -- 配置 clangd 语言服务器
@@ -162,6 +163,12 @@ lspconfig.html.setup {
 -- label_buf_ls
 require'lspconfig'.buf_ls.setup{}
 -- label_buf_ls endl
+
+-- label_dockerls
+lspconfig.dockerls.setup {
+  on_attach = on_attach
+}
+-- label_dockerls endl
 
 --
 --
