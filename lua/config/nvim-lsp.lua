@@ -19,7 +19,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- label_clangd
 -- 配置 clangd 语言服务器
-lspconfig.clangd.setup{}
+-- lspconfig.clangd.setup{}
 -- 配置 LSP 快捷键
 local on_attach = function(client, bufnr)
 
@@ -64,7 +64,8 @@ end
 
 -- 将 on_attach 传递给语言服务器设置
 lspconfig.clangd.setup{
-  on_attach = on_attach,
+    filetypes = { "c", "cpp", "objc", "objcpp", "cc", "hh", "hpp", "h", "hxx" },
+    on_attach = on_attach,
 }
 -- label_clangd endl
 
@@ -78,6 +79,24 @@ lspconfig.cmake.setup {
 
 -- label_lua_ls
 lspconfig.lua_ls.setup {
+    settings = {
+        Lua = {
+            runtime = {
+                version = "LuaJIT",
+                diagnostics = {
+                    'vim',
+                    'describe',
+                    'it',
+                    'before_each',
+                    'after_each',
+                    'pending',
+                }
+            }
+        }
+    },
+    on_attach = on_attach,
+    capabilities = capabilities,
+
 }
 -- label_lua_ls endl
 
@@ -161,7 +180,10 @@ lspconfig.html.setup {
 -- label_html endl
 
 -- label_buf_ls
-require'lspconfig'.buf_ls.setup{}
+require'lspconfig'.buf_ls.setup{
+  on_attach = on_attach,
+  filetypes = { "proto" },
+}
 -- label_buf_ls endl
 
 -- label_dockerls
