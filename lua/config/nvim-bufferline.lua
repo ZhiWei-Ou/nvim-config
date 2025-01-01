@@ -10,7 +10,7 @@ require("bufferline").setup{
 
         indicator = {
             icon = '▎', -- this should be omitted if indicator style is not 'icon'
-            style = 'underline',
+            style = 'icon' -- 'underline',
         },
 
         diagnostics = 'nvim_lsp',
