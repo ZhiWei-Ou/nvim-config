@@ -3,7 +3,7 @@
 require'toggleterm'.setup {
     float_opts = {
         border = 'double',
-        -- winblend = 10, -- display not expected, commit issue: https://github.com/akinsho/toggleterm.nvim/issues/617
+        winblend = 10, -- display not expected, commit issue: https://github.com/akinsho/toggleterm.nvim/issues/617
         title_pos = 'center',
   },
 }

@@ -17,6 +17,7 @@ require('lualine').setup {
       'dashboard',
       'trouble',
       'toggleterm',
+      'NvimTree',
     },
     ignore_focus = {},
     always_divide_middle = true,
@@ -37,7 +38,7 @@ require('lualine').setup {
     },
     lualine_c = {
         -- {'filename', color = {fg = '#a9a1e1'}},
-        {'filename', separator = { left = '', right = '' }},
+        {'filename', separator = { left = '', right = '' }, color = {fg = '#a9a1e1'}},
         {
             function()
                 return '%='
@@ -66,14 +67,14 @@ require('lualine').setup {
             -- separator = { left = '', right = '' },
             separator = { left = '', right = '' },
             icon = '  LSP:',
-            color = { fg = '#98be65', gui = 'bold' },
+            color = { fg = '#d1b0fa', gui = 'bold' },
         }
     },
     -- lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_x = {
-        {'encoding', fmt = string.upper, color = {fg = '#98be65'}},
-        { 'fileformat', icons_enabled = false, fmt = string.upper, color = {fg = '#98be65'}},
-        'filetype'
+        {'encoding', fmt = string.lower, color = {fg = '#d1b0fa'}},
+        {'fileformat', icons_enabled = false, fmt = string.lower, color = {fg = '#d1b0fa'}},
+        {'filetype', icons_enabled = true, color = {fg = '#d1b0fa'}},
     },
     lualine_y = {'progress'},
     lualine_z = {

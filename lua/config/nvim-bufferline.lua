@@ -8,6 +8,11 @@ require("bufferline").setup{
             return string.format('%s|%s', opts.id, opts.raise(opts.ordinal))
         end,
 
+        indicator = {
+            icon = '▎', -- this should be omitted if indicator style is not 'icon'
+            style = 'underline',
+        },
+
         diagnostics = 'nvim_lsp',
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
             local s = " "
@@ -19,6 +24,20 @@ require("bufferline").setup{
             return s
         end,
 
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = "File Explorer",
+                text_align = "center",
+                separator = true,
+            },
+            {
+                filetype = "trouble",
+                text = "Outline",
+                text_align = "center",
+                separator = true
+            }
+        },
     },
 }
 

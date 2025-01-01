@@ -1,6 +1,6 @@
 -- 语法高亮插件
 
-require('nvim-treesitter.configs').setup { 
+require('nvim-treesitter.configs').setup {
     ensure_installed = {
         'c', 'cpp', 'lua', 'go', 'bash', 'cmake', 'json', 'proto', 'yaml', 'markdown_inline',
     },
