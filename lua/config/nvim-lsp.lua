@@ -17,61 +17,81 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- 13. label_buf_ls
 -- 14. label_dockerls
 
--- label_clangd
--- 配置 clangd 语言服务器
--- lspconfig.clangd.setup{}
 -- 配置 LSP 快捷键
 local on_attach = function(client, bufnr)
 
     vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-    vim.lsp.handlers['signature_help'], {
-        border = 'single',
-        close_events = {"CursorMoved", "BufHidden", "InsertCharPre"},
-    })
+        vim.lsp.handlers['signature_help'],
+        {
+            border = 'single',
+            close_events = {
+                'CursorMoved',
+                'BufHidden',
+                'InsertCharPre'
+            },
+        }
+    )
 
-    local buf_set_keymap = function(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-    local opts = { noremap=true, silent=true }
-
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = "double"  --  'single', 'double', 'rounded', 'solid', 'shadow'
-    })
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+        vim.lsp.handlers.hover,
+        {
+            border = 'double',  --  'single', 'double', 'rounded', 'solid', 'shadow'
+        }
+    )
 
     vim.lsp.handlers["textDocument/references"] = vim.lsp.with(
         vim.lsp.handlers.references,
-        { border = "double"}
+        {
+            border = 'double',
+        }
     )
 
-    -- 定义 gd 跳转到定义
-    buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-
-    -- 定义 gh 插入模式下的 signature help
-    buf_set_keymap('i', 'gh', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-
-    -- 定义 gh 普通模式下的 hove
-    buf_set_keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-
-    -- 定义 gr 显示引用
-    -- @Note: 这个是不会自动关闭的，也不打算让其自动关闭.
-    -- 需要关闭，手动使用 `:cclose`
-    -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    --
-    -- @ Now we use `telescope`, We don't need to close it
-    buf_set_keymap('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<CR>', opts)
-
-    -- 定义 gt 显示类型
-    buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 end
 
--- 将 on_attach 传递给语言服务器设置
 lspconfig.clangd.setup{
-    filetypes = { "c", "cpp", "objc", "objcpp", "cc", "hh", "hpp", "h", "hxx" },
-    on_attach = on_attach,
+    name = "C/C++", -- actual 'Clangd'
+    cmd = {
+        'clangd',
+        '--background-index',
+        '--header-insertion=never',
+    },
+    filetypes = {
+        "c", "cpp", "objc", "objcpp", "cc",
+        "hh", "hpp", "h", "hxx"
+    },
+    handlers = {
+        ["textDocument/hover"] = vim.lsp.with(
+            vim.lsp.handlers.hover,
+            {
+                border = 'double',  --  'single', 'double', 'rounded', 'solid', 'shadow'
+            }
+        ),
+        ["textDocument/signatureHelp"] = vim.lsp.with(
+            vim.lsp.handlers.signature_help,
+            {
+                border = 'double',  --  'single', 'double', 'rounded', 'solid', 'shadow'
+                close_events = {
+                    'CursorMoved',
+                    'BufHidden',
+                    'InsertCharPre'
+                },
+            }
+        ),
+        ['textDocument/references'] = vim.lsp.with(
+            vim.lsp.handlers.references,
+            {
+                border = "double",
+                loclist = true,
+            }
+        ),
+    }
 }
 -- label_clangd endl
 
 
 -- label_cmake
 lspconfig.cmake.setup {
+  name = "CMake",
   on_attach = on_attach
 }
 -- label_cmake endl
@@ -79,6 +99,7 @@ lspconfig.cmake.setup {
 
 -- label_lua_ls
 lspconfig.lua_ls.setup {
+    name = "Lua",
     settings = {
         Lua = {
             runtime = {
@@ -102,17 +123,18 @@ lspconfig.lua_ls.setup {
 
 -- label_gopls
 lspconfig.gopls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-      gopls = {
-          analyses = {
-              unusedparams = true,
-          },
-          staticcheck = true,
-          gofumpt = true,
-      },
-  },
+    name = "Go",
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+        },
+    },
 }
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*.go",
@@ -138,25 +160,29 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- label_jsonls
 lspconfig.jsonls.setup {
-  on_attach = on_attach
+    name = "JSON",
+    on_attach = on_attach
 }
 -- label_jsonls endl
 
 -- label_marksman
 lspconfig.marksman.setup {
-  on_attach = on_attach
+    name = "Markdown",
+    on_attach = on_attach
 }
 -- label_marksman endl
 
 -- label_yamlls
 lspconfig.yamlls.setup {
-  on_attach = on_attach
+    name = "YAML",
+    on_attach = on_attach
 }
 -- label_yamlls endl
 
 -- label_bashls
 lspconfig.bashls.setup {
-  on_attach = on_attach
+    name = "Shell",
+    on_attach = on_attach
 }
 -- label_bashls endl    
 
@@ -181,21 +207,18 @@ lspconfig.html.setup {
 
 -- label_buf_ls
 require'lspconfig'.buf_ls.setup{
-  on_attach = on_attach,
-  filetypes = { "proto" },
+    name = "ProtoBuf",
+    on_attach = on_attach,
+    filetypes = { "proto" },
 }
 -- label_buf_ls endl
 
 -- label_dockerls
 lspconfig.dockerls.setup {
-  on_attach = on_attach
+    name = "Docker",
+    on_attach = on_attach
 }
 -- label_dockerls endl
-
---
---
---
---
 
 vim.o.updatetime = 500  -- CursorHold & CursorHoldI Expect Time (ms)
 vim.api.nvim_exec([[
