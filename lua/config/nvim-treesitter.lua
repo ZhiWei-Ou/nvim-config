@@ -2,7 +2,16 @@
 
 require('nvim-treesitter.configs').setup {
     ensure_installed = {
-        'c', 'cpp', 'lua', 'go', 'bash', 'cmake', 'json', 'proto', 'yaml', 'markdown_inline',
+        'c',
+        'cpp',
+        'lua',
+        'go',
+        'bash',
+        'cmake',
+        'json',
+        'proto',
+        'yaml',
+        'markdown_inline',
     },
     highlight = {
         enable = true,              -- 启用语法高亮

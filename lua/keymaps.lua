@@ -123,3 +123,32 @@ vim.api.nvim_set_keymap('n',
                         })
 
 
+-- Outline
+vim.api.nvim_set_keymap('n',
+                        '<C-]>',
+                        '<cmd>Trouble symbols toggle focus=false<CR>',
+                        {
+                            noremap = true,
+                            silent = true,
+                            desc = 'Toggle Outline'
+                        })
+
+-- Diagnostic
+vim.api.nvim_set_keymap('n',
+                        '<leader>dd',
+                        '<cmd>Trouble diagnostics toggle focus=false<CR>',
+                        {
+                            noremap = true,
+                            silent = true,
+                            desc = 'Toggle Diagnostics'
+                        })
+
+-- File Explorer
+vim.api.nvim_set_keymap('n',
+                        '<C-l>',
+                        '<cmd>NvimTreeToggle<CR>',
+                        {
+                            noremap = true,
+                            silent = true,
+                            desc = 'Toggle File Explorer'
+                        })

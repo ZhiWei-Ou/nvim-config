@@ -23,7 +23,7 @@ require('telescope').setup{
         prompt_prefix = "🔍 ",
         selection_caret = "➤ ",
         multi_icon = " ",
-        wrap_results = true,
+        wrap_results = false,
         results_title = "Results",
     },
     pickers = {
