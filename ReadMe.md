@@ -31,16 +31,19 @@ more details: [snip_instruction](config/nvim-luasnip.lua)
 |:---:|:-----------:|
 |Ctrl+s|Save File|
 |Ctrl+\ |Vertical Split|
-|Ctrl+t|Open Inner Terminal(default display in bottom|
-|Option+b|Open or Close Directory Browser|
+|Ctrl+t|Open Inner Terminal(default display in float)|
+|Ctrl+l|Toggler File Explorer|
 |Ctrl+k Ctrl+p|Open Telescope entry|
 |gd|Go to Definition|
 |gr|Show References|
 |gh|Show Comments|
 |Ctrl+o|Backward Record|
-|Ctrl+l|choice code snippet when use LuaSnip|
+|Ctrl+]|Toggle Outline|
+|<leader>+dd|Toggle Diagnostics|
+|Ctrl+p|Open Finder|
+|Ctrl+f|Open Greper|
 
-## Common Commands
+## Outline
 1. `:Spectre` to open Spectre
 2. `Trouble symbols`
 3. `Trouble diagnostics`
