@@ -59,7 +59,7 @@ cmake(CMake), bashls(Shell), bufls(Protobuf), yamlls(YAML)
 ### LSP
 - mason.cmake_language_server error.
    ```bash
-   apt install python3 python3-pip python3.10-venv
+   apt install python3 python3-pip python3.10-venv npm
    ```
 ### LinuxPort
 - clipboard is not work in wsl2.ubuntu2204.
