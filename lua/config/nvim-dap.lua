@@ -1,5 +1,5 @@
 local dap = require('dap')
-print("--os:", os)
+
 if vim.loop.os_uname().sysname == "Darwin" then
     dap.adapters.lldb = {
         type = 'executable',

@@ -2,7 +2,11 @@ require("global")
 require("packerManager")
 require("keymaps")
 
-vim.cmd('colorscheme tokyonight-moon')
+if (os.getenv("VI_THEME") == nil) then
+    vim.cmd('colorscheme github_dark')
+else
+    vim.cmd('colorscheme ' .. os.getenv("VI_THEME"))
+end
 
 vim.api.nvim_create_autocmd("FileType", {
   -- pattern = {"*.c", "*.h", "*.cpp", "*.hpp", "*.tpp", "*.cc", "*.hh"},
