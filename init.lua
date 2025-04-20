@@ -1,20 +1,4 @@
-require("global")
-require("packerManager")
-require("keymaps")
-
-if (os.getenv("VI_THEME") == nil) then
-    vim.cmd('colorscheme github_dark')
-else
-    vim.cmd('colorscheme ' .. os.getenv("VI_THEME"))
-end
-
-vim.api.nvim_create_autocmd("FileType", {
-  -- pattern = {"*.c", "*.h", "*.cpp", "*.hpp", "*.tpp", "*.cc", "*.hh"},
-  pattern = {'c', 'h', 'cpp', 'hpp', 'tpp', 'cc', 'hh'},
-  callback = function()
-    vim.api.nvim_buf_set_option(0, 'commentstring', '// %s')
-  end
-})
+require('main')
 
 --  get os information
 -- print(vim.inspect(vim.loop.os_uname()))

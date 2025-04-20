@@ -2,4 +2,6 @@
 .cache
 .DS_Store
 
-/plugin/
+/lua/build
+/plugin
+/plugin/packer_compiled.lua

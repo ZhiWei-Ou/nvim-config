@@ -1,4 +1,3 @@
-
 vim.cmd('syntax enable')         -- 启用语法高亮
 vim.o.hidden = true              -- 允许在有未保存的修改时切换缓冲区
 vim.o.tabstop = 4                -- 设置制表符的宽度为 4 个空格
@@ -20,10 +19,11 @@ vim.o.wrap = false               -- 禁用自动换行
 vim.o.clipboard = 'unnamedplus'  -- 启用系统剪贴板
 vim.o.showmatch = true           -- 显示匹配的括号
 
--- vim.g.base16_theme = 'onedark'  -- 默认主题
--- 2024-09-28 19:35:08
--- vim.g.base16_theme = 'tokyonight-moon'  -- 默认主题
-
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
+
+
+require('packer_manager').startup()
+require('keymaps')
+require('theme').startup(true)
