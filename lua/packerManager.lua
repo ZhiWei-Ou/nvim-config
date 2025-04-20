@@ -110,18 +110,6 @@ local plugins = {
         end,
     },
 
-    -- nvim-notice
-    -- {
-    --     "folke/noice.nvim",
-    --     requires = {
-    --         "MunifTanjim/nui.nvim",
-    --         "rcarriga/nvim-notify",
-    --     },
-    --     config = function()
-    --         require("config.nvim-notice")
-    --     end
-    -- },
-
     -- nvim-bufferline
     {
         'akinsho/bufferline.nvim',
@@ -193,8 +181,17 @@ local plugins = {
     {
         "williamboman/mason-lspconfig.nvim",
         after = "mason.nvim",
+        config = function ()
+            -- Nothing ToDo
+        end
+    },
+
+    -- nvim-lspconfig
+    {
+        "neovim/nvim-lspconfig",
+        after = "mason-lspconfig.nvim",
         config = function()
-            require("config.nvim-mason-lspconfig")
+            require("config.nvim-lsp")
         end
     },
 
@@ -205,15 +202,6 @@ local plugins = {
             require("config.nvim-dap")
         end
     },
-
-    -- nvim-lspconfig
-    {
-        "neovim/nvim-lspconfig",
-        config = function()
-            require("config.nvim-lsp")
-        end
-    },
-
 
     -- vim-visual-multi
     {
