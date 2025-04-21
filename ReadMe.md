@@ -6,25 +6,12 @@ LuaJIT `2.1.1716656478`
 
 # 💈 Media
 
-https://github.com/user-attachments/assets/1e9f9aca-81d2-4556-8638-f46309ea9353
-
-## Platform
-Use terminal app is MacOS default terminal.
-```shell
-$ uname -rsm
-Darwin 23.6.0 arm64
-```
+<p align="left">
+  <img src="assets/dashboard.png" width="300"/>
+  <img src="assets/workbench.png" width="300"/>
+</p>
 
 ## Fancy
-1. Select Theme
-step.1: Ctrl+k Ctrl+p
-step.2: Input `colorscheme`
-2. About Git
-step.1: Ctrl+k Ctrl+p
-step.2: Input `git`
-3. Code Snippet
-Instruction: hpp, cpp, c, h and so on.
-more details: [snip_instruction](config/nvim-luasnip.lua)
 
 ## Common Key
 | key | description |
