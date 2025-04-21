@@ -28,6 +28,7 @@ function M.startup(env_enable)
 
     if env_enable and os.getenv(env_key) ~= nil then
         set_theme(os.getenv(env_key))
+        return
     end
 
     set_theme(default_theme)
