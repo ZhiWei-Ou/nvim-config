@@ -10,7 +10,6 @@ local logo = [[
 
 logo = string.rep("\n", 3) .. logo .. "\n\n"
 
-
 require('dashboard').setup {
     theme = 'hyper',
     shortcut_type = 'number',

@@ -12,6 +12,7 @@ require("mason-lspconfig").setup({
         "marksman",
         "yamlls",
         "bashls",
+        "vimls",
     },
     automic_installation = true,
 })
@@ -29,6 +30,7 @@ require("lsp.lsp_markdown")
 require("lsp.lsp_protobuf")
 require("lsp.lsp_shell")
 require("lsp.lsp_yaml")
+require("lsp.lsp_vim")
 
 -- 光标悬停高亮
 vim.o.updatetime = 500  -- CursorHold & CursorHoldI Expect Time (ms)

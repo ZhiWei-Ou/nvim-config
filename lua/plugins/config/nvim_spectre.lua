@@ -1,6 +1,9 @@
 
--- MacOs
--- You may need run `brew install gnu-sed`
+--[[ MacOs
+    @Link: https://github.com/nvim-pack/nvim-spectre
+
+    You may need run `brew install gnu-sed`
+]]
 require('spectre').setup({
 
   color_devicons = true,
@@ -106,7 +109,7 @@ require('spectre').setup({
         map = '<leader>rd',
         cmd = "<cmd>lua require('spectre.actions').run_delete_line()<CR>",
         desc = 'delete line',
-    }
+    },
     -- you can put your mapping here it only use normal mode
   },
   find_engine = {
@@ -115,7 +118,11 @@ require('spectre').setup({
       cmd = "rg",
       -- default args
       args = {
-        '--color=never',
+        -- never: Colors will never be used.
+        -- auto: The default. ripgrep tries to be smart.
+        -- always: Colors will always be used regardless of where output is sent.
+        -- ansi: Like 'always', but emits ANSI escapes (even in a Windows
+        '--color=auto',
         '--no-heading',
         '--with-filename',
         '--line-number',
@@ -124,13 +131,18 @@ require('spectre').setup({
       options = {
         ['ignore-case'] = {
           value= "--ignore-case",
-          icon="[I]",
-          desc="ignore case"
+          icon="[Aa]",
+          desc="Match case"
         },
-        ['hidden'] = {
-          value="--hidden",
-          desc="hidden file",
-          icon="[H]"
+        ['whole-word'] = {
+          value="-w",
+          desc="Match whole word",
+          icon="[W]"
+        },
+        ['word-regexp'] = {
+          value="--word-regexp",
+          desc="Use regular expression",
+          icon="[.*]"
         },
         -- you can put any rg search option you want here it can toggle with
         -- show_option function
@@ -203,5 +215,3 @@ require('spectre').setup({
     -- { search_text = 'text1', replace_text = '', path = "" }
   }
 })
-
-

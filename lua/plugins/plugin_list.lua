@@ -189,11 +189,11 @@ local TelescopeEmoji = {
 
 local Dashboard = {
     'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
     config = function()
         require('plugins.config.dashboard')
     end,
-    requires = {'nvim-tree/nvim-web-devicons'}
+    requires = {'nvim-tree/nvim-web-devicons'},
+    event = 'VimEnter',
 }
 
 local TokyoNightTheme = {
