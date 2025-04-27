@@ -6,10 +6,28 @@ G.lsp_config.clangd.setup{
         'clangd',
         '--background-index',
         '--clang-tidy',
-        '--header-insertion=iwyu',
+        '--header-insertion=never', -- iwyu, never
         '--all-scopes-completion',
-        '--completion-style=detailed',
+        '--completion-style=bundled', -- bundled, detailed
+        '--enable-config'
     },
+    root_markers = {
+        '.clangd',
+        '.clang-tidy',
+        '.clang-format',
+        'compile_commands.json',
+        'compile_flags.txt',
+        'configure.ac', -- AutoTools
+        '.git',
+    },
+    capabilities = {
+        textDocument = {
+            completion = {
+                editsNearCursor = true,
+            },
+        },
+    },
+    offsetEncoding = { 'utf-8', 'utf-16' },
     filetypes = {
         "c", "cpp", "objc", "objcpp", "cc",
         "hh", "hpp", "h", "hxx"

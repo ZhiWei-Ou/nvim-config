@@ -3,6 +3,7 @@ local G = require("lsp.general")
 G.lsp_config.gopls.setup {
     name = "Go",
     on_attach = G.lsp_general_on_attach,
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
     capabilities = G.lsp_capabilities,
     settings = {
         gopls = {
