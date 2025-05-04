@@ -200,6 +200,10 @@ local TokyoNightTheme = {
     'folke/tokyonight.nvim'
 }
 
+local KanagawaTheme = {
+    'rebelot/kanagawa.nvim'
+}
+
 local RenderMarkdown = {
     'MeanderingProgrammer/render-markdown.nvim',
     after = { 'nvim-treesitter' },
@@ -228,6 +232,25 @@ local Trouble = {
     requires = { 'nvim-tree/nvim-web-devicons' },
     config = function()
         require('plugins.config.trouble')
+    end,
+}
+
+local CatppuccinTheme = {
+    'catppuccin/nvim',
+    as = 'catppuccin',
+}
+
+local IndentBlankLine = {
+    'lukas-reineke/indent-blankline.nvim',
+    tag = 'v3.8.2',
+    enabled = true,
+    main = 'ibl',
+    opts = {},
+    dependencies = {
+        { 'HiPhish/rainbow-delimiters.nvim', lazy = true },
+    },
+    config = function ()
+        require('plugins.config.indent_blankline')
     end
 }
 
@@ -262,4 +285,7 @@ return {
     Leap,
     Scrollbar,
     Trouble,
+    CatppuccinTheme,
+    KanagawaTheme,
+    IndentBlankLine,
 }
