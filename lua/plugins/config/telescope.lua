@@ -35,6 +35,10 @@ require('telescope').setup{
                height = 0.5,
            },
         },
+        colorscheme = {
+            enable_preview = true,
+            previewer = true,
+        },
     },
     extensions = {
         emoji = {
