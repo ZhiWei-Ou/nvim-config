@@ -1,4 +1,19 @@
 --[[
+    配置相关的LSP
+]]
+require("lsp.lsp_clangd")
+require("lsp.lsp_cmake")
+require("lsp.lsp_docker")
+require("lsp.lsp_go")
+require("lsp.lsp_json")
+require("lsp.lsp_lua")
+require("lsp.lsp_markdown")
+require("lsp.lsp_protobuf")
+require("lsp.lsp_shell")
+require("lsp.lsp_yaml")
+require("lsp.lsp_vim")
+
+--[[
     LSP 管理器: Mason
     用于管理LSP客户端的安装卸载等
 ]]
@@ -14,23 +29,9 @@ require("mason-lspconfig").setup({
         "bashls",
         "vimls",
     },
+    automatic_enable = false,
     automic_installation = true,
 })
-
---[[
-    配置相关的LSP
-]]
-require("lsp.lsp_clangd")
-require("lsp.lsp_cmake")
-require("lsp.lsp_docker")
-require("lsp.lsp_go")
-require("lsp.lsp_json")
-require("lsp.lsp_lua")
-require("lsp.lsp_markdown")
-require("lsp.lsp_protobuf")
-require("lsp.lsp_shell")
-require("lsp.lsp_yaml")
-require("lsp.lsp_vim")
 
 -- 光标悬停高亮
 vim.o.updatetime = 500  -- CursorHold & CursorHoldI Expect Time (ms)
