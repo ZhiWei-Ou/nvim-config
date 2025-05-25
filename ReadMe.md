@@ -22,7 +22,7 @@ LuaJIT 2.1.1744318430
 |Ctrl+s|Save File|
 |Ctrl+\ |Vertical Split|
 |Ctrl+t|Open Inner Terminal(default display in float)|
-|Ctrl+l|Toggler File Explorer|
+|Ctrl+l|Toggle File Explorer|
 |Ctrl+k Ctrl+p|Open Telescope entry|
 |gd|Go to Definition|
 |gr|Show References|
