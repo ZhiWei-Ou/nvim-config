@@ -1,3 +1,6 @@
+# nvim-config
+The Neovim configurations.
+
 # Neovim Configuration
 NVIM v0.11.1
 Build type: Release
@@ -13,6 +16,12 @@ LuaJIT 2.1.1744318430
   <img src="assets/theme/github_light.png" width="300"/>
   <img src="assets/theme/kanagawa-dragon.png" width="300"/>
 </p>
+
+# Integration
+```Shell
+git clone git@github.com:ZhiWei-Ou/nvim-config.git ~/.config/nvim
+```
+
 
 ## Fancy
 
