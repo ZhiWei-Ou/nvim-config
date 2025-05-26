@@ -33,124 +33,132 @@ local function get_base_file_name(uppercase)
 end
 
 ls.setup({
-	keep_roots = true,
-	link_roots = true,
-	link_children = true,
+    keep_roots = true,
+    link_roots = true,
+    link_children = true,
 
-	-- Update more often, :h events for more info.
-	update_events = "TextChanged,TextChangedI",
-	-- Snippets aren't automatically removed if their text is deleted.
-	-- `delete_check_events` determines on which events (:h events) a check for
-	-- deleted snippets is performed.
-	-- This can be especially useful when `history` is enabled.
-	delete_check_events = "TextChanged",
-	ext_opts = {
-		[types.choiceNode] = {
-			active = {
-				virt_text = { { "choiceNode", "Comment" } },
-			},
-		},
-	},
-	-- treesitter-hl has 100, use something higher (default is 200).
-	ext_base_prio = 300,
-	-- minimal increase in priority.
-	ext_prio_increase = 1,
-	enable_autosnippets = true,
-	-- mapping for cutting selected text so it's usable as SELECT_DEDENT,
-	-- SELECT_RAW or TM_SELECTED_TEXT (mapped via xmap).
-	store_selection_keys = "<Tab>",
-	-- luasnip uses this function to get the currently active filetype. This
-	-- is the (rather uninteresting) default, but it's possible to use
-	-- eg. treesitter for getting the current filetype by setting ft_func to
-	-- require("luasnip.extras.filetype_functions").from_cursor (requires
-	-- `nvim-treesitter/nvim-treesitter`). This allows correctly resolving
-	-- the current filetype in eg. a markdown-code block or `vim.cmd()`.
-	ft_func = function()
-		return vim.split(vim.bo.filetype, ".", true)
-	end,
+    -- Update more often, :h events for more info.
+    update_events = "TextChanged,TextChangedI",
+    -- Snippets aren't automatically removed if their text is deleted.
+    -- `delete_check_events` determines on which events (:h events) a check for
+    -- deleted snippets is performed.
+    -- This can be especially useful when `history` is enabled.
+    delete_check_events = "TextChanged",
+    ext_opts = {
+        [types.choiceNode] = {
+            active = {
+                virt_text = { { "choiceNode", "Comment" } },
+            },
+        },
+    },
+    -- treesitter-hl has 100, use something higher (default is 200).
+    ext_base_prio = 300,
+    -- minimal increase in priority.
+    ext_prio_increase = 1,
+    enable_autosnippets = true,
+    -- mapping for cutting selected text so it's usable as SELECT_DEDENT,
+    -- SELECT_RAW or TM_SELECTED_TEXT (mapped via xmap).
+    store_selection_keys = "<Tab>",
+    -- luasnip uses this function to get the currently active filetype. This
+    -- is the (rather uninteresting) default, but it's possible to use
+    -- eg. treesitter for getting the current filetype by setting ft_func to
+    -- require("luasnip.extras.filetype_functions").from_cursor (requires
+    -- `nvim-treesitter/nvim-treesitter`). This allows correctly resolving
+    -- the current filetype in eg. a markdown-code block or `vim.cmd()`.
+    ft_func = function()
+        return vim.split(vim.bo.filetype, ".", true)
+    end,
 })
 
-ls.env_namespace("USER", { vars = {NAME = os.getenv("NP_NAME"), EMAIL = os.getenv("NP_EMAIL")} })
+ls.env_namespace(
+    "USER",
+    {
+        vars = {
+            NAME = os.getenv("NP_NAME"),
+            EMAIL = os.getenv("NP_EMAIL"),
+        }
+    }
+)
 
 -- File Header Comment
 local c_fhc = s("fhc", d(1, function(args, parent)
-  local env = parent.snippet.env
-  return sn(nil, t {
-      "/*",
-      " * File: " .. get_base_file_name(false),
-      " * Author: " .. env.USER_NAME,
-      " * Email: " .. env.USER_EMAIL,
-      " * Created On: " .. os.date("%Y-%m-%d"),
-      " * Description: ",
-      "*/",
-      "",
-  })
+    local env = parent.snippet.env
+    return sn(nil, t {
+        "/*",
+        " * File: " .. get_base_file_name(false),
+        " * Author: " .. env.USER_NAME,
+        " * Email: " .. env.USER_EMAIL,
+        " * Created On: " .. os.date("%Y-%m-%d"),
+        " * Description: ",
+        "*/",
+        "",
+    })
 end, {}))
 local lua_fhc = s("fhc", d(1, function(args, parent)
-  local env = parent.snippet.env
-  return sn(nil, t {
-      "--[[",
-      "File: " .. get_base_file_name(false),
-      "Author: " .. env.USER_NAME,
-      "Email: " .. env.USER_EMAIL,
-      "Created On: " .. os.date("%Y-%m-%d"),
-      "Description: ",
-      "]]",
-      "",
-  })
+    local env = parent.snippet.env
+    return sn(nil, t {
+        "--[[",
+        "File: " .. get_base_file_name(false),
+        "Author: " .. env.USER_NAME,
+        "Email: " .. env.USER_EMAIL,
+        "Created On: " .. os.date("%Y-%m-%d"),
+        "Description: ",
+        "]]",
+        "",
+    })
 end, {}))
 local cmake_fhc = s("fhc", d(1, function(args, parent)
-  local env = parent.snippet.env
-  return sn(nil, t {
-      "# =============================================================================",
-      "# File: " .. get_base_file_name(false),
-      "# Author: " .. env.USER_NAME,
-      "# Email: " .. env.USER_EMAIL,
-      "# Created On: " .. os.date("%Y-%m-%d"),
-      "# Description: ",
-      "# ============================================================================",
-      "",
-      "cmake_minimum_required(VERSION 3.10)",
-      "",
-  })
+    local env = parent.snippet.env
+    return sn(nil, t {
+        "# =============================================================================",
+        "# File: " .. get_base_file_name(false),
+        "# Author: " .. env.USER_NAME,
+        "# Email: " .. env.USER_EMAIL,
+        "# Created On: " .. os.date("%Y-%m-%d"),
+        "# Description: ",
+        "# ============================================================================",
+        "",
+        "cmake_minimum_required(VERSION 3.10)",
+        "",
+    })
 end, {}))
 local shell_fhc = s("fhc", d(1, function(args, parent)
-  local env = parent.snippet.env
-  return sn(nil, t {
-      "#!/bin/bash",
-      "# ============================================================================",
-      "# File: " .. get_base_file_name(false),
-      "# Author: " .. env.USER_NAME,
-      "# Email: " .. env.USER_EMAIL,
-      "# Created On: " .. os.date("%Y-%m-%d"),
-      "# Description: ",
-      "# ============================================================================",
-      "",
-  })
+    local env = parent.snippet.env
+    return sn(nil, t {
+        "#!/bin/bash",
+        "# ============================================================================",
+        "# File: " .. get_base_file_name(false),
+        "# Author: " .. env.USER_NAME,
+        "# Email: " .. env.USER_EMAIL,
+        "# Created On: " .. os.date("%Y-%m-%d"),
+        "# Description: ",
+        "# ============================================================================",
+        "",
+    })
 end, {}))
 
 
 -- C/C++ linkage compatibility
 local c_clc = s("clc", d(1, function(args, parent)
-  return sn(nil, t {
-      "#ifdef __cplusplus",
-      "extern \"C\" {",
-      "#endif",
-      "",
-      "#ifdef __cplusplus",
-      "}",
-      "#endif",
-  })
+    return sn(nil, t {
+        "#ifdef __cplusplus",
+        "extern \"C\" {",
+        "#endif",
+        "",
+        "#ifdef __cplusplus",
+        "}",
+        "#endif",
+    })
 end, {}))
 
 -- Header Guard
 local c_hg = s("hg", d(1, function(args, parent)
-  return sn(nil, t {
-      "#ifndef " .. get_base_file_name(true),
-      "#define " .. get_base_file_name(true),
-      "",
-      "#endif " .. "/*" .. get_base_file_name(true) .. "*/",
-  })
+    return sn(nil, t {
+        "#ifndef " .. get_base_file_name(true),
+        "#define " .. get_base_file_name(true),
+        "",
+        "#endif " .. "/*" .. get_base_file_name(true) .. "*/",
+    })
 end, {}))
 
 ls.add_snippets("all", {
