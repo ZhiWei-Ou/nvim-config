@@ -9,8 +9,8 @@ require'toggleterm'.setup {
 }
 
 -- 终端
-vim.api.nvim_set_keymap('n', '<C-t>', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<C-t>', '<cmd>ToggleTerm direction=horizontal<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-t>', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-t>', '<cmd>ToggleTerm direction=horizontal<CR>', { noremap = true, silent = true })
 
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
