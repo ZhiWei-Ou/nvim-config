@@ -9,7 +9,8 @@ G.lsp_config.clangd.setup{
         '--header-insertion=never', -- iwyu, never
         '--all-scopes-completion',
         '--completion-style=bundled', -- bundled, detailed
-        '--enable-config'
+        '--enable-config',
+        '--function-arg-placeholders=false',
     },
     root_markers = {
         '.clangd',
@@ -22,6 +23,9 @@ G.lsp_config.clangd.setup{
     },
     capabilities = {
         textDocument = {
+            semanticHighlightingCapabilities = {
+                semanticHighlighting = true
+            },
             completion = {
                 editsNearCursor = true,
             },
