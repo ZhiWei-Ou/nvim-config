@@ -107,10 +107,10 @@ local NvimCMP = {
     end
 }
 
-local Codeium = {
-    'Exafunction/codeium.vim',
+local Windsurf = {
+    'Exafunction/windsurf.vim',
     config = function()
-        require("plugins.config.codeium")
+        require("plugins.config.windsurf")
     end
 }
 
@@ -268,7 +268,7 @@ return {
     GithubNvimTheme,
     Ouroboros,
     NvimCMP,
-    Codeium,
+    Windsurf,
     NvimMasonLspConfig,
     NvimLspConfig,
     NvimAdapter,
