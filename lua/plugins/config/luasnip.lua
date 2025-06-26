@@ -154,10 +154,10 @@ end, {}))
 -- Header Guard
 local c_hg = s("hg", d(1, function(args, parent)
     return sn(nil, t {
-        "#ifndef " .. get_base_file_name(true),
-        "#define " .. get_base_file_name(true),
+        "#ifndef " .. get_base_file_name(true) .. "_H_",
+        "#define " .. get_base_file_name(true) .. "_H_",
         "",
-        "#endif " .. "/*" .. get_base_file_name(true) .. "*/",
+        "#endif " .. "/* " .. get_base_file_name(true) .. "_H_ */",
     })
 end, {}))
 
