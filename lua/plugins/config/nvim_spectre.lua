@@ -4,6 +4,13 @@
 
     You may need run `brew install gnu-sed`
 ]]
+
+local is_macos = vim.loop.os_uname().sysname == "Darwin"
+
+local sed_args = is_macos
+    and { "-i", "", "-E" }    -- macOS: 需要空字符串参数表示“无备份”
+    or  { "-i", "-E" }
+
 require('spectre').setup({
 
   color_devicons = true,
@@ -171,11 +178,7 @@ require('spectre').setup({
   replace_engine={
       ["sed"] = {
           cmd = "sed",
-          args = {
-              "-i",
-              "",
-              "-E",
-          },
+          args = sed_args,
       },
       ['oxi'] = {
         cmd = 'oxi',
