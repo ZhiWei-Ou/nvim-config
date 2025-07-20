@@ -5,3 +5,4 @@
 /lua/build
 /plugin
 /plugin/packer_compiled.lua
+/.vscode

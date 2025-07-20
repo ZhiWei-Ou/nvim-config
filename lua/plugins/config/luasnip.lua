@@ -143,21 +143,21 @@ local c_clc = s("clc", d(1, function(args, parent)
     return sn(nil, t {
         "#ifdef __cplusplus",
         "extern \"C\" {",
-        "#endif",
+        "#endif /* __cplusplus */",
         "",
         "#ifdef __cplusplus",
         "}",
-        "#endif",
+        "#endif /* __cplusplus */",
     })
 end, {}))
 
--- Header Guard
-local c_hg = s("hg", d(1, function(args, parent)
+-- File Header Guard
+local c_fhg = s("fhg", d(1, function(args, parent)
     return sn(nil, t {
-        "#ifndef " .. get_base_file_name(true) .. "_H_",
-        "#define " .. get_base_file_name(true) .. "_H_",
+        "#ifndef " .. get_base_file_name(true) .. "__H_",
+        "#define " .. get_base_file_name(true) .. "__H_",
         "",
-        "#endif " .. "/* " .. get_base_file_name(true) .. "_H_ */",
+        "#endif " .. "/* " .. get_base_file_name(true) .. "__H_ */",
     })
 end, {}))
 
@@ -167,13 +167,13 @@ ls.add_snippets("all", {
 ls.add_snippets("c", {
     c_fhc,
     c_clc,
-    c_hg
+    c_fhg
 })
 
 ls.add_snippets("cpp", {
     c_fhc,
     c_clc,
-    c_hg
+    c_fhg
 })
 ls.add_snippets("lua", {
     lua_fhc
