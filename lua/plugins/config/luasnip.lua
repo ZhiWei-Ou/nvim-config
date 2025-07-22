@@ -20,13 +20,17 @@ local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.conditions")
 local conds_expand = require("luasnip.extras.conditions.expand")
 
-local function get_base_file_name(uppercase)
+local function get_base_file_name(uppercase, replace_dot_with_underscore)
     local filepath = vim.api.nvim_buf_get_name(0)
 
-    local filename = vim.fn.fnamemodify(filepath, ":t:r")
+    local filename = vim.fn.fnamemodify(filepath, ":t")
 
     if uppercase then
         filename = filename:upper()
+    end
+
+    if replace_dot_with_underscore then
+        filename = filename:gsub("%.", "_")
     end
 
     return filename
@@ -85,7 +89,7 @@ local c_fhc = s("fhc", d(1, function(args, parent)
     local env = parent.snippet.env
     return sn(nil, t {
         "/*",
-        " * File: " .. get_base_file_name(false),
+        " * File: " .. get_base_file_name(false, false),
         " * Author: " .. env.USER_NAME,
         " * Email: " .. env.USER_EMAIL,
         " * Created On: " .. os.date("%Y-%m-%d"),
@@ -98,7 +102,7 @@ local lua_fhc = s("fhc", d(1, function(args, parent)
     local env = parent.snippet.env
     return sn(nil, t {
         "--[[",
-        "File: " .. get_base_file_name(false),
+        "File: " .. get_base_file_name(false, false),
         "Author: " .. env.USER_NAME,
         "Email: " .. env.USER_EMAIL,
         "Created On: " .. os.date("%Y-%m-%d"),
@@ -111,7 +115,7 @@ local cmake_fhc = s("fhc", d(1, function(args, parent)
     local env = parent.snippet.env
     return sn(nil, t {
         "# =============================================================================",
-        "# File: " .. get_base_file_name(false),
+        "# File: " .. get_base_file_name(false, false),
         "# Author: " .. env.USER_NAME,
         "# Email: " .. env.USER_EMAIL,
         "# Created On: " .. os.date("%Y-%m-%d"),
@@ -127,7 +131,7 @@ local shell_fhc = s("fhc", d(1, function(args, parent)
     return sn(nil, t {
         "#!/bin/bash",
         "# ============================================================================",
-        "# File: " .. get_base_file_name(false),
+        "# File: " .. get_base_file_name(false, false),
         "# Author: " .. env.USER_NAME,
         "# Email: " .. env.USER_EMAIL,
         "# Created On: " .. os.date("%Y-%m-%d"),
@@ -140,25 +144,35 @@ end, {}))
 
 -- C/C++ linkage compatibility
 local c_clc = s("clc", d(1, function(args, parent)
-    return sn(nil, t {
-        "#ifdef __cplusplus",
-        "extern \"C\" {",
-        "#endif /* __cplusplus */",
-        "",
-        "#ifdef __cplusplus",
-        "}",
-        "#endif /* __cplusplus */",
+    return sn(nil, {
+        t {
+            "#ifdef __cplusplus",
+            "extern \"C\" {",
+            "#endif /* __cplusplus */",
+            "",
+        },
+        i(1),
+        t{
+            "",
+            "#ifdef __cplusplus",
+            "}",
+            "#endif /* __cplusplus */",
+        }
     })
 end, {}))
 
 -- File Header Guard
 local c_fhg = s("fhg", d(1, function(args, parent)
-    return sn(nil, t {
-        "#ifndef " .. get_base_file_name(true) .. "__H_",
-        "#define " .. get_base_file_name(true) .. "__H_",
+    return sn(nil, { t {
+        "#ifndef " .. get_base_file_name(true, true) .. "__H_",
+        "#define " .. get_base_file_name(true, true) .. "__H_",
         "",
-        "#endif " .. "/* " .. get_base_file_name(true) .. "__H_ */",
-    })
+    },
+    i(1),
+    t{
+        "",
+        "#endif " .. "/* " .. get_base_file_name(true, true) .. "__H_ */",
+    }})
 end, {}))
 
 ls.add_snippets("all", {
