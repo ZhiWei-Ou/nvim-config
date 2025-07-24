@@ -1,7 +1,5 @@
 # nvim-config
-The Neovim configuration, integrated with common LSPs and nice themes.
-
----
+A **Neovim** configuration, integrated with common LSPs and nice themes.
 
 ## Table of contents
 - [nvim-config](#nvim-config)
@@ -63,7 +61,7 @@ git clone git@github.com:ZhiWei-Ou/nvim-config.git ~/.config/nvim
 
 ## Supported LSPs
 clangd(C/C++), lua_ls(Lua), gopls(Golang), jsonls(Json), marksman(MarkDown),
-cmake(CMake), bashls(Shssell), bufls(Protobuf), yamlls(YAML)
+cmake(CMake), bashls(Shell), bufls(Protobuf), yamlls(YAML)
 
 ## FAQ
 1. mason.cmake_language_server error.

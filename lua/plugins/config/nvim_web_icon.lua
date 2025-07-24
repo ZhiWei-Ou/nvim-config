@@ -36,7 +36,7 @@ require'nvim-web-devicons'.setup {
             icon = "",
             color = "#f1502f",
             name = "Gitignore"
-        }
+        },
     };
 
     -- same as `override` but specifically for overrides by extension
@@ -46,7 +46,7 @@ require'nvim-web-devicons'.setup {
             icon = "",
             color = "#81e043",
             name = "Log"
-        }
+        },
     };
     -- same as `override` but specifically for operating system
     -- takes effect when `strict` is true

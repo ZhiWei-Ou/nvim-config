@@ -1,7 +1,7 @@
 local M = {}
 
 local env_key = 'VI_THEME'
-local default_theme = 'github_dark'
+local default_theme = 'catppuccin-mocha'
 
 local function theme_is_exist(theme)
     local themes = vim.fn.getcompletion('', 'color')
