@@ -15,13 +15,14 @@ require('lualine').setup {
       statusline = {},
       winbar = {},
       'dashboard',
-      'trouble',
+      -- 'trouble',
       'toggleterm',
-      'NvimTree',
+      -- 'NvimTree',
     },
-    ignore_focus = {},
+    ignore_focus = {
+    },
     always_divide_middle = true,
-    globalstatus = false,
+    globalstatus = true,
     refresh = {
       statusline = 1000,
       tabline = 1000,
@@ -30,21 +31,14 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {
-        -- {'branch', color = {fg = '#a9a1e1'}},
-        -- 'diff',
-        'branch',
-        'diagnostics',
-    },
+    lualine_b = { 'branch', 'diagnostics', },
     lualine_c = {
-        -- {'filename', color = {fg = '#a9a1e1'}},
         {'filename', separator = { left = '', right = '' }, color = {fg = '#a9a1e1'}},
         {
             function()
                 return '%='
 
             end,
-            -- separator = { left = '', right = '' },
             separator = { left = '', right = '' },
         },
         {
@@ -64,13 +58,11 @@ require('lualine').setup {
                 end
                 return msg
             end,
-            -- separator = { left = '', right = '' },
             separator = { left = '', right = '' },
             icon = '  LSP:',
             color = { fg = '#d1b0fa', gui = 'bold' },
         }
     },
-    -- lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_x = {
         {'encoding', fmt = string.lower, color = {fg = '#d1b0fa'}},
         {'fileformat', icons_enabled = false, fmt = string.lower, color = {fg = '#d1b0fa'}},
