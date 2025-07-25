@@ -18,23 +18,23 @@ require("lsp.lsp_vim")
     用于管理LSP客户端的安装卸载等
 ]]
 require("mason-lspconfig").setup({
-    ensure_installed = {
-        "clangd",
-        "lua_ls",
-        "cmake",
-        "gopls",
-        "jsonls",
-        "marksman",
-        "yamlls",
-        "bashls",
-        "vimls",
-    },
-    automatic_enable = false,
-    automic_installation = true,
+  ensure_installed = {
+    "clangd",
+    "lua_ls",
+    "cmake",
+    "gopls",
+    "jsonls",
+    "marksman",
+    "yamlls",
+    "bashls",
+    "vimls",
+  },
+  automatic_enable = false,
+  automic_installation = true,
 })
 
 -- 光标悬停高亮
-vim.o.updatetime = 500  -- CursorHold & CursorHoldI Expect Time (ms)
+vim.o.updatetime = 500 -- CursorHold & CursorHoldI Expect Time (ms)
 vim.api.nvim_exec([[
   augroup LspHighlight
     autocmd!

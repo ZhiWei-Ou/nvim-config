@@ -1,25 +1,25 @@
 local api = require('nvim-tree.api')
 
 require('nvim-tree').setup {
-    sort = {
-        sorter = "case_sensitive",
-    },
-    view = {
-        width = 30,
-    },
-    renderer = {
-        group_empty = true,
-    },
-    filters = {
-        dotfiles = true,
-    },
-    diagnostics = {
-        enable = true,
-        show_on_dirs = true,
-    },
-    update_focused_file = {
-        enable = true,
-    },
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+  diagnostics = {
+    enable = true,
+    show_on_dirs = true,
+  },
+  update_focused_file = {
+    enable = true,
+  },
 }
 
 -- 文件浏览器

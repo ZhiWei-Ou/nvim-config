@@ -2,6 +2,6 @@
 
 // test clangd.cpp
 int main(int argc, char **argv) {
-    std::cout << "hello cpp" << std::endl;
-    return 0;
+  std::cout << "hello cpp" << std::endl;
+  return 0;
 }
