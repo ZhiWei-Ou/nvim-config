@@ -14,4 +14,4 @@ require('ouroboros').setup({
 })
 
 -- C/C++ 管理
-vim.api.nvim_set_keymap('n', '<A-o>', '<cmd>Ouroboros<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<M-o>', '<cmd>Ouroboros<CR>', { noremap = true, silent = true })

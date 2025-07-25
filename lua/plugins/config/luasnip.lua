@@ -94,7 +94,7 @@ local c_fhc = s("fhc", d(1, function(args, parent)
     " * Email: " .. env.USER_EMAIL,
     " * Created On: " .. os.date("%Y-%m-%d"),
     " * Description: ",
-    "*/",
+    " */",
     "",
   })
 end, {}))

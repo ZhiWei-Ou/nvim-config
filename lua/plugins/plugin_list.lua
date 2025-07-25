@@ -37,13 +37,6 @@ local NvimTreeSitter = {
   end,
 }
 
-local NvimSurround = {
-  "kylechui/nvim-surround",
-  config = function()
-    require("plugins.config.nvim_surround")
-  end
-}
-
 local Telescope = {
   'nvim-telescope/telescope.nvim',
   tag = '0.1.8',
@@ -177,16 +170,6 @@ local LuaLine = {
   end
 }
 
-local TelescopeEmoji = {
-  'xiyaowong/telescope-emoji.nvim',
-  requires = {
-    { 'nvim-telescope/telescope.nvim' },
-  },
-  config = function()
-    require('telescope').load_extension('emoji')
-  end
-}
-
 local Dashboard = {
   'nvimdev/dashboard-nvim',
   config = function()
@@ -260,7 +243,6 @@ return {
   NvimWebDevIcons,
   GitSigns,
   NvimTreeSitter,
-  NvimSurround,
   Telescope,
   BufferLine,
   Spectre,
@@ -278,7 +260,6 @@ return {
   LuaSnip,
   CmpLuaSnip,
   LuaLine,
-  TelescopeEmoji,
   Dashboard,
   TokyoNightTheme,
   RenderMarkdown,

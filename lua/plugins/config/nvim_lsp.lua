@@ -11,7 +11,6 @@ require("lsp.lsp_markdown")
 require("lsp.lsp_protobuf")
 require("lsp.lsp_shell")
 require("lsp.lsp_yaml")
-require("lsp.lsp_vim")
 
 --[[
     LSP 管理器: Mason
@@ -27,7 +26,6 @@ require("mason-lspconfig").setup({
     "marksman",
     "yamlls",
     "bashls",
-    "vimls",
   },
   automatic_enable = false,
   automic_installation = true,

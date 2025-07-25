@@ -52,7 +52,8 @@ git clone git@github.com:ZhiWei-Ou/nvim-config.git ~/.config/nvim
 |      gd       |              Go to definition               |
 |      gr       |               Show references               |
 |      gh       |                Show comments                |
-|    gq         |                 Format code                 |
+|      gq       |                 Format code                 |
+|      gx       |                Open link under cursor        |
 |    Ctrl+o     |               Backward record               |
 |    Ctrl+]     |               Toggle outline                |
 |  <leader>+dd  |             Toggle diagnostics              |
