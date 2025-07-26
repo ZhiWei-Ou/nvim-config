@@ -19,7 +19,7 @@ LuaJIT 2.1.1744318430
 ```
 
 
-# 💈 Media
+# Media
 
 <p align="left">
   <img src="assets/dashboard.png" width="300"/>
@@ -47,7 +47,7 @@ git clone git@github.com:ZhiWei-Ou/nvim-config.git ~/.config/nvim
 |    Ctrl+s     |                  Save file                  |
 |    Ctrl+\     |               Vertical split                |
 |    Ctrl+t     |   Open terminal(default display in float)   |
-|    Ctrl+l     |            Toggle file xxplorer             |
+|    Ctrl+l     |            Toggle file explorer             |
 | Ctrl+k Ctrl+p | Open telescope(like VScode command palette) |
 |      gd       |              Go to definition               |
 |      gr       |               Show references               |
