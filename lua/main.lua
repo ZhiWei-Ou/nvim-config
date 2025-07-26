@@ -27,6 +27,14 @@ vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
 vim.o.foldlevel = 99
 
+vim.api.nvim_create_user_command("Hexvieweropen", function()
+  vim.cmd("%!xxd -g 1 -u")
+end, {})
+
+vim.api.nvim_create_user_command("Hexviewerclose", function()
+  vim.cmd("%!xxd -r")
+end, {})
+
 require('packer_manager').startup()
 require('keymaps')
 require('theme').startup(true)
