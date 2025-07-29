@@ -20,10 +20,15 @@ local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.conditions")
 local conds_expand = require("luasnip.extras.conditions.expand")
 
-local function get_base_file_name(uppercase, replace_dot_with_underscore)
+local function get_base_file_name(uppercase, replace_dot_with_underscore, with_extension)
   local filepath = vim.api.nvim_buf_get_name(0)
+  local filename
 
-  local filename = vim.fn.fnamemodify(filepath, ":t")
+  if with_extension then
+    filename = vim.fn.fnamemodify(filepath, ":t")
+  else
+    filename = vim.fn.fnamemodify(filepath, ":t:r")
+  end
 
   if uppercase then
     filename = filename:upper()
@@ -89,7 +94,7 @@ local c_fhc = s("fhc", d(1, function(args, parent)
   local env = parent.snippet.env
   return sn(nil, t {
     "/*",
-    " * File: " .. get_base_file_name(false, false),
+    " * File: " .. get_base_file_name(false, false, true),
     " * Author: " .. env.USER_NAME,
     " * Email: " .. env.USER_EMAIL,
     " * Created On: " .. os.date("%Y-%m-%d"),
@@ -102,7 +107,7 @@ local lua_fhc = s("fhc", d(1, function(args, parent)
   local env = parent.snippet.env
   return sn(nil, t {
     "--[[",
-    "File: " .. get_base_file_name(false, false),
+    "File: " .. get_base_file_name(false, false, true),
     "Author: " .. env.USER_NAME,
     "Email: " .. env.USER_EMAIL,
     "Created On: " .. os.date("%Y-%m-%d"),
@@ -115,7 +120,7 @@ local cmake_fhc = s("fhc", d(1, function(args, parent)
   local env = parent.snippet.env
   return sn(nil, t {
     "# =============================================================================",
-    "# File: " .. get_base_file_name(false, false),
+    "# File: " .. get_base_file_name(false, false, true),
     "# Author: " .. env.USER_NAME,
     "# Email: " .. env.USER_EMAIL,
     "# Created On: " .. os.date("%Y-%m-%d"),
@@ -131,7 +136,7 @@ local shell_fhc = s("fhc", d(1, function(args, parent)
   return sn(nil, t {
     "#!/bin/bash",
     "# ============================================================================",
-    "# File: " .. get_base_file_name(false, false),
+    "# File: " .. get_base_file_name(false, false, true),
     "# Author: " .. env.USER_NAME,
     "# Email: " .. env.USER_EMAIL,
     "# Created On: " .. os.date("%Y-%m-%d"),
@@ -164,14 +169,14 @@ end, {}))
 -- File Header Guard
 local c_fhg = s("fhg", d(1, function(args, parent)
   return sn(nil, { t {
-    "#ifndef " .. get_base_file_name(true, true) .. "__H_",
-    "#define " .. get_base_file_name(true, true) .. "__H_",
+    "#ifndef " .. get_base_file_name(true, true, false) .. "__H_",
+    "#define " .. get_base_file_name(true, true, false) .. "__H_",
     "",
   },
     i(1),
     t {
       "",
-      "#endif " .. "/* " .. get_base_file_name(true, true) .. "__H_ */",
+      "#endif " .. "/* " .. get_base_file_name(true, true, false) .. "__H_ */",
     } })
 end, {}))
 
