@@ -24,10 +24,10 @@ LuaJIT 2.1.1744318430
 <p align="left">
   <img src="assets/dashboard.png" width="300"/>
   <img src="assets/workbench.png" width="300"/>
-  <img src="assets/theme/catppuccin.png" width="300"/>
-  <img src="assets/theme/github_dark.png" width="300"/>
-  <img src="assets/theme/github_light.png" width="300"/>
-  <img src="assets/theme/kanagawa-dragon.png" width="300"/>
+  <!-- <img src="assets/theme/catppuccin.png" width="300"/> -->
+  <!-- <img src="assets/theme/github_dark.png" width="300"/> -->
+  <!-- <img src="assets/theme/github_light.png" width="300"/> -->
+  <!-- <img src="assets/theme/kanagawa-dragon.png" width="300"/> -->
 </p>
 
 # Integration
@@ -67,7 +67,9 @@ cmake(CMake), bashls(Shell), bufls(Protobuf), yamlls(YAML)
 
 ## FAQ
 1. mason.cmake_language_server error.
-  we need to install some packages before using this CMake Language Server. 
+
+Befor using the CMake LSP, you need to install some required tools:
+
 ```bash
 apt install python3 python3-pip python3.10-venv npm
 ```
@@ -77,5 +79,15 @@ apt install python3 python3-pip python3.10-venv npm
 apt install xclip xsel wl-clipboard
 ```
 
-3. icon not display exactly.
-Icon use Nerd Font, we can download it from [Nerd Fonts](https://www.nerdfonts.com/).
+3. Icons not displaying correctly.
+
+The icons rely on `Nerd fonts`, You can download and install it from [Nerd Fonts](https://www.nerdfonts.com/).
+
+4. how to open `:help <query>` in full screen?
+
+By default, `:help <query>` opens in a horizontal split. You can use `:help <query> | only` to make it full screen.
+
+However, this does not open it in a buffer.
+
+See [this post](https://www.reddit.com/r/neovim/comments/10383z1/open_help_in_buffer_instead_of_split/).
+
