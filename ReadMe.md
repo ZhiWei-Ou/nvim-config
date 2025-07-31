@@ -91,3 +91,9 @@ However, this does not open it in a buffer.
 
 See [this post](https://www.reddit.com/r/neovim/comments/10383z1/open_help_in_buffer_instead_of_split/).
 
+5. WARNING `tree-sitter` executable not found.
+
+```bash
+npm install -g tree-sitter-cli
+```
+
