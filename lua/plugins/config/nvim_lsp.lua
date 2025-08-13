@@ -11,6 +11,10 @@ require("lsp.lsp_markdown")
 require("lsp.lsp_protobuf")
 require("lsp.lsp_shell")
 require("lsp.lsp_yaml")
+require("lsp.lsp_js")
+require("lsp.lsp_css")
+require("lsp.lsp_html")
+
 
 --[[
     LSP 管理器: Mason
