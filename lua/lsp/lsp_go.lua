@@ -1,6 +1,7 @@
 local G = require("lsp.general")
 
-G.lsp_config.gopls.setup {
+local lsp_go_name = 'gopls'
+local lsp_go_config = {
   name = "Go",
   on_attach = G.lsp_general_on_attach,
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -41,6 +42,7 @@ G.lsp_config.gopls.setup {
     },
   },
 
+
 }
 
 --[[
@@ -65,3 +67,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
   buffer = bufnr,
 })
+
+G.configuration(lsp_go_name, lsp_go_config)

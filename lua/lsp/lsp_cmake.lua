@@ -1,6 +1,7 @@
 local G = require("lsp.general")
 
-G.lsp_config.cmake.setup {
+local lsp_cmake_name = 'cmake'
+local lsp_cmake_config = {
   name = "CMake",
   on_attach = G.lsp_general_on_attach,
   filetypes = {
@@ -16,4 +17,7 @@ G.lsp_config.cmake.setup {
     'build',
     'cmake'
   }
+
 }
+
+G.configuration(lsp_cmake_name, lsp_cmake_config)

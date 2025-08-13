@@ -4,27 +4,49 @@
   Email: oswin_ou@intretech.com
   Created On: 2025-08-13
   Description: 前端LSP配置，HTML, CSS, JavaScript, Vue
-  @Brief: https://github.com/vuejs/language-tools/wiki/Neovim
+  @Brief: [VUE](https://github.com/vuejs/language-tools/wiki/Neovim)
 ]]
 local G = require("lsp.general")
 
-local TypeScriptName = 'javascript'
-local JavascriptName = 'javascript'
+local lsp_typescript_name = 'ts_ls'
+local lsp_html_name = 'html'
+local lsp_css_name = 'cssls'
+local lsp_vue_name = 'volar'
+local lsp_typescript_config = {}
+local lsp_html_config = {}
+local lsp_css_config = {}
+
+--[[
+  vue_ls was renamed from **volar** in nvim-lspconfig and mason Mason PR:
+  https://github.com/mason-org/mason-lspconfig.nvim/pull/561
+  nvim-lspconfig PR: https://github.com/neovim/nvim-lspconfig/pull/3843
+]]
+local lsp_vue_config = {}
+
+-- check if `vue-language-server` is installed
 local vue_language_server_path = vim.fn.expand '$MASON/packages' .. '/vue-language-server' .. '/node_modules/@vue/language-server'
 local tsserver_filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
 
-local vue_plugin = {
-  name = '@vue/typescript-plugin',
-  location = vue_language_server_path,
-  languages = { 'vue' },
-  configNamespace = 'typescript',
+local lsp_html_config = {
+  name = "html",
+  on_attach = G.lsp_general_on_attach,
 }
 
-local ts_ls_config = {
-  name = JavascriptName,
+local lsp_css_config = {
+  name = "css",
+  on_attach = G.lsp_general_on_attach,
+}
+
+local lsp_typescript_config = {
+  name = 'javascript',
   init_options = {
     plugins = {
-      vue_plugin,
+      { -- vue plugin
+        name = '@vue/typescript-plugin',
+        location = vue_language_server_path,
+        languages = { 'vue' },
+        configNamespace = 'typescript',
+      }
     },
   },
   filetypes = tsserver_filetypes,
@@ -32,10 +54,10 @@ local ts_ls_config = {
 }
 
 -- If you are not on most recent `nvim-lspconfig` or you want to override
-local vue_ls_config = {
+local lsp_vue_config = {
   on_init = function(client)
     client.handlers['tsserver/request'] = function(_, result, context)
-      local ts_clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = JavascriptName })
+      local ts_clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = 'javascript' })
       local clients = {}
 
       vim.list_extend(clients, ts_clients)
@@ -68,24 +90,7 @@ local vue_ls_config = {
   end,
 }
 
-local html_config = {
-  name = "html",
-  on_attach = G.lsp_general_on_attach,
-}
-
-local css_config = {
-  name = "css",
-  on_attach = G.lsp_general_on_attach,
-}
-
-G.lsp_config.ts_ls.setup(ts_ls_config)
-G.lsp_config.html.setup(html_config)
-G.lsp_config.cssls.setup(css_config)
-
---[[
-  vue_ls was renamed from **volar** in nvim-lspconfig and mason Mason PR:
-  https://github.com/mason-org/mason-lspconfig.nvim/pull/561
-  nvim-lspconfig PR: https://github.com/neovim/nvim-lspconfig/pull/3843
-]]
-G.lsp_config.volar.setup(vue_ls_config)
-
+G.configuration(lsp_html_name, lsp_html_config)
+G.configuration(lsp_css_name, lsp_css_config)
+G.configuration(lsp_typescript_name, lsp_typescript_config)
+G.configuration(lsp_vue_name, lsp_vue_config)
