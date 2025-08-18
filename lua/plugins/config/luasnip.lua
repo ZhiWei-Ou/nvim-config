@@ -93,12 +93,12 @@ ls.env_namespace(
 local c_fhc = s("fhc", d(1, function(args, parent)
   local env = parent.snippet.env
   return sn(nil, t {
-    "/*",
-    " * File: " .. get_base_file_name(false, false, true),
-    " * Author: " .. env.USER_NAME,
-    " * Email: " .. env.USER_EMAIL,
-    " * Created On: " .. os.date("%Y-%m-%d"),
-    " * Description: ",
+    "/**",
+    " * @file: " .. get_base_file_name(false, false, true),
+    " * @author: " .. env.USER_NAME,
+    " * @email: " .. env.USER_EMAIL,
+    " * @data: " .. os.date("%Y-%m-%d"),
+    " * @details: ",
     " */",
     "",
   })
