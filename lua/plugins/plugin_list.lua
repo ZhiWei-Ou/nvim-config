@@ -237,6 +237,13 @@ local IndentBlankLine = {
   end
 }
 
+local Confrom = {
+  'stevearc/conform.nvim',
+  config = function()
+    require('plugins.config.conform')
+  end
+}
+
 return {
   Mason,
   NvimTree,
@@ -269,4 +276,5 @@ return {
   CatppuccinTheme,
   KanagawaTheme,
   IndentBlankLine,
+  Confrom
 }

@@ -1,8 +1,8 @@
 vim.cmd('syntax enable')        -- 启用语法高亮
 vim.o.hidden = true             -- 允许在有未保存的修改时切换缓冲区
-vim.o.tabstop = 2               -- 设置制表符的宽度为 4 个空格
-vim.o.softtabstop = 2           -- 设置在编辑模式下按退格键时的宽度为 4 个空格
-vim.o.shiftwidth = 2            -- 设置每一级缩进的宽度为 4 个空格
+vim.o.tabstop = 4               -- 设置制表符的宽度为 4 个空格
+vim.o.softtabstop = 4           -- 设置在编辑模式下按退格键时的宽度为 4 个空格
+vim.o.shiftwidth = 4            -- 设置每一级缩进的宽度为 4 个空格
 vim.o.expandtab = true          -- 将制表符转换为空格
 vim.o.smartindent = true        -- 智能缩进
 vim.o.autoindent = true         -- 自动缩进
