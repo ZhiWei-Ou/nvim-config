@@ -8,6 +8,7 @@ require("conform").setup({
         cpp = { "clang_format" },
         json = { "clang_format" },
         proto = { "clang_format" },
+        go = { "gopls", "goimports", "gofmt" },
     },
     format_on_save = {
         -- These options will be passed to conform.format()
