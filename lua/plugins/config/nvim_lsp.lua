@@ -19,18 +19,18 @@ require("lsp.lsp_frontend")
     用于管理LSP客户端的安装卸载等
 ]]
 require("mason-lspconfig").setup({
-  -- ensure_installed = {
-  --   "clangd",
-  --   "lua_ls",
-  --   "cmake",
-  --   "gopls",
-  --   "jsonls",
-  --   "marksman",
-  --   "yamlls",
-  --   "bashls",
-  -- },
-  automatic_enable = true,
-  automic_installation = true,
+    -- ensure_installed = {
+    --   "clangd",
+    --   "lua_ls",
+    --   "cmake",
+    --   "gopls",
+    --   "jsonls",
+    --   "marksman",
+    --   "yamlls",
+    --   "bashls",
+    -- },
+    automatic_enable = true,
+    automic_installation = true,
 })
 
 -- 光标悬停高亮

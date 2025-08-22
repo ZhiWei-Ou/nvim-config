@@ -4,42 +4,42 @@ local env_key = 'VI_THEME'
 local default_theme = 'catppuccin-mocha'
 
 local function theme_is_exist(theme)
-  local themes = vim.fn.getcompletion('', 'color')
+    local themes = vim.fn.getcompletion('', 'color')
 
-  for _, v in pairs(themes) do
-    if (v == theme) then
-      return true
+    for _, v in pairs(themes) do
+        if (v == theme) then
+            return true
+        end
     end
-  end
 
-  return false
+    return false
 end
 
 local function set_theme(theme)
-  if (theme_is_exist(theme) == false) then
-    theme = default_theme
-  end
+    if (theme_is_exist(theme) == false) then
+        theme = default_theme
+    end
 
-  vim.cmd('colorscheme ' .. theme)
+    vim.cmd('colorscheme ' .. theme)
 end
 
 function M.startup(env_enable)
-  env_enable = env_enable or false
+    env_enable = env_enable or false
 
-  if env_enable and os.getenv(env_key) ~= nil then
-    set_theme(os.getenv(env_key))
-    return
-  end
+    if env_enable and os.getenv(env_key) ~= nil then
+        set_theme(os.getenv(env_key))
+        return
+    end
 
-  set_theme(default_theme)
+    set_theme(default_theme)
 end
 
 function M.print_all_themes()
-  local themes = vim.fn.getcompletion('', 'color')
+    local themes = vim.fn.getcompletion('', 'color')
 
-  for _, v in pairs(themes) do
-    print(v)
-  end
+    for _, v in pairs(themes) do
+        print(v)
+    end
 end
 
 return M
