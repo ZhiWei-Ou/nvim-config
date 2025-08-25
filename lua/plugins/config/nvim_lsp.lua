@@ -1,17 +1,7 @@
 --[[
     配置相关的LSP
 ]]
-require("lsp.lsp_clangd")
-require("lsp.lsp_cmake")
-require("lsp.lsp_docker")
-require("lsp.lsp_go")
-require("lsp.lsp_json")
-require("lsp.lsp_lua")
-require("lsp.lsp_markdown")
-require("lsp.lsp_protobuf")
-require("lsp.lsp_shell")
-require("lsp.lsp_yaml")
-require("lsp.lsp_frontend")
+require("lsp.lsp")
 
 
 --[[
@@ -19,16 +9,6 @@ require("lsp.lsp_frontend")
     用于管理LSP客户端的安装卸载等
 ]]
 require("mason-lspconfig").setup({
-    -- ensure_installed = {
-    --   "clangd",
-    --   "lua_ls",
-    --   "cmake",
-    --   "gopls",
-    --   "jsonls",
-    --   "marksman",
-    --   "yamlls",
-    --   "bashls",
-    -- },
     automatic_enable = true,
     automic_installation = true,
 })
