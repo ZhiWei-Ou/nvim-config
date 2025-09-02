@@ -244,6 +244,20 @@ local Confrom = {
     end
 }
 
+local DropBar = {
+    'Bekaboo/dropbar.nvim',
+    requires = {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'make'
+    },
+    config = function()
+        local dropbar_api = require('dropbar.api')
+        vim.keymap.set('n', '<Leader>;', dropbar_api.pick, { desc = 'Pick symbols in winbar' })
+        vim.keymap.set('n', '[;', dropbar_api.goto_context_start, { desc = 'Go to start of current context' })
+        vim.keymap.set('n', '];', dropbar_api.select_next_context, { desc = 'Select next context' })
+    end
+}
+
 return {
     Mason,
     NvimTree,
@@ -276,5 +290,6 @@ return {
     CatppuccinTheme,
     KanagawaTheme,
     IndentBlankLine,
-    Confrom
+    Confrom,
+    DropBar
 }
