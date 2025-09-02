@@ -20,6 +20,15 @@ require("conform").setup({
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*",
     callback = function(args)
+        local root = vim.fn.getcwd()
+        local ft = vim.bo.filetype
+
+        if (ft == "c" or ft == "cpp" or ft == "cc" or ft == "h" or ft == "hpp") then
+            if vim.fn.filereadable(root .. "/.clang-format") == 0 then
+                return
+            end
+        end
+
         require("conform").format({ bufnr = args.buf })
     end,
 })
