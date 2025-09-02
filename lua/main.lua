@@ -27,12 +27,22 @@ vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
 vim.o.foldlevel = 99
 
+
+vim.g.format_disabled = true
+
 vim.api.nvim_create_user_command("Hexvieweropen", function()
     vim.cmd("%!xxd -g 1 -u")
 end, {})
 
 vim.api.nvim_create_user_command("Hexviewerclose", function()
     vim.cmd("%!xxd -r")
+end, {})
+
+vim.api.nvim_create_user_command("FormatEnable", function()
+    vim.g.format_disabled = false
+end, {})
+vim.api.nvim_create_user_command("FormatDisable", function()
+    vim.g.format_disabled = true
 end, {})
 
 require('packer_manager').startup()

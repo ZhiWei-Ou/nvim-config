@@ -10,25 +10,10 @@ require("conform").setup({
         proto = { "clang_format" },
         go = { "gopls", "goimports", "gofmt" },
     },
-    format_on_save = {
-        -- These options will be passed to conform.format()
-        timeout_ms = 500,
-        lsp_format = "fallback",
-    },
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*",
-    callback = function(args)
-        local root = vim.fn.getcwd()
-        local ft = vim.bo.filetype
-
-        if (ft == "c" or ft == "cpp" or ft == "cc" or ft == "h" or ft == "hpp") then
-            if vim.fn.filereadable(root .. "/.clang-format") == 0 then
-                return
-            end
+    format_on_save = function()
+        if vim.g.format_disabled == true then
+            return
         end
-
-        require("conform").format({ bufnr = args.buf })
+        return { timeout_ms = 500, lsp_format = "fallback" }
     end,
 })
