@@ -1,33 +1,38 @@
-local Mason = {
+local mason = {
     "williamboman/mason.nvim",
     config = function()
         require('plugins.config.mason')
-    end
+    end,
+    summary = "LSP Server Installer"
 }
 
-local NvimTree = {
+local nvimtree = {
     "nvim-tree/nvim-tree.lua",
     config = function()
         require('plugins.config.nvim_tree')
-    end
+    end,
+    summary = "File Explorer"
 }
 
-local NvimWebDevIcons = {
+local nvimwebdevicons = {
     "nvim-tree/nvim-web-devicons",
     config = function()
         require("plugins.config.nvim_web_icon")
-    end
+    end,
+    summary = "File Icons"
 }
 
-local GitSigns = {
+local gitsigns = {
     "lewis6991/gitsigns.nvim",
     config = function()
         require("plugins.config.gitsigns")
-    end
+    end,
+    summary = "Git Integration"
 }
 
-local NvimTreeSitter = {
+local nvimtreesitter = {
     'nvim-treesitter/nvim-treesitter',
+    branch = "main",
     config = function()
         require("plugins.config.nvim_treesitter")
     end,
@@ -35,9 +40,10 @@ local NvimTreeSitter = {
         local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
         ts_update()
     end,
+    summary = "Syntax Highlighting"
 }
 
-local Telescope = {
+local telescope = {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.8',
     requires = {
@@ -46,45 +52,31 @@ local Telescope = {
     config = function()
         require("plugins.config.telescope")
     end,
+    summary = "Utility"
 }
 
-local BufferLine = {
-    'akinsho/bufferline.nvim',
-    tag = "*",
-    requires = 'nvim-tree/nvim-web-devicons',
-    config = function()
-        require("plugins.config.bufferline")
-    end
-}
-
-local Spectre = {
+local spectre = {
     'windwp/nvim-spectre',
     config = function()
         require("plugins.config.nvim_spectre")
-    end
+    end,
+    summary = "Search and Replace"
 }
 
-local ToggleTerm = {
+local toggleterm = {
     "akinsho/toggleterm.nvim",
     tag = '*',
     config = function()
         require("plugins.config.toggleterm")
-    end
+    end,
+    summary = "Terminal integration"
 }
 
-local GithubNvimTheme = {
+local githubnvimtheme = {
     'projekt0n/github-nvim-theme',
 }
 
-local Ouroboros = {
-    'jakemason/ouroboros',
-    config = function()
-        require("plugins.config.ouroboros")
-    end,
-    requires = { { 'nvim-lua/plenary.nvim' } },
-}
-
-local NvimCMP = {
+local nvimcmp = {
     "hrsh7th/nvim-cmp",
     requires = {
         { "hrsh7th/cmp-nvim-lsp" },
@@ -97,58 +89,57 @@ local NvimCMP = {
     },
     config = function()
         require("plugins.config.nvim_cmp")
-    end
+    end,
+    summary = "Code Completion"
 }
 
-local Windsurf = {
+local windsurf = {
     'Exafunction/windsurf.vim',
     config = function()
         require("plugins.config.windsurf")
-    end
+    end,
+    summary = "AI editor assistant"
 }
 
-local NvimMasonLspConfig = {
+local nvimmasonlspconfig = {
     "williamboman/mason-lspconfig.nvim",
     after = "mason.nvim",
     config = function()
         -- Nothing ToDo
-    end
+    end,
+    summary = "LSP Server Installer"
 }
 
-local NvimLspConfig = {
+local nvimlspconfig = {
     "neovim/nvim-lspconfig",
     after = "mason-lspconfig.nvim",
     config = function()
         require("plugins.config.nvim_lsp")
-    end
-}
-
-local NvimAdapter = {
-    "mfussenegger/nvim-dap",
-    config = function()
-        require("plugins.config.nvim_dap")
-    end
+    end,
+    summary = "LSP Configuration"
 }
 
 local VimVisualMulti = {
     'mg979/vim-visual-multi'
 }
 
-local CmakeTools = {
+local cmaketools = {
     'Civitasv/cmake-tools.nvim',
     config = function()
         require("plugins.config.cmake_tools")
-    end
+    end,
+    summary = "CMake tools Integration"
 }
 
-local Dressing = {
+local dressing = {
     'stevearc/dressing.nvim',
     config = function()
         require("plugins.config.dressing")
-    end
+    end,
+    summary = "Neovim UI components, like input boxes"
 }
 
-local LuaSnip = {
+local luasnip = {
     "L3MON4D3/LuaSnip",
     -- follow latest release.
     tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
@@ -156,140 +147,129 @@ local LuaSnip = {
     run = "make install_jsregexp",
     config = function()
         require("plugins.config.luasnip")
-    end
-}
-local CmpLuaSnip = {
-    'saadparwaiz1/cmp_luasnip'
+    end,
+    summary = "The code snippet manager"
 }
 
-local LuaLine = {
+local lualine = {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = function()
         require("plugins.config.lualine")
-    end
+    end,
+    summary = "Statusline, Bottomline"
 }
 
-local Dashboard = {
+local dashboard = {
     'nvimdev/dashboard-nvim',
     config = function()
         require('plugins.config.dashboard')
     end,
     requires = { 'nvim-tree/nvim-web-devicons' },
     event = 'VimEnter',
+    summary = "Dashboard"
 }
 
-local TokyoNightTheme = {
-    'folke/tokyonight.nvim'
+local tokyonightTheme = {
+    'folke/tokyonight.nvim',
+    summary = "Tokyo Night Theme"
 }
 
-local KanagawaTheme = {
-    'rebelot/kanagawa.nvim'
+local kanagawaTheme = {
+    'rebelot/kanagawa.nvim',
+    summary = "Kanagawa Theme"
 }
 
-local RenderMarkdown = {
+local rendermarkdown = {
     'MeanderingProgrammer/render-markdown.nvim',
     after = { 'nvim-treesitter' },
     requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
     config = function()
         require('render-markdown').setup({})
     end,
+    summary = "Render Markdown for Preview"
 }
 
-local Leap = {
+local leap = {
     'ggandor/leap.nvim',
     config = function()
         require('plugins.config.leap')
-    end
+    end,
+    summary = "Leap Motion, Jump to anywhere"
 }
 
-local Scrollbar = {
-    'petertriho/nvim-scrollbar',
-    config = function()
-        require('plugins.config.nvim_scrollbar')
-    end
-}
-
-local Trouble = {
+local trouble = {
     'folke/trouble.nvim',
     requires = { 'nvim-tree/nvim-web-devicons' },
     config = function()
         require('plugins.config.trouble')
     end,
+    summary = "Trouble"
 }
 
-local CatppuccinTheme = {
+local catppuccinTheme = {
     'catppuccin/nvim',
     as = 'catppuccin',
 }
 
-local IndentBlankLine = {
-    'lukas-reineke/indent-blankline.nvim',
-    tag = 'v3.8.2',
-    enabled = true,
-    main = 'ibl',
-    opts = {},
-    dependencies = {
-        { 'HiPhish/rainbow-delimiters.nvim', lazy = true },
-    },
-    config = function()
-        require('plugins.config.indent_blankline')
-    end
-}
-
-local Confrom = {
+local confrom = {
     'stevearc/conform.nvim',
     config = function()
         require('plugins.config.conform')
-    end
+    end,
+    summary = "Code Formatter"
 }
 
-local DropBar = {
+local dropbar = {
     'Bekaboo/dropbar.nvim',
     requires = {
         'nvim-telescope/telescope-fzf-native.nvim',
         run = 'make'
     },
     config = function()
-        local dropbar_api = require('dropbar.api')
-        vim.keymap.set('n', '<Leader>;', dropbar_api.pick, { desc = 'Pick symbols in winbar' })
-        vim.keymap.set('n', '[;', dropbar_api.goto_context_start, { desc = 'Go to start of current context' })
-        vim.keymap.set('n', '];', dropbar_api.select_next_context, { desc = 'Select next context' })
-    end
+        -- local dropbar_api = require('dropbar.api')
+        -- vim.keymap.set('n', '<Leader>;', dropbar_api.pick, { desc = 'Pick symbols in winbar' })
+        -- vim.keymap.set('n', '[;', dropbar_api.goto_context_start, { desc = 'Go to start of current context' })
+        -- vim.keymap.set('n', '];', dropbar_api.select_next_context, { desc = 'Select next context' })
+    end,
+    summary = "Dropbar"
+}
+
+local miniicon = {
+    "echasnovski/mini.icons",
+    version = false,
+    config = function()
+        require("mini.icons").setup()
+    end,
 }
 
 return {
-    Mason,
-    NvimTree,
-    NvimWebDevIcons,
-    GitSigns,
-    NvimTreeSitter,
-    Telescope,
-    BufferLine,
-    Spectre,
-    ToggleTerm,
-    GithubNvimTheme,
-    Ouroboros,
-    NvimCMP,
-    Windsurf,
-    NvimMasonLspConfig,
-    NvimLspConfig,
-    NvimAdapter,
+    mason,
+    nvimtree,
+    nvimwebdevicons,
+    gitsigns,
+    nvimtreesitter,
+    telescope,
+    spectre,
+    toggleterm,
+    githubnvimtheme,
+    nvimcmp,
+    windsurf,
+    nvimmasonlspconfig,
+    nvimlspconfig,
     VimVisualMulti,
-    CmakeTools,
-    Dressing,
-    LuaSnip,
-    CmpLuaSnip,
-    LuaLine,
-    Dashboard,
-    TokyoNightTheme,
-    RenderMarkdown,
-    Leap,
-    Scrollbar,
-    Trouble,
-    CatppuccinTheme,
-    KanagawaTheme,
-    IndentBlankLine,
-    Confrom,
-    DropBar
+    cmaketools,
+    dressing,
+    luasnip,
+    lualine,
+    dashboard,
+    tokyonightTheme,
+    rendermarkdown,
+    leap,
+    trouble,
+    catppuccinTheme,
+    kanagawaTheme,
+    confrom,
+    dropbar,
+    miniicon
 }

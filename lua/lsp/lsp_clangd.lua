@@ -72,4 +72,13 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
+vim.api.nvim_set_keymap('n',
+    '<M-o>',
+    ':LspClangdSwitchSourceHeader<CR>',
+    {
+        noremap = true,
+        silent = true,
+        desc = 'Switch C/C++ Source/Header'
+    })
+
 G.configuration(lsp_clangd_name, lsp_clangd_config)

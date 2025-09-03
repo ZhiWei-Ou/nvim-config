@@ -2,8 +2,27 @@
 
 -- print(vim.inspect(icon.apple))
 
+local fg_color = '#d1b0fa'
 
+local function os(color)
+    local system_name = vim.loop.os_uname().sysname
+    local icon
 
+    if system_name == "Darwin" then
+        icon = require('mini.icons').get('os', 'macos')
+    elseif system_name == "Linux" then
+        icon = require('mini.icons').get('os', 'linux')
+    elseif system_name == "Windows" then
+        icon = require('mini.icons').get('os', 'windows')
+    end
+
+    return
+    {
+        function() return system_name end,
+        icon = icon,
+        color = { fg = color }
+    }
+end
 
 require('lualine').setup {
     options = {
@@ -15,6 +34,8 @@ require('lualine').setup {
             statusline = {},
             winbar = {},
             'dashboard',
+            'packer',
+            'TelescopePrompt',
             -- 'trouble',
             'toggleterm',
             -- 'NvimTree',
@@ -43,7 +64,7 @@ require('lualine').setup {
             {
                 -- Lsp server name .
                 function()
-                    local msg = 'No Active Lsp'
+                    local msg = '*'
                     local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
                     local clients = vim.lsp.get_clients()
                     if next(clients) == nil then
@@ -58,14 +79,14 @@ require('lualine').setup {
                     return msg
                 end,
                 separator = { left = '', right = '' },
-                icon = '  LSP:',
-                color = { fg = '#d1b0fa', gui = 'bold' },
+                icon = require('mini.icons').get('file', 'init.lua'),
+                color = { fg = fg_color, gui = 'bold' },
             }
         },
         lualine_x = {
-            { 'encoding',   fmt = string.lower,    color = { fg = '#d1b0fa' } },
-            { 'fileformat', icons_enabled = false, fmt = string.lower,        color = { fg = '#d1b0fa' } },
-            { 'filetype',   icons_enabled = true,  color = { fg = '#d1b0fa' } },
+            { 'encoding', fmt = string.lower,   color = { fg = fg_color } },
+            os(fg_color),
+            { 'filetype', icons_enabled = true, color = { fg = fg_color } },
         },
         lualine_y = { 'progress' },
         lualine_z = {

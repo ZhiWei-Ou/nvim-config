@@ -1,34 +1,32 @@
 # nvim-config
 A **Neovim** configuration, integrated with common LSPs and nice themes.
 
+<div style="display: flex; justify-content: center">
+  <img src="assets/image.png"/>
+</div>
+
+---
+
 ## Table of contents
 - [nvim-config](#nvim-config)
   - [Table of contents](#table-of-contents)
 - [Neovim version](#neovim-version)
-- [Media](#-media)
 - [Integration](#integration)
   - [Common Key](#common-key)
   - [Supported LSPs](#supported-lsps)
   - [FAQ](#faq)
 
+---
+
 # Neovim version
+<pre>
 ```bash
-NVIM v0.11.1
+$ nvim -V1 -v
+NVIM v0.11.3
 Build type: Release
-LuaJIT 2.1.1744318430
+LuaJIT 2.1.1753364724
 ```
-
-
-# Media
-
-<p align="left">
-  <img src="assets/dashboard.png" width="300"/>
-  <img src="assets/workbench.png" width="300"/>
-  <!-- <img src="assets/theme/catppuccin.png" width="300"/> -->
-  <!-- <img src="assets/theme/github_dark.png" width="300"/> -->
-  <!-- <img src="assets/theme/github_light.png" width="300"/> -->
-  <!-- <img src="assets/theme/kanagawa-dragon.png" width="300"/> -->
-</p>
+</pre>
 
 # Integration
 - install neovim to your system.

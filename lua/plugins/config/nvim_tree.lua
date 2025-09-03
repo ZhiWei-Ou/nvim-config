@@ -5,10 +5,22 @@ require('nvim-tree').setup {
         sorter = "case_sensitive",
     },
     view = {
-        width = 30,
+        width = {
+            min = 30,
+            max = -1,
+            padding = 1,
+        },
     },
     renderer = {
         group_empty = true,
+        icons = {
+            web_devicons = {
+                folder = {
+                    enable = true,
+                    color = true,
+                },
+            },
+        }
     },
     filters = {
         dotfiles = true,
@@ -19,6 +31,10 @@ require('nvim-tree').setup {
     },
     update_focused_file = {
         enable = true,
+    },
+    live_filter = {
+        prefix = "Search: ",
+        always_show_folders = false,
     },
 }
 
