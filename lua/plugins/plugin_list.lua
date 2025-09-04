@@ -119,10 +119,6 @@ local nvimlspconfig = {
     summary = "LSP Configuration"
 }
 
-local VimVisualMulti = {
-    'mg979/vim-visual-multi'
-}
-
 local cmaketools = {
     'Civitasv/cmake-tools.nvim',
     config = function()
@@ -257,7 +253,6 @@ return {
     windsurf,
     nvimmasonlspconfig,
     nvimlspconfig,
-    VimVisualMulti,
     cmaketools,
     dressing,
     luasnip,
