@@ -4,6 +4,28 @@
 
 local fg_color = '#d1b0fa'
 
+local linux_distro = nil
+
+local function get_linux_distro()
+    if linux_distro then
+        return linux_distro
+    end
+
+    local f = io.open("/etc/os-release", "r")
+    if not f then
+        return nil
+    end
+    local data = f:read("*a")
+    f:close()
+
+    -- local name = data:match('NAME="?(.-)"?\n')
+    local name = data:match('\nNAME="?(.-)"?\n')
+
+    linux_distro = name
+
+    return name
+end
+
 local function os(color)
     local system_name = vim.loop.os_uname().sysname
     local icon
@@ -11,7 +33,18 @@ local function os(color)
     if system_name == "Darwin" then
         icon = require('mini.icons').get('os', 'macos')
     elseif system_name == "Linux" then
-        icon = require('mini.icons').get('os', 'linux')
+        -- icon = require('mini.icons').get('os', 'linux')
+
+        local distro = get_linux_distro()
+        if distro == "Arch Linux" then
+            icon = require('mini.icons').get('os', 'arch')
+            system_name = "Arch Linux"
+        elseif distro == "Ubuntu" then
+            icon = require('mini.icons').get('os', 'ubuntu')
+            system_name = "Ubuntu"
+        else
+            icon, hl = require('nvim-web-devicons').get_icon("linux", nil, { default = true })
+        end
     elseif system_name == "Windows" then
         icon = require('mini.icons').get('os', 'windows')
     end
