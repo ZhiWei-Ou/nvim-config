@@ -47,6 +47,6 @@ require('dashboard').setup {
             }
         },
 
-        footer = { '', 'Current DateTime: ' .. os.date('%Y-%m-%d %H:%M:%S') },
+        footer = { '', 'Current DateTime: ' .. os.date('%Y-%m-%d %H:%M:%S'), 'Startup Time: ' .. vim.g.startuptime .. ' ms' },
     },
 }

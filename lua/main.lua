@@ -1,3 +1,5 @@
+require('startup')
+
 vim.cmd('syntax enable')        -- 启用语法高亮
 vim.o.hidden = true             -- 允许在有未保存的修改时切换缓冲区
 vim.o.tabstop = 4               -- 设置制表符的宽度为 4 个空格
