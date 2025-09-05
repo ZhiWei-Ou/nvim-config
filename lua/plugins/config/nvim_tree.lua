@@ -12,6 +12,7 @@ require('nvim-tree').setup {
         },
     },
     renderer = {
+        symlink_destination = false,
         group_empty = true,
         icons = {
             web_devicons = {
