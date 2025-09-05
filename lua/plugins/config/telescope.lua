@@ -25,6 +25,11 @@ require('telescope').setup {
         multi_icon = " ",
         wrap_results = false,
         results_title = "Results",
+
+        -- issue: https://github.com/nvim-telescope/telescope.nvim/issues/3487
+        preview = {
+            treesitter = false,
+        },
     },
     pickers = {
         builtin = {
