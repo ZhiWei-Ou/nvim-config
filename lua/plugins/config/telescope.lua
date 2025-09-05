@@ -48,9 +48,6 @@ require('telescope').setup {
         }
     },
     extensions = {
-        emoji = {
-
-        }
     }
 }
 

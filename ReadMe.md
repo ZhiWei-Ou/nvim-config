@@ -50,7 +50,6 @@ git clone git@github.com:ZhiWei-Ou/nvim-config.git ~/.config/nvim
 |      gd       |              Go to definition               |
 |      gr       |               Show references               |
 |      gh       |                Show comments                |
-|      gq       |                 Format code                 |
 |      gx       |                Open link under cursor        |
 |    Ctrl+o     |               Backward record               |
 |    Ctrl+]     |               Toggle outline                |
@@ -58,6 +57,11 @@ git clone git@github.com:ZhiWei-Ou/nvim-config.git ~/.config/nvim
 |    Ctrl+p     |                 Search file                 |
 |    Ctrl+f     |                   Search                    |
 
+
+## Special Command
+- `:Rename` — a LSP rename feature, could be used to refactor and update all references of a symbol (like variables, functions, classes) across the entire project consistently.
+- `:FormatEnable` enable format on save
+- `:FormatDisable` disable format on save
 
 ## Supported LSPs
 refer to `:LspInfo`
