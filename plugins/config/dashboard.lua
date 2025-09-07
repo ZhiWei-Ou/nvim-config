@@ -1,9 +1,3 @@
-local logo = [[
-_.~"(_.~"(_.~"(_.~"(_.~"(
--- ]]
-
-logo = string.rep("\n", 3) .. logo .. "\n\n"
-
 require('dashboard').setup {
     theme = 'hyper',
     shortcut_type = 'number',
@@ -12,7 +6,7 @@ require('dashboard').setup {
         enable = true, -- show how many plugins neovim loaded
     },
     config = {
-        header = vim.split(logo, "\n"),
+        header = vim.split(require('ui.logo'), "\n"),
         project = { enable = false, },
         mru = { enable = false, },
         week_header = {

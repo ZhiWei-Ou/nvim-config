@@ -1,5 +1,37 @@
-# nvim-config
-A **Neovim** configuration, integrated with common LSPs and nice themes.
+<div align="center">
+<p>
+    <a>
+      <img alt="Linux" src="https://img.shields.io/badge/Linux-%23.svg?style=flat-square&logo=linux&color=FCC624&logoColor=black" />
+    </a>
+    <a>
+      <img alt="macOS" src="https://img.shields.io/badge/macOS-%23.svg?style=flat-square&logo=apple&color=000000&logoColor=white" />
+    </a>
+    <a>
+      <img alt="Windows" src="https://img.shields.io/badge/Windows-%23.svg?style=flat-square&logo=windows&color=0078D6&logoColor=white" />
+    </a>
+    <a href="https://github.com/neovim/neovim/releases/tag/stable">
+      <img src="https://img.shields.io/badge/Neovim-0.11.3-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=green" alt="Neovim minimum version"/>
+    </a>
+    <a href="https://github.com/ZhiWei-Ou/nvim-config/search?l=vim-script">
+      <img src="https://img.shields.io/github/languages/top/ZhiWei-Ou/nvim-config" alt="Top languages"/>
+    </a>
+    <a href="https://github.com/ZhiWei-Ou/nvim-config/graphs/commit-activity">
+      <img src="https://img.shields.io/github/commit-activity/m/ZhiWei-Ou/nvim-config?style=flat-square" />
+    </a>
+    <a href="https://github.com/ZhiWei-Ou/nvim-config/graphs/contributors">
+      <img src="https://img.shields.io/github/contributors/ZhiWei-Ou/nvim-config?style=flat-square" />
+    </a>
+    <a>
+      <img src="https://img.shields.io/github/repo-size/ZhiWei-Ou/nvim-config?style=flat-square" />
+    </a>
+    <a href="https://github.com/ZhiWei-Ou/nvim-config/blob/master/LICENSE">
+      <img src="https://img.shields.io/github/license/ZhiWei-Ou/nvim-config?style=flat-square&logo=GNU&label=License" alt="License"/>
+    </a>
+</p>
+</div>
+
+# Introduction
+My personal Neovim configuration.
 
 <div style="display: flex; justify-content: center">
   <img src="assets/image.png"/>
@@ -8,11 +40,12 @@ A **Neovim** configuration, integrated with common LSPs and nice themes.
 ---
 
 ## Table of contents
-- [nvim-config](#nvim-config)
+- [Introduction](#introduction)
   - [Table of contents](#table-of-contents)
 - [Neovim version](#neovim-version)
 - [Integration](#integration)
-  - [Common Key](#common-key)
+  - [Features](#features)
+  - [Special Command](#special-command)
   - [Supported LSPs](#supported-lsps)
   - [FAQ](#faq)
 
@@ -39,24 +72,30 @@ git clone git@github.com:ZhiWei-Ou/nvim-config.git ~/.config/nvim
 - enjoy it
 
 
-## Common Key
-|      key      |                 description                 |
-| :-----------: | :-----------------------------------------: |
-|    Ctrl+s     |                  Save file                  |
-|    Ctrl+\     |               Vertical split                |
-|    Ctrl+t     |   Open terminal(default display in float)   |
-|    Ctrl+l     |            Toggle file explorer             |
-| Ctrl+k Ctrl+p | Open telescope(like VScode command palette) |
-|      gd       |              Go to definition               |
-|      gr       |               Show references               |
-|      gh       |                Show comments                |
-|      gx       |                Open link under cursor        |
-|    Ctrl+o     |               Backward record               |
-|    Ctrl+]     |               Toggle outline                |
-|  <leader>+dd  |             Toggle diagnostics              |
-|    Ctrl+p     |                 Search file                 |
-|    Ctrl+f     |                   Search                    |
-
+## Features
++ Code snippets management via [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
++ CMake command completion via [cmake-tools.nvim](https://github.com/Civitasv/cmake-tools.nvim)
++ Powerful formatting via [confrom.nvim](https://github.com/stevearc/conform.nvim)
++ Beautiful dashboard via [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
++ Smart winbar and breadcrumbs via [dropbar.nvim](https://github.com/Bekaboo/dropbar.nvim)
++ Git integration signs via [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
++ Fast navigation via [leap.nvim](https://github.com/ggandor/leap.nvim)
++ Statusline customization via [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
++ LSP/DAP package manager via [mason.nvim](https://github.com/williamboman/mason.nvim)
++ Bridge between mason and lspconfig via [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
++ Autocompletion engine via [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
++ Quick LSP setup via [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
++ Project-wide search and replace via [nvim-spectre](https://github.com/windwp/nvim-spectre)
++ File explorer tree via [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
++ Syntax highlighting and parsing via [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
++ Filetype icons via [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
++ Plugin manager via [packer.nvim](https://github.com/wbthomason/packer.nvim)
++ Render markdown in Neovim via [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
++ Highly extendable fuzzy finder over lists [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
++ Integrated terminal via [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
++ Diagnostics and issues list via [trouble.nvim](https://github.com/folke/trouble.nvim)
++ AI-powered workflow via [windsurf.vim](https://github.com/Exafunction/windsurf.vim)
++ ...
 
 ## Special Command
 - `:Rename` — a LSP rename feature, could be used to refactor and update all references of a symbol (like variables, functions, classes) across the entire project consistently.

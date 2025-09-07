@@ -1,4 +1,4 @@
-vim.g.startuptime = 0
+vim.g.startuptime = 0 -- stores Neovim startup time in ms
 
 local start = vim.loop.hrtime()
 vim.api.nvim_create_autocmd("VimEnter", {

@@ -1,5 +1,0 @@
-{
-    // jsonc means json with comments
-    // this is a comment
-    "message": "hello jsonc"
-}
