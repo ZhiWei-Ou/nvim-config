@@ -13,7 +13,7 @@ vim.o.smartcase = true          -- 搜索时根据输入的大小写开启或关
 vim.o.incsearch = true          -- 实时搜索
 vim.o.hlsearch = true           -- 高亮显示搜索结果
 vim.o.showmode = false          -- 隐藏模式显示
-vim.o.mouse = a                 -- 启用鼠标支持
+vim.o.mouse = 'a'               -- 启用鼠标支持 a: all mode, n: normal mode, v: visual mode, i: insert mode, c: command mode, h: help mode
 vim.o.number = true             -- 显示行号
 vim.o.relativenumber = true     -- 显示相对行号
 vim.o.cursorline = true         -- 高亮当前行
@@ -47,6 +47,6 @@ vim.api.nvim_create_user_command("FormatDisable", function()
     vim.g.format_disabled = true
 end, {})
 
-require('packer_manager').startup()
 require('keymaps')
+require('bootstrap').startup('lazy') -- packer, lazy
 require('theme').startup(true)
