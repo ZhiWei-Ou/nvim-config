@@ -30,7 +30,7 @@ local function _configuration()
                 {
                     desc = '󰊳 Update',
                     group = '@property',
-                    action = 'PackerSync',
+                    action = vim.g.bootstrapsync,
                     key = 'u'
                 },
                 {
