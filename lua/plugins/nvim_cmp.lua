@@ -12,43 +12,22 @@ local requires = {
     { "saadparwaiz1/cmp_luasnip" },
     { "hrsh7th/cmp-nvim-lua" },
     { "onsails/lspkind-nvim" },
+    { "L3MON4D3/LuaSnip" },
 }
+
+-- used for nvim-cmp.config.window.completion.winhighlight
+-- search 'CmpNormal' to jump to the configuration
+-- NONE: transparent
+vim.api.nvim_set_hl(0, "CmpNormal", { bg = "NONE" })
 
 return {
     "hrsh7th/nvim-cmp",
     requires = requires,
     dependencies = requires,
     config = function()
+        require('luasnip.loaders.from_vscode').lazy_load()
         local cmp = require("cmp")
         local lspkind = require("lspkind")
-
-        local cmp_kinds = {
-            Text = '  ',
-            Method = '  ',
-            Function = '  ',
-            Constructor = '  ',
-            Field = '  ',
-            Variable = '  ',
-            Class = '  ',
-            Interface = '  ',
-            Module = '  ',
-            Property = '  ',
-            Unit = '  ',
-            Value = '  ',
-            Enum = '  ',
-            Keyword = '  ',
-            Snippet = '  ',
-            Color = '  ',
-            File = '  ',
-            Reference = '  ',
-            Folder = '  ',
-            EnumMember = '  ',
-            Constant = '  ',
-            Struct = '  ',
-            Event = '  ',
-            Operator = '  ',
-            TypeParameter = '  ',
-        }
 
         cmp.setup {
             mapping = cmp.mapping.preset.insert {
@@ -72,7 +51,9 @@ return {
             },
             snippet = {
                 expand = function(args)
-                    require 'luasnip'.lsp_expand(args.body)
+                    -- select a snippet engine
+                    -- require 'luasnip'.lsp_expand(args.body)
+                    vim.snippet.expand(args.body)
                 end
             },
             sources = {
@@ -91,28 +72,62 @@ return {
             view = {
                 entries = "custom",
             },
+            -- refer: https://github-wiki-see.page/m/hrsh7th/nvim-cmp/wiki/Menu-Appearance
             formatting = {
-                fields = { "kind", "abbr" },
-                format = function(_, vim_item)
-                    vim_item.kind = cmp_kinds[vim_item.kind] or ""
-                    return vim_item
+                fields = { "kind", "abbr", "menu" },
+                format = function(_, item)
+                    local vscode_like_icons = {
+                        -- Text = '  ',
+                        Text = '<T> ',
+                        Method = '  ',
+                        Function = '  ',
+                        Constructor = '  ',
+                        Field = '  ',
+                        Variable = '  ',
+                        Class = '  ',
+                        Interface = '  ',
+                        Module = '  ',
+                        Property = '  ',
+                        Unit = '  ',
+                        Value = '  ',
+                        Enum = '  ',
+                        Keyword = '  ',
+                        Snippet = '  ',
+                        Color = '  ',
+                        File = '  ',
+                        Reference = '  ',
+                        Folder = '  ',
+                        EnumMember = '  ',
+                        Constant = '  ',
+                        Struct = '  ',
+                        Event = '  ',
+                        Operator = '  ',
+                        TypeParameter = '<T> ',
+                    }
+                    item.kind = vscode_like_icons[item.kind] or ""
+                    return item
                 end,
             },
             window = {
+                -- documentation = cmp.config.window.bordered()
                 completion = {
                     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-                    winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
+                    -- winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
+                    winhighlight = "Normal:CmpNormal,FloatBorder:CmpNormal",
                     winblend = vim.o.pumblend,
                     scrolloff = 0,
                     col_offset = 0,
                     side_padding = 1,
-                    scrollbar = true,
+                    scrollbar = false,
                 },
                 documentation = {
                     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
                     winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
                 },
-            }
+            },
+            -- experimental = {
+            --     ghost_text = true,
+            -- },
         }
 
         cmp.setup.filetype("tex", {
@@ -122,6 +137,25 @@ return {
                 { name = "buffer",   keyword_length = 2 }, -- for buffer word completion
                 { name = "path" },                         -- for path completion
             },
+        })
+
+        -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+        cmp.setup.cmdline({ '/', '?' }, {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = 'buffer' }
+            }
+        })
+
+        -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+        cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources({
+                { name = 'path' }
+            }, {
+                { name = 'cmdline' }
+            }),
+            matching = { disallow_symbol_nonprefix_matching = false }
         })
 
         --  see https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu

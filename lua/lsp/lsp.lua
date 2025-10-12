@@ -1,16 +1,41 @@
 --[[
     all of lsp configurations
 ]]
-require("lsp.lsp_clangd")   -- C/C++
-require("lsp.lsp_cmake")    -- CMake
-require("lsp.lsp_docker")   -- Dockerfile
-require("lsp.lsp_go")       -- Golang
-require("lsp.lsp_json")     -- JSON
-require("lsp.lsp_lua")      -- Lua
-require("lsp.lsp_markdown") -- Markdown
-require("lsp.lsp_protobuf") -- Protobuf
-require("lsp.lsp_shell")    -- Shell
-require("lsp.lsp_yaml")     -- YAML
-require("lsp.lsp_frontend") -- Frontend(HTML, CSS, JavaScript, Vue)
 
+
+-- find all lsp_*.lua file in config/lua/lsp/
+-- and load them
+local config_path = vim.fn.stdpath("config")
+local folder_path = config_path .. "/lua/lsp"
+local files = vim.fn.glob(folder_path .. "/lsp_*.lua", false, true)
+for _, f in ipairs(files) do
+    local lsp_module = "lsp." .. f:match(".*/(.*)%.lua$")
+    require(lsp_module)
+end
+
+-- Renames all references to the symbol under the cursor
 vim.api.nvim_create_user_command("Rename", "lua vim.lsp.buf.rename()", { nargs = 0 })
+-- Show diagnostics in a floating window
+vim.api.nvim_create_user_command("Errors", "lua vim.diagnostic.open_float()", { nargs = 0 })
+-- Selects a code action available at the current cursor position
+vim.api.nvim_create_user_command("Action", "lua vim.lsp.buf.code_action()", { nargs = 0 })
+vim.api.nvim_set_keymap('i', '<C-x><C-o>', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true, desc = 'Code action' })
+
+-- Some diagnostic configurations
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '✘',
+            [vim.diagnostic.severity.WARN]  = '▲',
+            [vim.diagnostic.severity.INFO]  = '»',
+            [vim.diagnostic.severity.HINT]  = '⚑',
+        },
+    },
+    virtual_text = false,
+    severity_sort = true,
+    float = {
+        border = 'rounded',
+        source = 'always',
+    },
+})
+
