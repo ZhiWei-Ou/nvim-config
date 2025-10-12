@@ -25,6 +25,27 @@ local function _configuration()
 
     -- if you only want these mappings for toggle term use term://*toggleterm#* instead
     vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+
+    -- open existing file in buffer
+    vim.api.nvim_create_autocmd("TermEnter", {
+        pattern = "term://*toggleterm#*",
+        callback = function()
+            vim.keymap.set("n", "gx", function()
+                local word = vim.fn.expand("<cfile>")
+
+                if vim.fn.file_readable(word) ~= 1 then
+                    -- vim.notify("File does not exist: " .. path, vim.log.levels.WARN)
+                    return
+                end
+
+                if word ~= "" then
+                    vim.cmd("q") -- exit toggleterm
+                    vim.cmd("edit " .. word) -- open file
+                end
+            end, { buffer = true, desc = "Open file in buffer inside toggleterm" })
+        end,
+    })
 end
 
 return {
