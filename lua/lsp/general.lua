@@ -8,7 +8,6 @@ function M.configuration(name, config)
 end
 
 function M.lsp_general_on_attach(client, bufnr)
-    vim.lsp.inlay_hint.enalbe()
     vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
         vim.lsp.handlers['signature_help'],
         {
