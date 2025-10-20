@@ -68,17 +68,18 @@ local lsp_clangd_config = {
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { 'c', 'h', 'cpp', 'hpp', 'tpp', 'cc', 'hh' },
     callback = function()
+
+        vim.api.nvim_set_keymap('n',
+        '<M-o>',
+        ':LspClangdSwitchSourceHeader<CR>',
+        {
+            noremap = true,
+            silent = true,
+            desc = 'Switch C/C++ Source/Header'
+        })
         vim.api.nvim_buf_set_option(0, 'commentstring', '// %s')
     end
 })
 
-vim.api.nvim_set_keymap('n',
-    '<M-o>',
-    ':LspClangdSwitchSourceHeader<CR>',
-    {
-        noremap = true,
-        silent = true,
-        desc = 'Switch C/C++ Source/Header'
-    })
 
 G.configuration(lsp_clangd_name, lsp_clangd_config)
