@@ -4,11 +4,11 @@
 ]]
 
 local location = 'ggandor/leap.nvim'
-local function _configuration()
-    require('leap').create_default_mappings()
-end
+
+vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
+vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
 
 return {
     location,
-    config = _configuration,
+    config = {},
 }
