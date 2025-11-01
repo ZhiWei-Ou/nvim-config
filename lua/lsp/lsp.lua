@@ -22,6 +22,12 @@ vim.api.nvim_create_user_command("Action", "lua vim.lsp.buf.code_action()", { na
 vim.api.nvim_set_keymap('i', '<C-x><C-o>', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true, desc = 'Code action' })
 -- Enables or disables inlay hints for the scope
 vim.api.nvim_create_user_command("Hint", "lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", {nargs = 0});
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = true })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = true })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = true })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = true })
+-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = true })
+-- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = true })
 
 -- Some diagnostic configurations
 vim.diagnostic.config({
