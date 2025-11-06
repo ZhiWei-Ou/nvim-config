@@ -50,3 +50,4 @@ end, {})
 require('keymaps')
 require('bootstrap').startup('lazy') -- packer, lazy
 require('theme').startup(true)
+require('filetypes')
