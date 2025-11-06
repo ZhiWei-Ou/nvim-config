@@ -25,7 +25,6 @@ return {
     requires = requires,
     dependencies = requires,
     config = function()
-        require('luasnip.loaders.from_vscode').lazy_load()
         local cmp = require("cmp")
         local lspkind = require("lspkind")
 
