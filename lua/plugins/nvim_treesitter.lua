@@ -4,7 +4,11 @@
 ]]
 local location = 'nvim-treesitter/nvim-treesitter'
 local branch = "master"
+
 local function _run()
+end
+
+local function _configuration()
     -- local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
     -- ts_update()
 
@@ -54,8 +58,6 @@ local function _run()
     }
 
 end
-local function _configuration()
-end
 
 return {
     location,
@@ -64,5 +66,6 @@ return {
 
     branch = branch,
     build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile", },
     lazy = false,
 }
