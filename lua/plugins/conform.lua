@@ -7,6 +7,14 @@ local enable = false
 
 return {
     'stevearc/conform.nvim',
+    init = function ()
+        -- vim.api.nvim_create_autocmd("BufWritePre", {
+        --     pattern = "*",
+        --     callback = function(args)
+        --         require("conform").format({ bufnr = args.buf })
+        --     end,
+        -- })
+    end,
     config = function()
         vim.api.nvim_create_user_command("FormatEnable", function()
             enable = true
@@ -20,9 +28,18 @@ return {
             formatters_by_ft = {
                 c = { 'clang_format' },
                 cpp = { 'clang_format' },
-                json = { 'clang_format' },
+                json = { 'prettier' },
                 proto = { 'clang_format' },
-                go = { 'gopls', 'goimports', 'gofmt' },
+                go = { 'gofmt', 'gopls', 'goimports', top_after_first = true },
+                javascript = { "prettier" },
+                typescript = { "prettier" },
+                javascriptreact = { "prettier" },
+                typescriptreact = { "prettier" },
+                json = { "prettier" },
+                css = { "prettier" },
+                html = { "prettier" },
+                yaml = { "prettier" },
+                markdown = { "prettier" },
             },
             format_on_save = function()
                 if enable == false then
