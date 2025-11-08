@@ -1,5 +1,3 @@
-require('startup')
-
 vim.cmd('syntax enable')        -- 启用语法高亮
 vim.o.hidden = true             -- 允许在有未保存的修改时切换缓冲区
 vim.o.tabstop = 4               -- 设置制表符的宽度为 4 个空格
@@ -21,6 +19,9 @@ vim.o.wrap = false              -- 禁用自动换行
 vim.o.clipboard = 'unnamedplus' -- 启用系统剪贴板
 vim.o.showmatch = true          -- 显示匹配的括号
 
+vim.g.mapleader = '.'
+vim.g.maplocalleader = "\\"
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
@@ -29,25 +30,12 @@ vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
 vim.o.foldlevel = 99
 
+local function keymap(mode, lhs, rhs, opts) vim.api.nvim_set_keymap(mode, lhs, rhs, opts) end
+keymap('n', '<Space>', ':', { noremap = true, silent = false, desc = 'Enter command mode' })
+keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true, desc = 'Save file in normal mode' })
+keymap('i', '<C-s>', '<Esc>:w<CR>a', { noremap = true, silent = true, desc = 'Save file in insert mode' })
+keymap('n', '<C-\\>', '<C-w>v', { noremap = true, silent = true, desc = 'Vertical split' })
+keymap('v', '<C-c>', '+y', { noremap = true, silent = true, desc = 'Copy selected text to system clipboard' })
 
-vim.g.format_disabled = true
-
-vim.api.nvim_create_user_command("Hexvieweropen", function()
-    vim.cmd("%!xxd -g 1 -u")
-end, {})
-
-vim.api.nvim_create_user_command("Hexviewerclose", function()
-    vim.cmd("%!xxd -r")
-end, {})
-
-vim.api.nvim_create_user_command("FormatEnable", function()
-    vim.g.format_disabled = false
-end, {})
-vim.api.nvim_create_user_command("FormatDisable", function()
-    vim.g.format_disabled = true
-end, {})
-
-require('keymaps')
-require('bootstrap').startup('lazy') -- packer, lazy
+require('bootstrap').startup()
 require('theme').startup(true)
-require('filetypes')

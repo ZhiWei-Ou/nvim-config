@@ -4,17 +4,6 @@
 @refer: https://github.com/hrsh7th/nvim-cmp
 ]]
 
-local requires = {
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-cmdline" },
-    { "saadparwaiz1/cmp_luasnip" },
-    { "hrsh7th/cmp-nvim-lua" },
-    { "onsails/lspkind-nvim" },
-    { "L3MON4D3/LuaSnip" },
-}
-
 -- used for nvim-cmp.config.window.completion.winhighlight
 -- search 'CmpNormal' to jump to the configuration
 -- NONE: transparent
@@ -22,37 +11,66 @@ vim.api.nvim_set_hl(0, "CmpNormal", { bg = "NONE" })
 
 return {
     "hrsh7th/nvim-cmp",
-    requires = requires,
-    dependencies = requires,
+    dependencies = {
+        { "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-buffer" },
+        { "hrsh7th/cmp-path" },
+        { "hrsh7th/cmp-cmdline" },
+        { "saadparwaiz1/cmp_luasnip" },
+        { "hrsh7th/cmp-nvim-lua" },
+        { "onsails/lspkind-nvim" },
+        { "L3MON4D3/LuaSnip" },
+    } ,
     config = function()
         local cmp = require("cmp")
         local lspkind = require("lspkind")
+        local luasnip = require("luasnip")
 
         cmp.setup {
             mapping = cmp.mapping.preset.insert {
-                ["<Tab>"] = function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    else
-                        fallback()
-                    end
-                end,
-                ["<S-Tab>"] = function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    else
-                        fallback()
-                    end
-                end,
                 ["<CR>"] = cmp.mapping.confirm { select = true },
                 ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                ['<CR>'] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        if luasnip.expandable() then
+                            luasnip.expand()
+                        else
+                            cmp.confirm({
+                                select = true,
+                            })
+                        end
+                    else
+                        fallback()
+                    end
+                end),
+
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_next_item()
+                    elseif luasnip.locally_jumpable(1) then
+                        luasnip.jump(1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_prev_item()
+                    elseif luasnip.locally_jumpable(-1) then
+                        luasnip.jump(-1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+
             },
             snippet = {
                 expand = function(args)
                     -- select a snippet engine
-                    -- require 'luasnip'.lsp_expand(args.body)
-                    vim.snippet.expand(args.body)
+                    require 'luasnip'.lsp_expand(args.body)
+                    -- vim.snippet.expand(args.body)
                 end
             },
             sources = {
@@ -152,8 +170,8 @@ return {
             sources = cmp.config.sources({
                 { name = 'path' }
             }, {
-                { name = 'cmdline' }
-            }),
+                    { name = 'cmdline' }
+                }),
             matching = { disallow_symbol_nonprefix_matching = false }
         })
 

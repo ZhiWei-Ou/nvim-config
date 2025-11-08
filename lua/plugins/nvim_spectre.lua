@@ -4,12 +4,41 @@
 @note: You may need run `brew install gnu-sed`
 ]]
 
-local requires = { 'nvim-lua/plenary.nvim', opt = true }
-
 return {
     'windwp/nvim-spectre',
-    requires = requires,
-    dependencies = requires,
+    dependencies = { 'nvim-lua/plenary.nvim', opt = true },
+    keys = {
+        {
+            '<leader>S',
+            '<cmd>lua require("spectre").toggle()<CR>',
+            mode = { 'n' },
+            desc = 'Toggle Spectre'
+        },
+        {
+            '<leader>F',
+            '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',
+            mode = { 'n' },
+            desc = 'Search current word'
+        },
+        {
+            '<leader>F',
+            '<esc><cmd>lua require("spectre").open_visual()<CR>',
+            mode = { 'v' },
+            desc = 'Search current file'
+        },
+        {
+            '<leader>f',
+            '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
+            mode = { 'n' },
+            desc = 'Search on current file'
+        },
+        {
+            '<leader>f',
+            '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>',
+            mode = { 'v' },
+            desc = 'Search on current file'
+        }
+    },
     config = function()
         local is_macos = vim.loop.os_uname().sysname == "Darwin"
 

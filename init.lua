@@ -1,5 +1,4 @@
-require('main')
+require('init')
 
---  get os information
+-- get os information
 -- print(vim.inspect(vim.loop.os_uname()))
-

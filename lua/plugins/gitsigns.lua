@@ -4,14 +4,13 @@
 @refer: https://github.com/lewis6991/gitsigns.nvim
 ]]
 
-local location = 'lewis6991/gitsigns.nvim'
-local function _configuration()
-    require('gitsigns').setup {
-        current_line_blame = true,
-    }
-end
 
 return {
-    location,
+    'lewis6991/gitsigns.nvim',
     config = _configuration,
+    config = function()
+        require('gitsigns').setup {
+            current_line_blame = true,
+        }
+    end
 }

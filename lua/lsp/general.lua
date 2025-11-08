@@ -3,8 +3,8 @@ local M = {}
 M.lsp_config = require('lspconfig')
 M.lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-function M.configuration(name, config)
-    vim.lsp.config(name, config)
+function M.configuration(name, options)
+    vim.lsp.config(name, options)
 end
 
 function M.lsp_general_on_attach(client, bufnr)

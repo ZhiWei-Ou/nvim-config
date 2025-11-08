@@ -4,10 +4,12 @@
 @note: 需要下载ripgrep ```bash $ brew install ripgrep ```
 ]]
 
-local location = 'nvim-telescope/telescope.nvim'
-local branch = '0.1.8'  -- tag也可以
-local requires = { { 'nvim-lua/plenary.nvim', opt = true } }
-local function _configuration()
+return {
+    'nvim-telescope/telescope.nvim',
+    version = '0.1.8',
+    dependencies = { { 'nvim-lua/plenary.nvim', opt = true } },
+    summary = "Find, Filter, Preview, Pick. All lua, all the time.",
+    config = function ()
     local builtin = require('telescope.builtin')
     local themes = require('telescope.themes')
 
@@ -71,15 +73,5 @@ local function _configuration()
         '<cmd>lua require("telescope.builtin").builtin{include_extensions = true}<CR>',
         { noremap = true, silent = true })
     -- vim.api.nvim_set_keymap('n', '<C-K><C-p>', '<cmd>Telescope<CR>', { noremap = true, silent = true })
-end
-
-return {
-    location,
-    tag = branch,
-    requires = requires,
-    summary = "Find, Filter, Preview, Pick. All lua, all the time.",
-    config = _configuration,
-
-    version = branch,
-    dependencies = requires,
+    end,
 }

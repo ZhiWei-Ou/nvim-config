@@ -1,7 +1,7 @@
-local M = {}
+local X = {}
 
 local env_key = 'VI_THEME'
-local default_theme = 'catppuccin-mocha'
+local default_theme = 'github_dark'
 
 local function theme_is_exist(theme)
     local themes = vim.fn.getcompletion('', 'color')
@@ -23,7 +23,7 @@ local function set_theme(theme)
     vim.cmd('colorscheme ' .. theme)
 end
 
-function M.startup(env_enable)
+function X.startup(env_enable)
     env_enable = env_enable or false
 
     if env_enable and os.getenv(env_key) ~= nil then
@@ -34,7 +34,7 @@ function M.startup(env_enable)
     set_theme(default_theme)
 end
 
-function M.print_all_themes()
+function X.print_all_themes()
     local themes = vim.fn.getcompletion('', 'color')
 
     for _, v in pairs(themes) do
@@ -42,4 +42,4 @@ function M.print_all_themes()
     end
 end
 
-return M
+return X

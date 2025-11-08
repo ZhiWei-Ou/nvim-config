@@ -5,5 +5,6 @@
 
 return {
     'Exafunction/windsurf.vim',
-    config = function() end,
+    config = function()
+    end,
 }

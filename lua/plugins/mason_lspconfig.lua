@@ -3,14 +3,16 @@
 @refer: https://github.com/mason-org/mason-lspconfig.nvim
 ]]
 
-local location = 'mason-org/mason-lspconfig.nvim'
-local after = 'mason.nvim'
-local function _configuration() end
-
 return {
-    location,
-    after = after,
-    config = _configuration,
-
-    dependencies = after,
+    'mason-org/mason-lspconfig.nvim',
+    dependencies = {
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
+    },
+    config = function ()
+        require("mason-lspconfig").setup({
+            automatic_enable = true,
+            automic_installation = true,
+        })
+    end
 }
