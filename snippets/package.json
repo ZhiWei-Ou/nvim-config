@@ -1,0 +1,19 @@
+{
+	"name": "code-snippets",
+	"contributes": {
+		"snippets": [
+			{
+				"language": [
+					"c", "cpp"
+				],
+				"path": "c/c.json"
+			},
+            {
+                "language": [
+                    "cmake"
+                ],
+                "path": "cmake/cmake.json"
+            }
+		]
+	}
+}
