@@ -17,6 +17,14 @@ return {
     config = function()
         local api = require('nvim-tree.api')
 
+        -- file type highlight
+        vim.cmd([[
+        :hi      NvimTreeExecFile    guifg=#ffa0a0
+        :hi      NvimTreeSpecialFile guifg=#ff80ff gui=underline
+        :hi      NvimTreeSymlink     guifg=Yellow  gui=italic
+        :hi link NvimTreeImageFile   Title
+        ]])
+
         require('nvim-tree').setup {
             sort = {
                 sorter = "case_sensitive",
@@ -42,6 +50,7 @@ return {
             },
             filters = {
                 dotfiles = true,
+                git_ignored = false,
             },
             diagnostics = {
                 enable = true,
@@ -55,5 +64,6 @@ return {
                 always_show_folders = false,
             },
         }
+
     end,
 }

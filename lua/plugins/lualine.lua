@@ -42,7 +42,9 @@ return {
             if system_name == 'Darwin' then
                 icon = require('mini.icons').get('os', 'macos')
             elseif system_name == 'Linux' then
-                -- icon = require('mini.icons').get('os', 'linux')
+                -- mini.icon refer to https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-icons.md
+                -- nvim-web-devicons refer to https://github.com/nvim-tree/nvim-web-devicons
+                -- nvim-web-devicons Use command `:NvimWebDeviconsHiTest`
 
                 local distro = get_linux_distro()
                 if distro == 'Arch Linux' then
@@ -52,7 +54,7 @@ return {
                     icon = require('mini.icons').get('os', 'ubuntu')
                     system_name = 'Ubuntu'
                 else
-                    icon, hl = require('nvim-web-devicons').get_icon('linux', nil, { default = true })
+                    icon, hl = require('nvim-web-devicons').get_icon('linux', 'ko', { default = true })
                 end
             elseif system_name == 'Windows' then
                 icon = require('mini.icons').get('os', 'windows')
