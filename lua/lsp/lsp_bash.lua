@@ -13,7 +13,6 @@
 return {
     name = 'bashls',
     opts = {
-        alias = "Bash",
         cmd = { 'bash-language-server', 'start' },
         settings = {
             bashIde = {
@@ -29,5 +28,8 @@ return {
         },
         filetypes = { 'bash', 'sh' },
         root_markers = { '.git' },
+        on_init = function (c, i)
+            c.name = 'Bash(bashls)'
+        end
     }
 }

@@ -1,10 +1,19 @@
-local G = require("lsp.general")
+--- @brief
+--- https://github.com/bufbuild/buf
+---
+--- buf beta lsp included in the cli itself
+---
+--- buf beta lsp is a Protobuf language server compatible with Buf modules and workspaces
 
+---@type vim.lsp.Config
 return {
     name = 'buf',
     opts = {
-        alias = "ProtoBuf",
-        on_attach = G.lsp_general_on_attach,
-        filetypes = { "proto" },
-    },
+        cmd = { 'buf', 'lsp', 'serve', '--timeout=0', '--log-format=text' },
+        filetypes = { 'proto' },
+        root_markers = { 'buf.yaml', '.git' },
+        on_init = function (client, init_result)
+            client.name = 'Protobuf(buf)'
+        end
+    }
 }

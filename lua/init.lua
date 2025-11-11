@@ -1,3 +1,12 @@
+--[[
+vim.g: global variables (g:)
+vim.b: variables for the current buffer (b:)
+vim.w: variables for the current window (w:)
+vim.t: variables for the current tabpage (t:)
+vim.v: predefined Vim variables (v:)
+vim.env: environment variables defined in the editor session
+    ]]
+
 vim.cmd('syntax enable')        -- 启用语法高亮
 vim.o.hidden = true             -- 允许在有未保存的修改时切换缓冲区
 vim.o.tabstop = 4               -- 设置制表符的宽度为 4 个空格

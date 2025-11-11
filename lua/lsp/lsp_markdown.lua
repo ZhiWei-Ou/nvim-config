@@ -1,10 +1,22 @@
-local G = require("lsp.general")
+---@brief
+---
+--- https://github.com/artempyanykh/marksman
+---
+--- Marksman is a Markdown LSP server providing completion, cross-references, diagnostics, and more.
+---
+--- Marksman works on MacOS, Linux, and Windows and is distributed as a self-contained binary for each OS.
+---
+--- Pre-built binaries can be downloaded from https://github.com/artempyanykh/marksman/releases
 
+---@type vim.lsp.Config
 return {
     name = 'marksman',
     opts = {
-        alias = "Markdown",
-        on_attach = G.lsp_general_on_attach,
-        filetypes = { "markdown", "md" },
-    },
+        cmd = { 'marksman', 'server' },
+        filetypes = { 'markdown', 'markdown.mdx' },
+        root_markers = { '.marksman.toml', '.git' },
+        on_init = function (client)
+            client.name = 'Markdown(marksman)'
+        end
+    }
 }

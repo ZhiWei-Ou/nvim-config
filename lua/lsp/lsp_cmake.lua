@@ -1,22 +1,17 @@
-local G = require("lsp.general")
+---@brief
+---
+--- https://github.com/regen100/cmake-language-server
+---
+--- CMake LSP Implementation
 
 return {
     name = 'cmake',
     opts = {
-        alias = "CMake",
-        on_attach = G.lsp_general_on_attach,
-        filetypes = {
-            "cmake"
-        },
-        init_options = {
-            buildDirectory = "build"
-        },
-        root_markers = {
-            'CMakePresets.json',
-            'CTestConfig.cmake',
-            '.git',
-            'build',
-            'cmake'
-        }
+        filetypes = { 'cmake' },
+        init_options = { buildDirectory = "build" },
+        root_markers = { 'CMakePresets.json', 'CTestConfig.cmake', '.git', 'build', 'cmake' },
+        on_init = function (c, i)
+            c.name = 'CMake(cmake)'
+        end
     },
 }

@@ -1,29 +1,44 @@
-local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+---@brief
+---
+--- https://github.com/python-lsp/python-lsp-server
+---
+--- A Python 3.6+ implementation of the Language Server Protocol.
+---
+--- See the [project's README](https://github.com/python-lsp/python-lsp-server) for installation instructions.
+---
+--- Configuration options are documented [here](https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md).
+--- In order to configure an option, it must be translated to a nested Lua table and included in the `settings` argument to the `config('pylsp', {})` function.
+--- For example, in order to set the `pylsp.plugins.pycodestyle.ignore` option:
+--- ```lua
+--- vim.lsp.config('pylsp', {
+---   settings = {
+---     pylsp = {
+---       plugins = {
+---         pycodestyle = {
+---           ignore = {'W391'},
+---           maxLineLength = 100
+---         }
+---       }
+---     }
+---   }
+--- })
+--- ```
+---
+--- Note: This is a community fork of `pyls`.
 
-vim.lsp.config("ruff", {
-  -- Optional: If you want to use Ruff exclusively for linting and formatting,
-  -- you can disable other capabilities to avoid conflicts with your primary LSP.
-  on_attach = function(client, bufnr)
-    if client.name == "ruff_lsp" then
-      client.server_capabilities.hoverProvider = false
-      client.server_capabilities.definitionProvider = false
-    end
-  end,
-})
-
-vim.lsp.config("pylsp", {
-  capabilities = capabilities,
-  settings = {
-    pylsp = {
-      plugins = {
-        -- Disable some default plugins if you're using other tools
-        pycodestyle = { enabled = false },
-        pyflakes = { enabled = false },
-        -- Enable plugins for other tools
-        ruff = { enabled = true },
-        black = { enabled = true },
-      },
+---@type vim.lsp.Config
+return {
+    name = 'pylsp',
+    opts = {
+        cmd = { 'pylsp' },
+        filetypes = { 'python' },
+        root_markers = {
+            'pyproject.toml',
+            'setup.py',
+            'setup.cfg',
+            'requirements.txt',
+            'Pipfile',
+            '.git',
+        },
     },
-  },
-})
+}
