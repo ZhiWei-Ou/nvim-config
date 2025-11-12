@@ -7,3 +7,4 @@
 /plugin/packer_compiled.lua
 /.vscode
 /lazy-lock.json
+/.nvim-theme

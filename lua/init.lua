@@ -30,6 +30,7 @@ vim.o.showmatch = true          -- 显示匹配的括号
 
 vim.g.mapleader = '.'
 vim.g.maplocalleader = "\\"
+vim.g.default_theme = 'default'
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -47,4 +48,4 @@ keymap('n', '<C-\\>', '<C-w>v', { noremap = true, silent = true, desc = 'Vertica
 keymap('v', '<C-c>', '+y', { noremap = true, silent = true, desc = 'Copy selected text to system clipboard' })
 
 require('bootstrap').startup()
-require('theme').startup(true)
+require('theme').setup()
