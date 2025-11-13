@@ -11,7 +11,7 @@ return {
 
     config = function()
 
-        print(vim.inspect(MiniIcons.get('directory', 'nvim')))
+        -- print(vim.inspect(MiniIcons.get('directory', 'nvim')))
 
         require('dashboard').setup {
             theme = 'hyper',
