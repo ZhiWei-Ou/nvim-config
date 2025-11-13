@@ -162,7 +162,7 @@ return {
             on_dir(get_root_dir(fname))
         end,
         on_init = function (client, init_result)
-            client.name = 'Golang(gopls)'
+            client.alias_name = 'Golang(gopls)'
             imports_and_formatting()
         end,
     }

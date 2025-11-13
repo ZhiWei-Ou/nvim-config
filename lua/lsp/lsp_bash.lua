@@ -29,7 +29,7 @@ return {
         filetypes = { 'bash', 'sh' },
         root_markers = { '.git' },
         on_init = function (c, i)
-            c.name = 'Bash(bashls)'
+            c.alias_name = 'Bash(bashls)'
         end
     }
 }

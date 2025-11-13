@@ -96,7 +96,7 @@ return {
             "hh", "hpp", "h", "hxx"
         },
         on_init = function (client, init_result)
-            client.name = 'C/C++(clangd)'
+            client.alias_name = 'C/C++(clangd)'
 
             if init_result.offsetEncoding then
                 client.offset_encoding = init_result.offsetEncoding

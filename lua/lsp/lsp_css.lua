@@ -28,6 +28,9 @@ return {
         filetypes = { 'css', 'scss', 'less' },
         init_options = { provideFormatter = true }, -- needed to enable formatting capabilities
         root_markers = { 'package.json', '.git' },
+        on_init = function (c, i)
+            c.alias_name = 'CSS(cssls)'
+        end,
         settings = {
             css = { validate = true },
             scss = { validate = true },

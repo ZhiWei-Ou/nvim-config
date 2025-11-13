@@ -11,7 +11,7 @@ return {
         init_options = { buildDirectory = "build" },
         root_markers = { 'CMakePresets.json', 'CTestConfig.cmake', '.git', 'build', 'cmake' },
         on_init = function (c, i)
-            c.name = 'CMake(cmake)'
+            c.alias_name = 'CMake(cmake)'
         end
     },
 }

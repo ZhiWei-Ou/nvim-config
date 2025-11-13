@@ -73,7 +73,7 @@ return {
     name = 'lua_ls',
     opts = {
         on_init = function(client)
-            client.name = 'Lua(lua_ls)'
+            client.alias_name = 'Lua(lua_ls)'
 
             if client.workspace_folders then
                 local path = client.workspace_folders[1].name

@@ -30,7 +30,7 @@ return {
         filetypes = { 'dockerfile' },
         root_markers = { 'Dockerfile' },
         on_init = function (client, init_result)
-            client.name = 'Docker(dockerls)'
+            client.alias_name = 'Docker(dockerls)'
         end
     }
 }

@@ -13,7 +13,7 @@ return {
         filetypes = { 'proto' },
         root_markers = { 'buf.yaml', '.git' },
         on_init = function (client, init_result)
-            client.name = 'Protobuf(buf)'
+            client.alias_name = 'Protobuf(buf)'
         end
     }
 }
