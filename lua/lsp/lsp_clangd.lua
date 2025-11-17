@@ -100,9 +100,9 @@ return {
 
             if init_result.offsetEncoding then
                 client.offset_encoding = init_result.offsetEncoding
-            end 
+            end
 
-            vim.keymap.set('n', '<M-o>', ':LspClangdSwitchSourceHeader<CR>', {buffer = true, noremap = true, silent = true, desc = 'Switch C/C++ Source/Header'})
+            vim.keymap.set('n', '<M-o>', ':LspClangdSwitchSourceHeader<CR>', {buffer = false, noremap = true, silent = true, desc = 'Switch C/C++ Source/Header'})
         end,
         on_attach = function(client, bufnr)
             vim.api.nvim_buf_create_user_command(bufnr, 'LspClangdSwitchSourceHeader', function()
