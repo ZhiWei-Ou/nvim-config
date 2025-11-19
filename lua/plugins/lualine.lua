@@ -54,7 +54,7 @@ return {
                     icon = require('mini.icons').get('os', 'ubuntu')
                     system_name = 'Ubuntu'
                 else
-                    icon, hl = require('nvim-web-devicons').get_icon('linux', 'ko', { default = true })
+                    icon, _ = require('nvim-web-devicons').get_icon('linux', 'ko', { default = true })
                 end
             elseif system_name == 'Windows' then
                 icon = require('mini.icons').get('os', 'windows')
