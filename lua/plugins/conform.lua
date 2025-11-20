@@ -28,7 +28,6 @@ return {
             formatters_by_ft = {
                 c = { 'clang_format' },
                 cpp = { 'clang_format' },
-                json = { 'prettier' },
                 proto = { 'clang_format' },
                 go = { 'gofmt', 'gopls', 'goimports', top_after_first = true },
                 javascript = { "prettier" },
