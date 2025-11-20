@@ -40,7 +40,7 @@ return {
                         desc = ' Update',
                         group = 'Label',
                         action = vim.g.bootstrapsync,
-                        key = 'u'
+                        key = 'U'
                     },
                     {
                         -- icon = ' ',
@@ -48,7 +48,7 @@ return {
                         desc = ' Files',
                         group = 'Label',
                         action = 'Telescope find_files',
-                        key = 'f',
+                        key = 'F',
                     },
                     {
                         -- desc = ' Colorscheme',
@@ -56,7 +56,7 @@ return {
                         desc = ' Colorscheme',
                         group = 'Label',
                         action = 'Telescope colorscheme',
-                        key = 'c',
+                        key = 'C',
                     },
                     {
                         -- desc = ' Commands',
