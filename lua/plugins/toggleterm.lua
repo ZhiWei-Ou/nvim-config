@@ -13,11 +13,18 @@ return {
                 -- winblend = 10, -- display not expected, commit issue: https://github.com/akinsho/toggleterm.nvim/issues/617
                 title_pos = 'center',
             },
+            winbar = {
+                enabled = false,
+                name_formatter = function(term) --  term: Terminal
+                    return ""
+                end
+            },
+            autochdir = true,
+            persist_mode = true,
+            shade_terminals = false
         }
 
-        -- 终端
-        vim.api.nvim_set_keymap('n', '<C-t>', '<cmd>ToggleTerm direction=float<CR>', { noremap = true, silent = true })
-        -- vim.api.nvim_set_keymap('n', '<C-t>', '<cmd>ToggleTerm direction=horizontal<CR>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', '<C-t>', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })
 
         function _G.set_terminal_keymaps()
             local opts = { buffer = 0 }
@@ -46,8 +53,8 @@ return {
                         vim.cmd("edit " .. word) -- open file
                     end
                 end, { buffer = true, desc = "Open file in buffer inside toggleterm" })
-            end,
-        })
+            end, })
+
     end
     ,
 }

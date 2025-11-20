@@ -91,7 +91,7 @@ return {
             },
         })
 
-        vim.api.nvim_create_user_command("Errors", "lua vim.diagnostic.open_float()", { nargs = 0 })
+        vim.api.nvim_create_user_command("Diagnostic", "lua vim.diagnostic.open_float()", { nargs = 0 })
 
         -- 光标悬停高亮
         vim.o.updatetime = 500     -- CursorHold & CursorHoldI Expect Time (ms)
