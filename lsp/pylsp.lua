@@ -27,18 +27,18 @@
 --- Note: This is a community fork of `pyls`.
 
 ---@type vim.lsp.Config
-return {
-    name = 'pylsp',
-    opts = {
-        cmd = { 'pylsp' },
-        filetypes = { 'python' },
-        root_markers = {
-            'pyproject.toml',
-            'setup.py',
-            'setup.cfg',
-            'requirements.txt',
-            'Pipfile',
-            '.git',
-        },
+vim.lsp.config('pylsp', {
+    cmd = { 'pylsp' },
+    filetypes = { 'python' },
+    root_markers = {
+        'pyproject.toml',
+        'setup.py',
+        'setup.cfg',
+        'requirements.txt',
+        'Pipfile',
+        '.git',
     },
-}
+    on_init = function(client, init_result)
+        client.alias_name = 'Python(pylsp)'
+    end
+})

@@ -117,7 +117,11 @@ return {
                             for _, client in ipairs(clients) do
                                 local filetypes = client.config.filetypes
                                 if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                                    return client.alias_name
+                                    if not client.alias_name then
+                                        return client.name
+                                    else
+                                        return client.alias_name
+                                    end
                                 end
                             end
                             return msg

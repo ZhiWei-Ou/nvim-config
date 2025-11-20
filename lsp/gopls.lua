@@ -114,56 +114,54 @@ local function imports_and_formatting()
     )
 end
 
-return {
-    name = 'gopls',
-    opts = {
-        cmd = { 'gopls' },
-        filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-        settings = {
-            gopls = {
-                gofumpt = true,
-                codelenses = {
-                    gc_details = false,
-                    generate = true,
-                    regenerate_cgo = true,
-                    run_govulncheck = true,
-                    test = true,
-                    tidy = true,
-                    upgrade_dependency = true,
-                    vendor = true,
-                },
-                hints = {
-                    assignVariableTypes = true,
-                    compositeLiteralFields = true,
-                    compositeLiteralTypes = true,
-                    constantValues = true,
-                    functionTypeParameters = true,
-                    parameterNames = true,
-                    rangeVariableTypes = true,
-                },
-                analyses = {
-                    nilness = true,
-                    unusedparams = true,
-                    unusedwrite = true,
-                    useany = true,
-                },
-                usePlaceholders = true,
-                completeUnimported = true,
-                staticcheck = true,
-                directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-                semanticTokens = true,
+
+vim.lsp.config('gopls', {
+    cmd = { 'gopls' },
+    filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+    settings = {
+        gopls = {
+            gofumpt = true,
+            codelenses = {
+                gc_details = false,
+                generate = true,
+                regenerate_cgo = true,
+                run_govulncheck = true,
+                test = true,
+                tidy = true,
+                upgrade_dependency = true,
+                vendor = true,
             },
+            hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+            },
+            analyses = {
+                nilness = true,
+                unusedparams = true,
+                unusedwrite = true,
+                useany = true,
+            },
+            usePlaceholders = true,
+            completeUnimported = true,
+            staticcheck = true,
+            directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+            semanticTokens = true,
         },
-        root_dir = function(bufnr, on_dir)
-            local fname = vim.api.nvim_buf_get_name(bufnr)
-            get_mod_cache_dir()
-            get_std_lib_dir()
-            -- see: https://github.com/neovim/nvim-lspconfig/issues/804
-            on_dir(get_root_dir(fname))
-        end,
-        on_init = function (client, init_result)
-            client.alias_name = 'Golang(gopls)'
-            imports_and_formatting()
-        end,
-    }
-}
+    },
+    root_dir = function(bufnr, on_dir)
+        local fname = vim.api.nvim_buf_get_name(bufnr)
+        get_mod_cache_dir()
+        get_std_lib_dir()
+        -- see: https://github.com/neovim/nvim-lspconfig/issues/804
+        on_dir(get_root_dir(fname))
+    end,
+    on_init = function (client, init_result)
+        client.alias_name = 'Golang(gopls)'
+        imports_and_formatting()
+    end,
+})
