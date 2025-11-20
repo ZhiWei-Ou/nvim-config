@@ -6,12 +6,14 @@
 -- local icon, color = require'nvim-web-devicons'.get_icons_by_operating_system()
 -- print(vim.inspect(icon.apple))
 
-
 return {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+    dependencies = {
+        {'nvim-tree/nvim-web-devicons', opt = true},
+        {'echasnovski/mini.nvim', opt = true}
+    },
     config = function()
-        local fg_color = '#d1b0fa'
+        -- local fg_color = '#d1b0fa'
 
         local linux_distro = nil
 
@@ -71,7 +73,7 @@ return {
         require('lualine').setup {
             options = {
                 icons_enabled = true,
-                theme = 'auto',
+                theme = 'material',
                 component_separators = { left = '', right = '' },
                 section_separators = { left = '', right = '' },
                 disabled_filetypes = {
@@ -98,7 +100,7 @@ return {
                 lualine_a = { 'mode' },
                 lualine_b = { 'branch', 'diagnostics', },
                 lualine_c = {
-                    { 'filename', separator = { left = '', right = '' }, color = { fg = '#a9a1e1' } },
+                    { 'filename', separator = { left = '', right = '' }, color = { } },
                     {
                         function()
                             return '%='
