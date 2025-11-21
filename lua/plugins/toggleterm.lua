@@ -28,7 +28,11 @@ return {
 
         function _G.set_terminal_keymaps()
             local opts = { buffer = 0 }
-            vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+
+            -- Disable <esc>, use jk instead, many operation require the use of "esc", 
+            -- and activating it might conflict with work.
+            -- vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+
             vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
         end
 
