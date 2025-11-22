@@ -16,6 +16,10 @@ return {
       install_dir = vim.fn.stdpath('data') .. '/site'
     }
 
+    vim.api.nvim_create_user_command('TSInstallPath', function()
+      print(vim.fn.stdpath('data') .. '/site')
+    end, {})
+
     vim.api.nvim_create_user_command('TSInstallInfo', function()
       local list = require('nvim-treesitter').get_installed()
       print(vim.inspect(list))
