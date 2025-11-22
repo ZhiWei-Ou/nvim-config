@@ -71,7 +71,7 @@ local config = {
         '--all-scopes-completion',
         '--completion-style=detailed', -- bundled, detailed
         '--enable-config',
-        '--function-arg-placeholders=true',
+        '--function-arg-placeholders=false',
     },
     filetypes = {
         "c", "cpp", "objc", "objcpp", "cc",
