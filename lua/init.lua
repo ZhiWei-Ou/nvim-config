@@ -40,12 +40,7 @@ vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
 vim.o.foldlevel = 99
 
-local function keymap(mode, lhs, rhs, opts) vim.api.nvim_set_keymap(mode, lhs, rhs, opts) end
-keymap('n', '<Space>', ':', { noremap = true, silent = false, desc = 'Enter command mode' })
-keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true, desc = 'Save file in normal mode' })
-keymap('i', '<C-s>', '<Esc>:w<CR>a', { noremap = true, silent = true, desc = 'Save file in insert mode' })
-keymap('n', '<C-\\>', '<C-w>v', { noremap = true, silent = true, desc = 'Vertical split' })
-keymap('v', '<C-c>', '+y', { noremap = true, silent = true, desc = 'Copy selected text to system clipboard' })
-
+require'autocmd'
+require'keymap'
 require('bootstrap').startup()
-require('theme').setup()
+require'theme'
