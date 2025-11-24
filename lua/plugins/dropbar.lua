@@ -1,13 +1,10 @@
---[[
-@brief: dropbar plugin
-@refer: https://github.com/Bekaboo/dropbar.nvim
-]]
-
+--- @brief: dropbar plugin
+--- @refer: https://github.com/Bekaboo/dropbar.nvim
 
 return {
-    'Bekaboo/dropbar.nvim',
-    dependencies = {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'make'
-    },
+  'Bekaboo/dropbar.nvim',
+  dependencies = {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make'
+  },
 }

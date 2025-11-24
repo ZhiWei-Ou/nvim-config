@@ -5,7 +5,7 @@ vim.w: variables for the current window (w:)
 vim.t: variables for the current tabpage (t:)
 vim.v: predefined Vim variables (v:)
 vim.env: environment variables defined in the editor session
-    ]]
+]]
 
 vim.cmd('syntax enable')        -- 启用语法高亮
 vim.o.hidden = true             -- 允许在有未保存的修改时切换缓冲区
@@ -20,7 +20,8 @@ vim.o.smartcase = true          -- 搜索时根据输入的大小写开启或关
 vim.o.incsearch = true          -- 实时搜索
 vim.o.hlsearch = true           -- 高亮显示搜索结果
 vim.o.showmode = false          -- 隐藏模式显示
-vim.o.mouse = 'a'               -- 启用鼠标支持 a: all mode, n: normal mode, v: visual mode, i: insert mode, c: command mode, h: help mode
+-- a: all mode, n: normal mode, v: visual mode, i: insert mode, c: command mode, h: help mode
+vim.o.mouse = 'a'               -- 启用鼠标支持
 vim.o.number = true             -- 显示行号
 vim.o.relativenumber = true     -- 显示相对行号
 vim.o.cursorline = true         -- 高亮当前行
@@ -40,7 +41,7 @@ vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
 vim.o.foldlevel = 99
 
-require'autocmd'
-require'keymap'
+require 'autocmd'
+require 'keymap'
 require('bootstrap').startup()
-require'theme'
+require 'theme'

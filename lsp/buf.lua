@@ -7,14 +7,14 @@
 
 ---@type vim.lsp.Config
 vim.lsp.config('buf', {
-    cmd = { 'buf', 'lsp', 'serve', '--timeout=0', '--log-format=text' },
-    filetypes = { 'proto' },
-    root_markers = { 'buf.yaml', '.git' },
-    reuse_client = function()
-        -- `buf lsp serve` is meant to be used with multiple workspaces.
-        return true
-    end,
-    on_init = function(client, init_result)
-        client.alias_name = 'Protobuf(buf)'
-    end
+  cmd = { 'buf', 'lsp', 'serve', '--timeout=0', '--log-format=text' },
+  filetypes = { 'proto' },
+  root_markers = { 'buf.yaml', '.git' },
+  reuse_client = function()
+    -- `buf lsp serve` is meant to be used with multiple workspaces.
+    return true
+  end,
+  on_init = function(client, init_result)
+    client.alias_name = 'Protobuf(buf)'
+  end
 })

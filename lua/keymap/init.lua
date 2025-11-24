@@ -1,4 +1,3 @@
-
 --- @brief
 --- 该函数封装了 `vim.api.nvim_set_keymap()`，用于在指定模式下将某个按键
 --- 映射到指定的命令或键序列。通常用于配置快捷键。
@@ -39,23 +38,22 @@ local function K(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
 end
 
---- @brief 
+--- @brief
 K('n', '<Space>', ':',
   { noremap = true, silent = false, desc = 'Enter command mode' })
 
---- @brief 
+--- @brief
 K('n', '<C-s>', ':w<CR>',
   { noremap = true, silent = true, nowait = true, desc = 'Save file in normal mode' })
 
---- @brief 
+--- @brief
 K('i', '<C-s>', '<Esc>:w<CR>a',
   { noremap = true, silent = true, nowait = true, desc = 'Save file in insert mode' })
 
---- @brief 
+--- @brief
 K('n', '<C-\\>', '<C-w>v',
   { noremap = true, silent = true, nowait = true, desc = 'Vertical split' })
 
---- @brief 
+--- @brief
 K('v', '<C-c>', '+y',
   { noremap = true, silent = true, nowait = true, desc = 'Copy selected text to system clipboard' })
-

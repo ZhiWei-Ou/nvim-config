@@ -28,17 +28,17 @@
 
 ---@type vim.lsp.Config
 vim.lsp.config('pylsp', {
-    cmd = { 'pylsp' },
-    filetypes = { 'python' },
-    root_markers = {
-        'pyproject.toml',
-        'setup.py',
-        'setup.cfg',
-        'requirements.txt',
-        'Pipfile',
-        '.git',
-    },
-    on_init = function(client, init_result)
-        client.alias_name = 'Python(pylsp)'
-    end
+  cmd = { 'pylsp' },
+  filetypes = { 'python' },
+  root_markers = {
+    'pyproject.toml',
+    'setup.py',
+    'setup.cfg',
+    'requirements.txt',
+    'Pipfile',
+    '.git',
+  },
+  on_init = function(client, init_result)
+    client.alias_name = 'Python(pylsp)'
+  end
 })
