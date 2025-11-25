@@ -4,12 +4,12 @@
     "description": "File header comment",
     "body": [
       "/**",
-      " * @brief: ${1}",
-      " * @file: ${TM_FILENAME}",
-      " * @author: Oswin",
-      " * @date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      " * @brief ${1}",
+      " * @file ${TM_FILENAME}",
+      " * @author Oswin",
+      " * @date $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
       " *",
-      " * @copyright: ${2}All rights reserved.",
+      " * @Copyright (c) 2025 *. All Rights Reserved.",
       " */",
       ""
     ]
