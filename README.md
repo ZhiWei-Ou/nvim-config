@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ZhiWei-Ou/nvim-config/main/assets/logo.png" width="120" />
+  <img src="./assets/logo.png" width="120" style="border-radius: 50%" />
   <h1>Neovim Config</h1>
   <p>A modern, feature-rich, and fast Neovim configuration based on Lua.</p>
 </div>
