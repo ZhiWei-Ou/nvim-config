@@ -19,10 +19,13 @@ return {
       },
       autochdir = true,
       persist_mode = true,
-      shade_terminals = false
+      shade_terminals = false,
+      shading_factor = -30,
+      shading_ratio = -3,
     }
 
-    vim.api.nvim_set_keymap('n', '<C-t>', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', '<C-t>', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })
+    vim.keymap.set('n', '<C-j>', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })
 
     function _G.set_terminal_keymaps()
       local opts = { buffer = 0 }

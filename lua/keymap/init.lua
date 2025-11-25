@@ -35,7 +35,8 @@
 ---
 --- @return nil
 local function K(mode, lhs, rhs, opts)
-  vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+  -- vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+  vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 --- @brief

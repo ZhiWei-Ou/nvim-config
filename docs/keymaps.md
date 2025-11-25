@@ -4,6 +4,14 @@ This configuration uses `which-key.nvim` to help you discover keybindings. Press
 
 This document highlights the most important global keybindings that are not plugin-specific.
 
+# Usage
+```lua
+vim.api.nvim_set_keymap("n", "<leader>t", ":echo 'hi'<CR>", { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>t", function()
+  print("Hello")
+end, { silent = true })
+
 ## Global Keybindings
 
 | Keybinding | Action                                           | Plugin                |
