@@ -37,7 +37,7 @@ return {
         buf_options = {},
         win_options = {
           -- Disable line wrapping
-          wrap = true,
+          wrap = false,
           -- Indicator for when text exceeds window
           list = true,
           listchars = "precedes:…,extends:…",

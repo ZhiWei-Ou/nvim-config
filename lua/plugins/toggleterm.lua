@@ -24,8 +24,8 @@ return {
       shading_ratio = -3,
     }
 
-    vim.keymap.set('n', '<C-t>', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })
-    vim.keymap.set('n', '<C-j>', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })
+    vim.keymap.set({ 'n' }, '<C-t>', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })
+    vim.keymap.set({ 'n', 't' }, '<C-j>', '<cmd>ToggleTerm<CR>', { noremap = true, silent = true })
 
     function _G.set_terminal_keymaps()
       local opts = { buffer = 0 }
