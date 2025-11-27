@@ -20,7 +20,7 @@ return {
   },
   config = function()
     local cmp = require("cmp")
-    local lspkind = require("lspkind")
+    -- local lspkind = require("lspkind")
     local luasnip = require("luasnip")
 
     cmp.setup {
@@ -89,35 +89,62 @@ return {
       formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(_, item)
-          local vscode_like_icons = {
-            -- Text = '  ',
-            Text = '<T> ',
-            Method = '  ',
-            Function = '  ',
-            Constructor = '  ',
-            Field = '  ',
-            Variable = '  ',
-            Class = '  ',
-            Interface = '  ',
-            Module = '  ',
-            Property = '  ',
-            Unit = '  ',
-            Value = '  ',
-            Enum = '  ',
-            Keyword = '  ',
-            Snippet = '  ',
-            Color = '  ',
-            File = '  ',
-            Reference = '  ',
-            Folder = '  ',
-            EnumMember = '  ',
-            Constant = '  ',
-            Struct = '  ',
-            Event = '  ',
-            Operator = '  ',
-            TypeParameter = '<T> ',
+          local kind_icons = {
+            Text = "",
+            Method = "󰆧",
+            Function = "󰊕",
+            Constructor = "",
+            Field = "󰇽",
+            Variable = "󰂡",
+            Class = "󰠱",
+            Interface = "",
+            Module = "",
+            Property = "󰜢",
+            Unit = "",
+            Value = "󰎠",
+            Enum = "",
+            Keyword = "󰌋",
+            Snippet = "",
+            Color = "󰏘",
+            File = "󰈙",
+            Reference = "",
+            Folder = "󰉋",
+            EnumMember = "",
+            Constant = "󰏿",
+            Struct = "",
+            Event = "",
+            Operator = "󰆕",
+            TypeParameter = "󰅲",
           }
-          item.kind = vscode_like_icons[item.kind] or ""
+          -- local vscode_like_icons = {
+          --   -- Text = '  ',
+          --   Text = '<T> ',
+          --   Method = '  ',
+          --   Function = '  ',
+          --   Constructor = '  ',
+          --   Field = '  ',
+          --   Variable = '  ',
+          --   Class = '  ',
+          --   Interface = '  ',
+          --   Module = '  ',
+          --   Property = '  ',
+          --   Unit = '  ',
+          --   Value = '  ',
+          --   Enum = '  ',
+          --   Keyword = '  ',
+          --   Snippet = '  ',
+          --   Color = '  ',
+          --   File = '  ',
+          --   Reference = '  ',
+          --   Folder = '  ',
+          --   EnumMember = '  ',
+          --   Constant = '  ',
+          --   Struct = '  ',
+          --   Event = '  ',
+          --   Operator = '  ',
+          --   TypeParameter = '<T> ',
+          -- }
+          item.kind = kind_icons[item.kind] or ""
           return item
         end,
       },
@@ -185,9 +212,9 @@ return {
     vim.api.nvim_set_hl(0, "CmpItemKindProperty", { fg = "#EED8DA", bg = "#B5585F" })
     vim.api.nvim_set_hl(0, "CmpItemKindEvent", { fg = "#EED8DA", bg = "#B5585F" })
 
-    vim.api.nvim_set_hl(0, "CmpItemKindText", { fg = "#C3E88D", bg = "#9FBD73" })
-    vim.api.nvim_set_hl(0, "CmpItemKindEnum", { fg = "#C3E88D", bg = "#9FBD73" })
-    vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { fg = "#C3E88D", bg = "#9FBD73" })
+    vim.api.nvim_set_hl(0, "CmpItemKindText", { fg = "#C3E88D", bg = nil })
+    vim.api.nvim_set_hl(0, "CmpItemKindEnum", { fg = "#C3E88D", bg = nil })
+    vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { fg = "#C3E88D", bg = nil })
 
     vim.api.nvim_set_hl(0, "CmpItemKindConstant", { fg = "#FFE082", bg = "#D4BB6C" })
     vim.api.nvim_set_hl(0, "CmpItemKindConstructor", { fg = "#FFE082", bg = "#D4BB6C" })
@@ -202,9 +229,9 @@ return {
     vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = "#C5CDD9", bg = "#7E8294" })
     vim.api.nvim_set_hl(0, "CmpItemKindFile", { fg = "#C5CDD9", bg = "#7E8294" })
 
-    vim.api.nvim_set_hl(0, "CmpItemKindUnit", { fg = "#F5EBD9", bg = "#D4A959" })
-    vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { fg = "#F5EBD9", bg = "#D4A959" })
-    vim.api.nvim_set_hl(0, "CmpItemKindFolder", { fg = "#F5EBD9", bg = "#D4A959" })
+    vim.api.nvim_set_hl(0, "CmpItemKindUnit", { fg = "#FFFFFF", bg = nil, bold = true })
+    vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { fg = "#FFFFFF", bg = nil, bold = true })
+    vim.api.nvim_set_hl(0, "CmpItemKindFolder", { fg = "#FFFFFF", bg = nil, bold = true })
 
     vim.api.nvim_set_hl(0, "CmpItemKindMethod", { fg = "#DDE5F5", bg = "#6C8ED4" })
     vim.api.nvim_set_hl(0, "CmpItemKindValue", { fg = "#DDE5F5", bg = "#6C8ED4" })
