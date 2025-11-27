@@ -13,6 +13,12 @@
                     "cmake"
                 ],
                 "path": "cmake/cmake.json"
+            },
+            {
+                "language": [
+                    "go", "golang"
+                ],
+                "path": "go/go.json"
             }
 		]
 	}

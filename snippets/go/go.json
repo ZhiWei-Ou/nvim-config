@@ -1,0 +1,10 @@
+{
+  "Go-PackageName": {
+    "prefix": "pkg",
+    "description": "Package name",
+    "body": [
+      "\/\/ Package ${TM_DIRECTORY/.*[\\/](.*)/$1/}",
+      "package ${TM_DIRECTORY/.*[\\/](.*)/$1/}"
+    ]
+  }
+}

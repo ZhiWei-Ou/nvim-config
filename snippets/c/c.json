@@ -1,6 +1,6 @@
 {
   "C-FileHeaderComments": {
-    "prefix": "_fhc",
+    "prefix": "file_header_comments",
     "description": "File header comment",
     "body": [
       "/**",
@@ -15,7 +15,7 @@
     ]
   },
   "C-FileGuard": {
-    "prefix": "_fg",
+    "prefix": "file_guard",
     "description": "File guard",
     "body": [
       "#ifndef ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H_",
