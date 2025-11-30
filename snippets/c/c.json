@@ -8,10 +8,10 @@
       " * @file ${TM_FILENAME}",
       " * @author Oswin",
       " * @date $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      " * @details",
       " *",
-      " * @Copyright (c) 2025 *. All Rights Reserved.",
-      " */",
-      ""
+      " * @copyright (c) 2025 *. All Rights Reserved.",
+      " */"
     ]
   },
   "C-FileGuard": {
