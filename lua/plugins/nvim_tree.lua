@@ -45,8 +45,8 @@ return {
         }
       },
       filters = {
-        dotfiles = false,
-        git_ignored = false,
+        dotfiles = true,
+        git_ignored = true,
       },
       diagnostics = {
         enable = true,
