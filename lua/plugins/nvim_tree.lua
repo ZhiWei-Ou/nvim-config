@@ -13,8 +13,6 @@ return {
     }
   },
   config = function()
-    local api = require('nvim-tree.api')
-
     -- file type highlight
     vim.cmd([[
         :hi      NvimTreeExecFile    guifg=#ffa0a0
@@ -47,7 +45,7 @@ return {
         }
       },
       filters = {
-        dotfiles = true,
+        dotfiles = false,
         git_ignored = false,
       },
       diagnostics = {
