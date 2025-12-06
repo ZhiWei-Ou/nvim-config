@@ -41,6 +41,8 @@ vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
 vim.o.foldlevel = 99
 
+vim.b.conform_enable = false -- disable formatter by default
+
 require 'autocmd'
 require 'keymap'
 require('bootstrap').startup()
