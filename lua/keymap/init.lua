@@ -44,12 +44,12 @@ K('n', '<Space>', ':',
   { noremap = true, silent = false, desc = 'Enter command mode' })
 
 --- @brief
-K('n', '<C-s>', ':w<CR>',
-  { noremap = true, silent = true, nowait = true, desc = 'Save file in normal mode' })
+K('n', '<C-s>', ':update<CR>',
+  { noremap = true, silent = true, nowait = true, desc = 'Save file in normal mode(only write when modified)' })
 
 --- @brief
-K('i', '<C-s>', '<Esc>:w<CR>a',
-  { noremap = true, silent = true, nowait = true, desc = 'Save file in insert mode' })
+K('i', '<C-s>', '<Esc>:update<CR>a',
+  { noremap = true, silent = true, nowait = true, desc = 'Save file in insert mode(only write when modified)' })
 
 --- @brief
 K('n', '<C-\\>', '<C-w>v',
