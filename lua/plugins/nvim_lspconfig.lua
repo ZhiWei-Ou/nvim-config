@@ -116,6 +116,14 @@ return {
       },
     })
 
-    vim.api.nvim_create_user_command("Diagnostic", "lua vim.diagnostic.open_float()", { nargs = 0 })
+    --- @brief: open float diagnostic
+    vim.api.nvim_create_user_command("Diagnostic", 'lua vim.diagnostic.open_float()', { nargs = 0 })
+
+    --- @brief: toggle inlay hint
+    vim.api.nvim_create_user_command("Hint",
+      function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { nargs = 0 })
+
+    --- @breif: run lens
+    vim.api.nvim_create_user_command("Lenses", 'lua vim.lsp.codelens.run()', { nargs = 0 })
   end,
 }
