@@ -1,5 +1,5 @@
---- @breif: mason lspconfig plugin
---- @refer: https://github.com/mason-org/mason-lspconfig.nvim
+---@brief mason lspconfig plugin
+---@refer https://github.com/mason-org/mason-lspconfig.nvim
 
 return {
   'mason-org/mason-lspconfig.nvim',

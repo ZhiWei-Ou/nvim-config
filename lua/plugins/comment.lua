@@ -1,6 +1,6 @@
---- @brief nvim-comment setup
---- @see https://github.com/numToStr/Comment.nvim
---- @keymaps
+---@brief nvim-comment setup
+---@see https://github.com/numToStr/Comment.nvim
+---@keymaps
 --[[
 # NORMAL mode
 `gcc` - Toggles the current line using linewise comment
@@ -14,7 +14,7 @@
 `gc` - Toggles the region using linewise comment
 `gb` - Toggles the region using blockwise comment
 ]]
---- @endkeymaps
+---@endkeymaps
 return {
   "numToStr/Comment.nvim",
   opts = {

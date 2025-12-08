@@ -1,5 +1,5 @@
---- @brief: nvim-cmp setup
---- @refer: https://github.com/hrsh7th/nvim-cmp
+---@brief nvim-cmp setup
+---@refer https://github.com/hrsh7th/nvim-cmp
 
 -- used for nvim-cmp.config.window.completion.winhighlight
 -- search 'CmpNormal' to jump to the configuration

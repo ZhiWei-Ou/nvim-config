@@ -1,5 +1,5 @@
---- @brief: nvim-web-devicons setup
---- @refer: https://github.com/nvim-tree/nvim-web-devicons
+---@brief nvim-web-devicons setup
+---@refer https://github.com/nvim-tree/nvim-web-devicons
 
 return {
   "nvim-tree/nvim-web-devicons",

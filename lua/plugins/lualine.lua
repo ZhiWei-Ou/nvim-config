@@ -1,5 +1,5 @@
---- @brief: statusline plugin
---- @refer: https://github.com/nvim-lualine/lualine.nvim
+---@brief statusline plugin
+---@refer https://github.com/nvim-lualine/lualine.nvim
 
 -- local icon, color = require'nvim-web-devicons'.get_icons_by_operating_system()
 -- print(vim.inspect(icon.apple))

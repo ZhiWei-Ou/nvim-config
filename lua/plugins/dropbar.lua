@@ -1,5 +1,5 @@
---- @brief: dropbar plugin
---- @refer: https://github.com/Bekaboo/dropbar.nvim
+---@brief dropbar plugin
+---@refer https://github.com/Bekaboo/dropbar.nvim
 
 return {
   'Bekaboo/dropbar.nvim',

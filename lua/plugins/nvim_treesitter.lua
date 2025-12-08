@@ -1,6 +1,6 @@
---- @brief: nvim-treesitter setup
---- @refer: https://github.com/nvim-treesitter/nvim-treesitter/blob/main/README.md
---- @path: ls ~/.local/share/nvim/site/**
+---@brief nvim-treesitter setup
+---@refer https://github.com/nvim-treesitter/nvim-treesitter/blob/main/README.md
+---@path ls ~/.local/share/nvim/site/**
 
 return {
   'nvim-treesitter/nvim-treesitter',
@@ -42,7 +42,7 @@ return {
     local can_install_list = require('nvim-treesitter').get_available()
     local ensure_installed_list = {'doxygen'}
 
-    --- @brief : ensure `ensure_installed_list` installed
+    ---@brief : ensure `ensure_installed_list` installed
     for _, i in ipairs(ensure_installed_list) do
       if not vim.tbl_contains(installed_list, i) then
         require('nvim-treesitter').install(i)

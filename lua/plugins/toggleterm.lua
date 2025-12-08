@@ -1,5 +1,5 @@
---- @brief: toggleterm.nvim setup
---- @refer: https://github.com/akinsho/toggleterm.nvim
+---@brief toggleterm.nvim setup
+---@refer https://github.com/akinsho/toggleterm.nvim
 
 return {
   "akinsho/toggleterm.nvim",

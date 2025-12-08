@@ -1,6 +1,6 @@
---- @brief: telescope.nvim setup
---- @refer: https://github.com/nvim-telescope/telescope.nvim
---- @note: 需要下载ripgrep ```bash $ brew install ripgrep ```
+---@brief telescope.nvim setup
+---@refer https://github.com/nvim-telescope/telescope.nvim
+---@note 需要下载ripgrep ```bash $ brew install ripgrep ```
 
 return {
   'nvim-telescope/telescope.nvim',

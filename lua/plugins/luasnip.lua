@@ -1,5 +1,5 @@
---- @breif: snippet plugin
---- @refer: https://github.com/L3MON4D3/LuaSnip
+---@brief snippet plugin
+---@refer https://github.com/L3MON4D3/LuaSnip
 
 return {
   "L3MON4D3/LuaSnip",

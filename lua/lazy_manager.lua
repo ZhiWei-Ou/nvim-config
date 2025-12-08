@@ -1,5 +1,5 @@
---- @breif: lazy.nvim plugin manager
---- @refer: https://lazy.folke.io/usage/migration
+---@breif lazy.nvim plugin manager
+---@refer https://lazy.folke.io/usage/migration
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

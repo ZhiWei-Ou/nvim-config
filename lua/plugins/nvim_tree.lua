@@ -1,5 +1,5 @@
---- @brief: nvim-tree setup
---- @refer: https://github.com/nvim-tree/nvim-tree.lua
+---@brief nvim-tree setup
+---@refer https://github.com/nvim-tree/nvim-tree.lua
 
 return {
   "nvim-tree/nvim-tree.lua",

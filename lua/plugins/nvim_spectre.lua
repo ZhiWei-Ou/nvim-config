@@ -1,6 +1,6 @@
---- @brief: nvim-spectre setup
---- @refer: https://github.com/nvim-pack/nvim-spectre
---- @note: You may need run `brew install gnu-sed`
+---@brief nvim-spectre setup
+---@refer https://github.com/nvim-pack/nvim-spectre
+---@note You may need run `brew install gnu-sed`
 
 return {
   'windwp/nvim-spectre',

@@ -1,5 +1,5 @@
---- @brief: catppuccin theme
---- @refer: https://github.com/Civitasv/cmake-tools.nvim
+---@brief catppuccin theme
+---@refer https://github.com/Civitasv/cmake-tools.nvim
 
 return {
   'Civitasv/cmake-tools.nvim',

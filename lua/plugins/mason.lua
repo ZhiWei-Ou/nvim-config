@@ -1,5 +1,5 @@
---- @brief: LSP server installer
---- @refer: https://github.com/mason-org/mason.nvim
+---@brief LSP server installer
+---@refer https://github.com/mason-org/mason.nvim
 
 return {
   'williamboman/mason.nvim',

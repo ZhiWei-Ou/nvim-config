@@ -1,5 +1,5 @@
---- @brief: render-markdown.nvim setup
---- @refer: https://github.com/MeanderingProgrammer/render-markdown.nvim
+---@brief render-markdown.nvim setup
+---@refer https://github.com/MeanderingProgrammer/render-markdown.nvim
 
 return {
   'MeanderingProgrammer/render-markdown.nvim',

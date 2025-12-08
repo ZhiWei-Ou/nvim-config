@@ -1,8 +1,8 @@
---- @brief: file formatter plugin
---- @refer: https://github.com/stevearc/conform.nvim
+---@brief file formatter plugin
+---@refer https://github.com/stevearc/conform.nvim
 
 
---- @brief: define a flag for conform, used to control the formatting
+---@brief define a flag for conform, used to control the formatting
 
 return {
   'stevearc/conform.nvim',

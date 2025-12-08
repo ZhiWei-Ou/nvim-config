@@ -3,7 +3,7 @@ local function is_binary_file(path)
     local ok, data = pcall(function()
         local f = io.open(path, "rb")
         if not f then return nil end
-        local content = f:read(4096)  -- 检查前 4KB
+        local content = f:read(4096)
         f:close()
         return content
     end)
@@ -16,12 +16,10 @@ local function is_binary_file(path)
     for i = 1, total do
         local byte = data:byte(i)
 
-        -- NULL 字节 → 99% 是 binary
         if byte == 0 then
             return true
         end
 
-        -- 控制字符但不是常见的文本控制符
         if (byte < 9)
         or (byte > 13 and byte < 32)
         then
@@ -29,7 +27,6 @@ local function is_binary_file(path)
         end
     end
 
-    -- 超过 10% 非文本字符 → binary
     if nontext / total > 0.1 then
         return true
     end

@@ -1,5 +1,5 @@
---- @brief: trouble.nvim setup
---- @refer: https://github.com/folke/trouble.nvim
+---@brief trouble.nvim setup
+---@refer https://github.com/folke/trouble.nvim
 
 return {
   'folke/trouble.nvim',

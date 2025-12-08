@@ -1,5 +1,4 @@
---- @brief: Highlight symbol under cursor
-
+---@brief Highlight symbol under cursor
 vim.o.updatetime = 500 -- CursorHold & CursorHoldI Expect Time (ms)
 local lsp_highlight_group = vim.api.nvim_create_augroup('LspHighlight', { clear = true })
 local file_patterns = { "*.c", "*.h", "*.cpp", "*.hpp", "*.cc", "*.hh", "*.go", "*.lua", "*.sh" }

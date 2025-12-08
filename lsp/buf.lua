@@ -1,5 +1,5 @@
---- @brief
---- https://github.com/bufbuild/buf
+---@brief
+---@see https://github.com/bufbuild/buf
 ---
 --- buf beta lsp included in the cli itself
 ---

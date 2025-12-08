@@ -4,11 +4,11 @@
 ---
 --- Google's lsp server for golang.
 
---- @class go_dir_custom_args
+---@class go_dir_custom_args
 ---
---- @field envvar_id string
+---@field envvar_id string
 ---
---- @field custom_subdir string?
+---@field custom_subdir string?
 
 local mod_cache = nil
 local std_lib = nil

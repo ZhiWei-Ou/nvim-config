@@ -37,7 +37,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
---- @brief use neovim built-in OSC52 clipboard for ssh
+---@brief use neovim built-in OSC52 clipboard for ssh
 --- @{
 if vim.env.SSH_TTY then
   vim.g.clipboard = {

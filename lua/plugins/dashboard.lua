@@ -1,5 +1,5 @@
---- @brief: dashboard plugin
---- @refer: https://github.com/nvimdev/dashboard-nvim
+---@brief dashboard plugin
+---@refer https://github.com/nvimdev/dashboard-nvim
 
 return {
   'nvimdev/dashboard-nvim',

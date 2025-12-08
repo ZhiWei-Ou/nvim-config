@@ -1,10 +1,10 @@
---- @brief: nvim lspconfig plugin
---- @refer: https://github.com/neovim/nvim-lspconfig
+---@brief nvim lspconfig plugin
+---@refer https://github.com/neovim/nvim-lspconfig
 
 --[[
     all of lsp configurations
 
-    @refer: https://neovim.io/doc/user/lsp.html
+  @refer https://neovim.io/doc/user/lsp.html
     The following keymaps are created unconditionally when Nvim starts:
     gra gri grn grr grt i_CTRL-S v_an v_in These GLOBAL keymaps are created unconditionally when Nvim starts:
     "gra" is mapped in Normal and Visual mode to vim.lsp.buf.code_action()
@@ -116,14 +116,14 @@ return {
       },
     })
 
-    --- @brief: open float diagnostic
+    ---@brief open float diagnostic
     vim.api.nvim_create_user_command("Diagnostic", 'lua vim.diagnostic.open_float()', { nargs = 0 })
 
-    --- @brief: toggle inlay hint
+    ---@brief toggle inlay hint
     vim.api.nvim_create_user_command("Hint",
       function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { nargs = 0 })
 
-    --- @breif: run lens
+    ---@brief run lens
     vim.api.nvim_create_user_command("Lenses", 'lua vim.lsp.codelens.run()', { nargs = 0 })
   end,
 }
