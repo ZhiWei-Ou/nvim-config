@@ -40,6 +40,14 @@ return {
 
     local installed_list = require('nvim-treesitter').get_installed()
     local can_install_list = require('nvim-treesitter').get_available()
+    local ensure_installed_list = {'doxygen'}
+
+    --- @brief : ensure `ensure_installed_list` installed
+    for _, i in ipairs(ensure_installed_list) do
+      if not vim.tbl_contains(installed_list, i) then
+        require('nvim-treesitter').install(i)
+      end
+    end
 
     vim.api.nvim_create_autocmd("FileType", {
       callback = function(args)
