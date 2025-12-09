@@ -12,20 +12,34 @@ require('init')
 
 ---@brief get os information
 -- print(vim.inspect(vim.loop.os_uname()))
-vim.api.nvim_create_user_command('OS', 'lua print(vim.inspect(vim.loop.os_uname()))', {})
+vim.api.nvim_create_user_command('OS', function()
+  local s = vim.loop.os_uname()
+  print("Neovim Version = " .. tostring(vim.version()))
+  print("Machine = " .. s.machine)
+  print("Release = " .. s.release)
+  print("Sysname = " .. s.sysname)
+  print("Version = " .. s.version)
+end, {})
 
----@brief print path
---[[ print("Config: " .. vim.fn.stdpath("config"))
-print("Data: " .. vim.fn.stdpath("data"))
-print("State: " .. vim.fn.stdpath("state"))
-print("Cache: " .. vim.fn.stdpath("cache"))
-print("Run: " .. vim.fn.stdpath("run"))
-print("Log: " .. vim.fn.stdpath("log")) ]]
+---@brief print standard path
 vim.api.nvim_create_user_command('StdPath', function()
-  print("Config: " .. vim.fn.stdpath("config"))
-  print("Data: " .. vim.fn.stdpath("data"))
-  print("State: " .. vim.fn.stdpath("state"))
-  print("Cache: " .. vim.fn.stdpath("cache"))
-  print("Run: " .. vim.fn.stdpath("run"))
-  print("Log: " .. vim.fn.stdpath("log"))
+  print("config = " .. vim.fn.stdpath("config"))
+  print("data = " .. vim.fn.stdpath("data"))
+  print("state = " .. vim.fn.stdpath("state"))
+  print("cache = " .. vim.fn.stdpath("cache"))
+  print("run = " .. vim.fn.stdpath("run"))
+  print("log = " .. vim.fn.stdpath("log"))
+end, {})
+
+---@brief print debug info
+vim.api.nvim_create_user_command("DebugInfo", function()
+  local info = {
+    "LSP = " .. table.concat(vim.tbl_map(function(c) return c.name end, vim.lsp.get_clients({ bufnr = 0 })), ", "),
+    "Filetype = " .. vim.bo.filetype,
+    "SSH = " .. (vim.env.SSH_TTY and "Yes" or "No"),
+    "TMUX = " .. (vim.env.TMUX and "Yes" or "No"),
+    "Leader = [" .. (vim.g.mapleader or "NIL") .. "]",
+  }
+
+  print(table.concat(info, "\n"))
 end, {})
