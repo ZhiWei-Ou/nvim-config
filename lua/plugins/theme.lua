@@ -1,6 +1,17 @@
 return {
   {
     'projekt0n/github-nvim-theme',
+    init = function()
+      vim.g.everforest_enable_italic = true
+      vim.g.everforest_background = 'soft'
+      vim.g.everforest_better_performance = 1
+      -- vim.g.background = 'light'
+    end,
+    config = function()
+    end
+  },
+  {
+    'sainnhe/everforest',
   },
   {
     'catppuccin/nvim',

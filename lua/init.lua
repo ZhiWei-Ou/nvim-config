@@ -37,8 +37,8 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
+---@section OSC52_Clipboard
 ---@brief use neovim built-in OSC52 clipboard for ssh
---- @{
 if vim.env.SSH_TTY then
   vim.g.clipboard = {
     name = 'OSC 52 (SSH Only)',
@@ -53,7 +53,7 @@ if vim.env.SSH_TTY then
   }
 end
 vim.opt.clipboard = "unnamedplus"
---- }
+--- @endsection
 
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "v:lua.vim.lsp.foldexpr()"
