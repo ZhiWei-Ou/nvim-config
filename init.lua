@@ -7,8 +7,13 @@
 --   vim.loader.enable()
 -- end
 
+---@section define global variable
+---@brief Personal Neovim JSON configuration
+vim.g.personal_config = vim.fn.stdpath('config') .. '/nvim-personal.json'
+---@endsection
+
 ---@brief load init file
-require('init')
+require 'init'
 
 ---@section OS Command
 ---@brief get os information
@@ -56,5 +61,6 @@ vim.api.nvim_create_user_command("DebugInfo", function()
   print("Shiftwidth = " .. vim.bo.shiftwidth)
   print("Softtabstop = " .. vim.bo.softtabstop)
   print("Expandtab = " .. (vim.bo.expandtab and "Yes" or "No"))
+  print("Background = " .. (vim.o.background == "dark" and "Dark" or "Light"))
 end, {})
 ---@endsection
