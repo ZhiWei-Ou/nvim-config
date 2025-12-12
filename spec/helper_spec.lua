@@ -1,4 +1,6 @@
 -- spec/helper_spec.lua
+---@brief helper_spec
+---@date 2025-12-11
 
 local assert = require('luassert')
 local helper = require('helper')

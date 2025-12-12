@@ -1,3 +1,8 @@
+-- lua/core/autocmds.lua
+---@brief 自动命令
+---@date 2025-12-11
+
+---@section
 ---@brief Highlight symbol under cursor
 vim.o.updatetime = 500 -- CursorHold & CursorHoldI Expect Time (ms)
 local lsp_highlight_group = vim.api.nvim_create_augroup('LspHighlight', { clear = true })
@@ -14,3 +19,4 @@ vim.api.nvim_create_autocmd({ 'CursorMoved' }, {
   callback = vim.lsp.buf.clear_references,
   desc = "Clear symbol highlights",
 })
+---@endsection

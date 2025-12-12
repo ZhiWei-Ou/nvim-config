@@ -1,0 +1,12 @@
+{
+  "Lua-FileHeaderComments": {
+    "prefix": "fhc",
+    "description": "File header comment",
+    "body": [
+      "-- ${RELATIVE_FILEPATH}",
+      "---@brief ${1}",
+      "---@date $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE"
+    ]
+  }
+}
+

@@ -18,7 +18,7 @@ return {
         enable = true, -- show how many plugins neovim loaded
       },
       config = {
-        header = vim.split(require('ui.logo').get_weekday(), "\n"),
+        header = vim.split(require('ui.logo').get_logo(), "\n"),
         project = {
           enable = false,
           limit = 8,
@@ -32,31 +32,27 @@ return {
         },
         shortcut = {
           {
-            -- desc = '󰊳 Update',
             icon = MiniIcons.get('directory', 'build'),
             desc = ' Update',
             group = 'Label',
-            action = vim.g.bootstrapsync,
-            key = 'U'
+            action = 'Lazy update',
+            key = '<C-u>'
           },
           {
-            -- icon = ' ',
             icon = MiniIcons.get('default', 'file'),
             desc = ' Files',
             group = 'Label',
             action = 'Telescope find_files',
-            key = 'F',
+            key = '<C-f>',
           },
           {
-            -- desc = ' Colorscheme',
             icon = MiniIcons.get('lsp', 'color'),
             desc = ' Colorscheme',
             group = 'Label',
             action = 'Telescope colorscheme',
-            key = 'C',
+            key = '<C-c>',
           },
           {
-            -- desc = ' Commands',
             icon = MiniIcons.get('filetype', 'help'),
             desc = ' Commands',
             group = 'Label',

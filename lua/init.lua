@@ -57,7 +57,6 @@ end
 vim.opt.clipboard = "unnamedplus"
 --- @endsection
 
-require 'autocmd'
-require 'keymap'
+require 'core'
 require 'lazy_mngr'
 require 'theme_mngr'

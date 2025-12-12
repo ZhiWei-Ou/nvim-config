@@ -1,6 +1,6 @@
 {
   "C-FileHeaderComments": {
-    "prefix": "file_header_comments",
+    "prefix": "fhc",
     "description": "File header comment",
     "body": [
       "/**",
@@ -10,12 +10,12 @@
       " * @date $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
       " * @details",
       " *",
-      " * @copyright (c) 2025 *. All Rights Reserved.",
+      " * @copyright (c) 2025 Oswin. All Rights Reserved.",
       " */"
     ]
   },
   "C-FileGuard": {
-    "prefix": "file_guard",
+    "prefix": "fg",
     "description": "File guard",
     "body": [
       "#ifndef ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H_",

@@ -19,6 +19,12 @@
                     "go", "golang"
                 ],
                 "path": "go/go.json"
+            },
+            {
+                "language": [
+                    "lua"
+                ],
+                "path": "lua/lua.json"
             }
 		]
 	}

@@ -1,1 +1,17 @@
-{}
+{
+  "CMake-FileHeaderComments": {
+    "prefix": "fhc",
+    "description": "File header comment",
+    "body": [
+      "# =============================================================== ",
+      "# File    : ${TM_FILENAME}",
+      "# Project : MyProject",
+      "# Author  : Oswin",
+      "# Date    : $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "# Description:",
+      "#    ${1}",
+      "# Copyright (c) 2025 Ouzw. All Rights Reserved.",
+      "# ==============================================================="
+    ]
+  }
+}
