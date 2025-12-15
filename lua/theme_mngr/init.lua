@@ -38,7 +38,9 @@ end
 ---@section set theme from configuration
 local theme = c.tbl("theme")
 if check_colorscheme_name_exist(theme.colorscheme) then
-  vim.cmd.colorscheme(theme.colorscheme)
+  if theme ~= nil and theme.colorscheme ~= nil then
+    vim.cmd.colorscheme(theme.colorscheme)
+  end
 end
 
 --[[ if theme.background == 'dark' then
