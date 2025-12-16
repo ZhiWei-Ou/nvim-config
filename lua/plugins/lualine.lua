@@ -90,7 +90,7 @@ return {
           },
           {
             'lsp_status',
-            icon = '',
+            icon = '',
             symbols = {
               spinner = "",
               done = "",

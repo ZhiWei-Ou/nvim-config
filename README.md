@@ -49,7 +49,7 @@ Here are some of the most important global keybindings:
 | `<C-l>`    | Toggle file explorer                   |
 | `<leader>ca` | List code actions for the current symbol |
 
-For a more comprehensive list of keybindings, including those for LSP and specific plugins, please see the **[Keymaps documentation](./docs/keymaps.md)**.
+For a more comprehensive list of keybindings, including those for LSP and specific plugins, please see the **[Keymaps documentation](./docs/keymaps.md#Usage)**.
 
 ## 🚀 Prerequisites
 
@@ -91,7 +91,7 @@ For a more comprehensive list of keybindings, including those for LSP and specif
 
 For more details on specific configurations, please refer to the `docs/` directory.
 
--   **[Keymaps](./docs/keymaps.md)**
+-   **[Keymaps](./docs/keymaps.md#Keymaps)**
 -   **[Theme](./docs/theme.md)**
 -   **[Git Integration](./docs/git.md)**
 -   **[Autocommands](./docs/autocmd.md)**
