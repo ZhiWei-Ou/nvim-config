@@ -1,4 +1,6 @@
+----- lua/plugins/dashboard.lua
 ---@brief dashboard plugin
+---@date 2025-12-17
 ---@refer https://github.com/nvimdev/dashboard-nvim
 
 return {
@@ -18,7 +20,7 @@ return {
         enable = true, -- show how many plugins neovim loaded
       },
       config = {
-        header = vim.split(require('ui.logo').get_logo(), "\n"),
+        header = require('ui').get_logo(),
         project = {
           enable = false,
           limit = 8,

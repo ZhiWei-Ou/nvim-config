@@ -1,13 +1,18 @@
+-- lua/config/init.lua
 ---@brief personal config
+---@date 2025-12-17
 local X = {}
 local helper = require 'helper'
 
 local template_tbl = {
   version = tostring(vim.version()),
+  logo = {
+    style = 'default',
+  },
   theme = {
-    colorscheme = "default",
-    background = "dark"
-  }
+    colorscheme = 'default',
+    background = 'dark'
+  },
 }
 
 if not helper.file_exists(vim.g.personal_config) then
