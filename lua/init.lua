@@ -39,6 +39,9 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
+
 ---@section OSC52_Clipboard
 ---@brief use neovim built-in OSC52 clipboard for ssh
 if vim.env.SSH_TTY then
