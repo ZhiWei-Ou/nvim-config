@@ -29,14 +29,6 @@ return {
     -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
     auto_suggestions_provider = "ollama",
     providers = {
-      claude = {
-        endpoint = "https://api.anthropic.com",
-        model = "claude-3-5-sonnet-20241022",
-        extra_request_body = {
-          temperature = 0.75,
-          max_tokens = 4096,
-        },
-      },
     },
     ---Specify the special dual_boost mode
     ---1. enabled: Whether to enable dual_boost mode. Default to false.
@@ -45,7 +37,9 @@ return {
     ---4. prompt: The prompt to generate response based on the two reference outputs.
     ---5. timeout: Timeout in milliseconds. Default to 60000.
     ---How it works:
-    --- When dual_boost is enabled, avante will generate two responses from the first_provider and second_provider respectively. Then use the response from the first_provider as provider1_output and the response from the second_provider as provider2_output. Finally, avante will generate a response based on the prompt and the two reference outputs, with the default Provider as normal.
+    --- When dual_boost is enabled, avante will generate two responses from the first_provider and second_provider respectively.
+    --- Then use the response from the first_provider as provider1_output and the response from the second_provider as provider2_output.
+    --- Finally, avante will generate a response based on the prompt and the two reference outputs, with the default Provider as normal.
     ---Note: This is an experimental feature and may not work as expected.
     dual_boost = {
       enabled = false,

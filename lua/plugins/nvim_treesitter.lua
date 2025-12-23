@@ -9,8 +9,19 @@ return {
 
   build = ':TSUpdate',
 
-  opts = {
-  },
+  init = function()
+    vim.filetype.add {
+      pattern = {
+        -- ssh config
+        ['.*%/.*%.?ssh%.config']         = 'sshconfig',
+        ['.*%/.*%.?ssh%/config']         = 'sshconfig',
+        ['.*%/.*%.?ssh%/.*%.config']     = 'sshconfig',
+        ['.*%/.*%.?ssh%/.*%/config']     = 'sshconfig',
+        ['.*%/.*%.?ssh%/.*%/.*%.config'] = 'sshconfig',
+        ['rc.local']                     = 'bash',
+      },
+    }
+  end,
   config = function()
     require 'nvim-treesitter'.setup {
       install_dir = vim.fn.stdpath('data') .. '/site'
@@ -25,22 +36,9 @@ return {
       print(vim.inspect(list))
     end, {})
 
-
-    vim.filetype.add {
-      pattern = {
-        -- ssh config
-        ['.*%/.*%.?ssh%.config']         = 'sshconfig',
-        ['.*%/.*%.?ssh%/config']         = 'sshconfig',
-        ['.*%/.*%.?ssh%/.*%.config']     = 'sshconfig',
-        ['.*%/.*%.?ssh%/.*%/config']     = 'sshconfig',
-        ['.*%/.*%.?ssh%/.*%/.*%.config'] = 'sshconfig',
-        ['rc.local']                     = 'bash',
-      },
-    }
-
     local installed_list = require('nvim-treesitter').get_installed()
     local can_install_list = require('nvim-treesitter').get_available()
-    local ensure_installed_list = {'doxygen'}
+    local ensure_installed_list = { 'doxygen' }
 
     ---@brief : ensure `ensure_installed_list` installed
     for _, i in ipairs(ensure_installed_list) do

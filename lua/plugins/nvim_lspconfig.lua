@@ -87,8 +87,6 @@ return {
       desc = 'Rename symbol'
     }
   },
-  init = function()
-  end,
   config = function()
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
     vim.lsp.config(

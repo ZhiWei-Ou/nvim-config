@@ -1,10 +1,6 @@
 ---@brief nvim-cmp setup
 ---@refer https://github.com/hrsh7th/nvim-cmp
 
--- used for nvim-cmp.config.window.completion.winhighlight
--- search 'CmpNormal' to jump to the configuration
--- NONE: transparent
-vim.api.nvim_set_hl(0, "CmpNormal", { bg = "NONE" })
 
 return {
   "hrsh7th/nvim-cmp",
@@ -18,6 +14,12 @@ return {
     { "onsails/lspkind-nvim" },
     { "L3MON4D3/LuaSnip" },
   },
+  init = function()
+    -- used for nvim-cmp.config.window.completion.winhighlight
+    -- search 'CmpNormal' to jump to the configuration
+    -- NONE: transparent
+    vim.api.nvim_set_hl(0, "CmpNormal", { bg = "NONE" })
+  end,
   config = function()
     local cmp = require("cmp")
     -- local lspkind = require("lspkind")

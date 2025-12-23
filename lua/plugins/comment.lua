@@ -20,8 +20,8 @@ return {
   opts = {
     -- add any options here
   },
-  config = function()
-    require('Comment').setup()
+  config = function(_, opts)
+    require('Comment').setup(opts)
   end,
   lazy = false,
 }

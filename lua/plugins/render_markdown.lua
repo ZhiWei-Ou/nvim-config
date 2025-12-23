@@ -4,7 +4,8 @@
 return {
   'MeanderingProgrammer/render-markdown.nvim',
   dependencies = { 'echasnovski/mini.nvim', 'nvim-treesitter' },
-  config = function()
-    require('render-markdown').setup({})
+  opts = {},
+  config = function(_, opts)
+    require('render-markdown').setup(opts)
   end,
 }
