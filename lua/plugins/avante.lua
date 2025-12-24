@@ -3,8 +3,35 @@
 ---@description This file contains the setup and initialization of the Avante plugin, including its various options, dependencies, and customization settings.
 ---@date 2025-12-21
 
----@brief Create a user command 'Chat' to toggle Avante chat window
-vim.api.nvim_create_user_command('Chat', 'AvanteToggle', {})
+local function get_local_config_is_enable()
+  local opts = require 'config'.tbl()
+
+  if opts == nil or opts.avante == nil or opts.avante.enable == false then
+    return false
+  end
+
+  return true
+end
+
+vim.api.nvim_create_user_command('ChatToggle', function()
+  require 'config'.update(function(tbl)
+    if tbl.avante == nil then
+      tbl.avante = {}
+    end
+
+    if tbl.avante.enable == nil then
+      tbl.avante.enable = false
+    end
+
+    if tbl.avante.enable then
+      tbl.avante.enable = false
+      vim.notify('Avante is disabled, effect in next startup', vim.log.levels.INFO)
+    else
+      tbl.avante.enable = true
+      vim.notify('Avante is enabled, effect in next startup', vim.log.levels.INFO)
+    end
+  end)
+end, {})
 
 return {
   "yetone/avante.nvim",
@@ -15,6 +42,11 @@ return {
       or "make",
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
+  enabled = get_local_config_is_enable(),
+  init = function()
+    ---@brief Create a user command 'Chat' to toggle Avante chat window
+    vim.api.nvim_create_user_command('Chat', 'AvanteToggle', {})
+  end,
   ---@module 'avante'
   ---@type avante.Config
   opts = {

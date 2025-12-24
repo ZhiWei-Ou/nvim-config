@@ -13,6 +13,9 @@ local template_tbl = {
     colorscheme = 'default',
     background = 'dark'
   },
+  avante = {
+    enable = false,
+  },
 }
 
 if not helper.file_exists(vim.g.personal_config) then
