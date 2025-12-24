@@ -58,6 +58,7 @@ For a more comprehensive list of keybindings, including those for LSP and specif
 -   A **[Nerd Font](https://www.nerdfonts.com/font-downloads)** (e.g., FiraCode Nerd Font) installed and configured in your terminal.
 -   A C compiler for `nvim-treesitter`.
 -   `ripgrep` for Telescope's live grep functionality.
+-   `tree-sitter` CLI for managing Treesitter parsers (optional but recommended).
 
 ## 📦 Installation
 
@@ -97,5 +98,29 @@ For more details on specific configurations, please refer to the `docs/` directo
 -   **[Autocommands](./docs/autocmd.md)**
 
 ---
+
+## FAQ
+
+- **How to install `tree-sitter` CLI?**
+
+  You can install it via `npm`:
+
+  ```bash
+  npm install -g tree-sitter-cli
+  ```
+
+> [!Warning]
+> On some Linux systems, you might encounter a GLIBC version error when installing via `npm`:
+> ```error
+> sitter-cli/tree-sitter: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.39' not found
+> ```
+
+  Or use `cargo`:
+
+  ```bash
+  cargo install tree-sitter-cli
+  ```
+
+
 
 *Made with ❤️ and Lua*
