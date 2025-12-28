@@ -9,7 +9,7 @@
 
 ---@section define global variable
 ---@brief Personal Neovim JSON configuration
-vim.g.personal_config = vim.fn.stdpath('config') .. '/nvim-personal.json'
+vim.g.personal_config = vim.fn.stdpath('data') .. '/nvim-personal.json'
 ---@endsection
 
 ---@brief load init file

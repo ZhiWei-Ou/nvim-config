@@ -43,6 +43,7 @@ vim.api.nvim_create_user_command(
       return
     else
       vim.notify('Setting logo style to: ' .. style, vim.log.levels.INFO)
+      vim.notify('You may need to restart the application to see the changes.', vim.log.levels.INFO)
     end
 
     config.update(function(cfg)

@@ -42,7 +42,7 @@ return {
           desc = ' Files',
           group = 'Label',
           action = 'Telescope find_files',
-          key = '<C-f>',
+          key = '<C-p>',
         },
         {
           icon = nil, --MiniIcons.get('lsp', 'color'),
