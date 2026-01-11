@@ -36,7 +36,7 @@ return {
         accept_line = false,
         next = "<M-]>",
         prev = "<M-[>",
-        dismiss = "<Esc>",
+        dismiss = "<C-]>",
       },
     },
     nes = {

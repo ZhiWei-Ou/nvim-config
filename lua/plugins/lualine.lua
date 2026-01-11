@@ -98,6 +98,7 @@ return {
           -- List of LSP names to ignore (e.g., `null-ls`):
           ignore_lsp = {
             'GitHub Copilot',
+            'copilot',
           },
           -- Display the LSP name
           show_name = true,
