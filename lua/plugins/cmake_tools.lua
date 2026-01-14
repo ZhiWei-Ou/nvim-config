@@ -4,6 +4,7 @@
 return {
   'Civitasv/cmake-tools.nvim',
   dependencies = { { 'nvim-lua/plenary.nvim', opt = true } },
+  enabled = true,
   opts = {
     cmake_command = "cmake",                                                                                              -- this is used to specify cmake command path
     ctest_command = "ctest",                                                                                              -- this is used to specify ctest command path

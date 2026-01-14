@@ -20,6 +20,7 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = { 'hrsh7th/nvim-cmp' },
+  enabled = true,
   keys = {
     {
       'gd',

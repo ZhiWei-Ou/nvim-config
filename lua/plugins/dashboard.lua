@@ -8,6 +8,7 @@ return {
   dependencies = { { 'nvim-tree/nvim-web-devicons', opt = true }, { 'echasnovski/mini.icons' } },
   lazy = false,
   event = 'VimEnter',
+  enabled = true,
 
   opts = {
     theme = 'hyper',

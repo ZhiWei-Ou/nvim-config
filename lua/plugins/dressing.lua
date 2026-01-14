@@ -3,6 +3,7 @@
 
 return {
   'stevearc/dressing.nvim',
+  enabled = true,
   opts = {
     input = {
       -- Set to false to disable the vim.ui.input implementation

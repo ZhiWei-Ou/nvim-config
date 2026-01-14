@@ -7,6 +7,7 @@ return {
   version = '0.1.8',
   dependencies = { { 'nvim-lua/plenary.nvim', opt = true } },
   summary = "Find, Filter, Preview, Pick. All lua, all the time.",
+  enabled = true,
 
   keys = {
     {

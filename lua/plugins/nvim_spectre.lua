@@ -5,6 +5,7 @@
 return {
   'windwp/nvim-spectre',
   dependencies = { 'nvim-lua/plenary.nvim', opt = true },
+  enabled = true,
   keys = {
     {
       '<leader>S',

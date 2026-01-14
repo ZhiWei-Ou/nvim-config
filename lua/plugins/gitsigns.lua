@@ -6,6 +6,7 @@ return {
   opts = {
     current_line_blame = true,
   },
+  enabled = true,
   config = function(_, opts)
     require('gitsigns').setup(opts)
   end

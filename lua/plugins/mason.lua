@@ -3,6 +3,7 @@
 
 return {
   'williamboman/mason.nvim',
+  enabled = true,
   opts = {
     ---@since 1.0.0
     -- The directory in which to install packages.

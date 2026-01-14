@@ -3,6 +3,7 @@
 
 return {
   'mason-org/mason-lspconfig.nvim',
+  enabled = true,
   dependencies = {
     { "mason-org/mason.nvim",  opts = {} },
     { "neovim/nvim-lspconfig", },

@@ -3,6 +3,7 @@
 ---@date 2025-12-15
 return {
   "zbirenbaum/copilot.lua",
+  enabled = true,
   requires = {
     "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
   },
