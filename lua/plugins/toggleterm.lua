@@ -4,7 +4,7 @@
 return {
   "akinsho/toggleterm.nvim",
   version = "*",
-  enabled = false,
+  enabled = true,
   keys = {
     {
       "<C-t>",

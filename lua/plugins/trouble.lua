@@ -4,7 +4,7 @@
 return {
   'folke/trouble.nvim',
   dependencies = { { 'nvim-tree/nvim-web-devicons', opt = true } },
-  enabled = false,
+  enabled = true,
   keys = {
     {
       '<C-]>',

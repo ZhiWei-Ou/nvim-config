@@ -4,7 +4,7 @@ return {
   },
   {
     'sainnhe/everforest',
-    enabled = false,
+    enabled = true,
     init = function()
       vim.g.everforest_enable_italic = true
       vim.g.everforest_background = 'light'
