@@ -58,6 +58,7 @@ For a more comprehensive list of keybindings, including those for LSP and specif
 -   A **[Nerd Font](https://www.nerdfonts.com/font-downloads)** (e.g., FiraCode Nerd Font) installed and configured in your terminal.
 -   A C compiler for `nvim-treesitter`.
 -   `ripgrep` for Telescope's live grep functionality.
+-   `fd` for fast file listing (optional but recommended).
 -   `tree-sitter` CLI for managing Treesitter parsers (optional but recommended).
 
 ## 📦 Installation
@@ -119,6 +120,40 @@ For more details on specific configurations, please refer to the `docs/` directo
 
   ```bash
   cargo install tree-sitter-cli
+  ```
+
+- **What are `rg` and `fd`, and how do I install them?**
+
+  `rg` is `ripgrep`, a fast text searcher used by `telescope.nvim` for live grep.
+  `fd` is a fast file finder used by `telescope.nvim` for `find_files`.
+
+  macOS (Homebrew):
+  ```bash
+  brew install ripgrep fd
+  ```
+
+  Ubuntu/Debian:
+  ```bash
+  sudo apt install ripgrep fd-find
+  ```
+  Note: on some distros `fd` is installed as `fdfind`.
+
+  Arch:
+  ```bash
+  sudo pacman -S ripgrep fd
+  ```
+
+- **How to enter Lite mode?**
+
+  Lite mode disables heavy plugins (e.g. LSP) and keeps only file explorer and Telescope basics.
+
+  ```bash
+  NVIM_LITE=1 nvim
+  ```
+
+  Or:
+  ```bash
+  nvim --cmd "let g:lite_mode=1"
   ```
 
 

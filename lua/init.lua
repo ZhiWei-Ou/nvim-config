@@ -8,6 +8,11 @@ vim.env: environment variables defined in the editor session
 ]]
 
 vim.cmd('syntax enable') -- 启用语法高亮
+-- Lite mode: set `NVIM_LITE=1` or `let g:lite_mode=1` before startup.
+if vim.g.lite_mode == nil then
+  local env_lite = vim.env.NVIM_LITE
+  vim.g.lite_mode = env_lite == "1" or env_lite == "true"
+end
 vim.o.hidden = true      -- 允许在有未保存的修改时切换缓冲区
 vim.o.tabstop = 4        -- 设置制表符的宽度为 4 个空格
 vim.o.softtabstop = 4    -- 设置在编辑模式下按退格键时的宽度为 4 个空格

@@ -37,6 +37,10 @@ end
 
 ---@section set theme from configuration
 local theme = c.tbl("theme")
+if vim.g.lite_mode and (theme == nil or theme.colorscheme == nil or theme.colorscheme == "default") then
+  theme = vim.tbl_deep_extend("force", theme or {}, { colorscheme = "github_dark" })
+end
+
 if check_colorscheme_name_exist(theme.colorscheme) then
   if theme ~= nil and theme.colorscheme ~= nil then
     vim.cmd.colorscheme(theme.colorscheme)
