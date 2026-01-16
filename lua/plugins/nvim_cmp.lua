@@ -13,6 +13,7 @@ return {
     { "hrsh7th/cmp-nvim-lua" },
     { "onsails/lspkind-nvim" },
     { "L3MON4D3/LuaSnip" },
+    { "zbirenbaum/copilot.lua" },
   },
   init = function()
     -- used for nvim-cmp.config.window.completion.winhighlight
@@ -24,6 +25,14 @@ return {
     local cmp = require("cmp")
     -- local lspkind = require("lspkind")
     local luasnip = require("luasnip")
+    local function copilot_accept()
+      local ok, suggestion = pcall(require, "copilot.suggestion")
+      if ok and suggestion.is_visible() then
+        suggestion.accept()
+        return true
+      end
+      return false
+    end
 
     cmp.setup {
       mapping = cmp.mapping.preset.insert {
@@ -44,7 +53,9 @@ return {
         end),
 
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
+          if copilot_accept() then
+            return
+          elseif cmp.visible() then
             cmp.select_next_item()
           elseif luasnip.locally_jumpable(1) then
             luasnip.jump(1)
