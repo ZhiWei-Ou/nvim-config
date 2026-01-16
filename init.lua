@@ -43,24 +43,23 @@ end, {})
 ---@section DebugInfo Command
 ---@brief print debug info
 vim.api.nvim_create_user_command("DebugInfo", function()
+  local lsp_names = vim.tbl_map(function(c)
+    return c.name
+  end, vim.lsp.get_clients({ bufnr = 0 }))
+
   local info = {
-    "LSP = " .. table.concat(vim.tbl_map(function(c) return c.name end, vim.lsp.get_clients({ bufnr = 0 })), ", "),
+    "LSP = " .. table.concat(lsp_names, ", "),
     "Filetype = " .. vim.bo.filetype,
     "SSH = " .. (vim.env.SSH_TTY and "Yes" or "No"),
     "TMUX = " .. (vim.env.TMUX and "Yes" or "No"),
     "Leader = [" .. (vim.g.mapleader or "NIL") .. "]",
+    "Tabstop = " .. vim.bo.tabstop,
+    "Shiftwidth = " .. vim.bo.shiftwidth,
+    "Softtabstop = " .. vim.bo.softtabstop,
+    "Expandtab = " .. (vim.bo.expandtab and "Yes" or "No"),
+    "Background = " .. (vim.o.background == "dark" and "Dark" or "Light"),
   }
 
   print(table.concat(info, "\n"))
-  print("LSP = " .. table.concat(vim.tbl_map(function(c) return c.name end, vim.lsp.get_clients({ bufnr = 0 })), ", "))
-  print("Filetype = " .. vim.bo.filetype)
-  print("SSH = " .. (vim.env.SSH_TTY and "Yes" or "No"))
-  print("TMUX = " .. (vim.env.TMUX and "Yes" or "No"))
-  print("Leader = [" .. (vim.g.mapleader or "NIL") .. "]")
-  print("Tabstop = " .. vim.bo.tabstop)
-  print("Shiftwidth = " .. vim.bo.shiftwidth)
-  print("Softtabstop = " .. vim.bo.softtabstop)
-  print("Expandtab = " .. (vim.bo.expandtab and "Yes" or "No"))
-  print("Background = " .. (vim.o.background == "dark" and "Dark" or "Light"))
 end, {})
 ---@endsection
