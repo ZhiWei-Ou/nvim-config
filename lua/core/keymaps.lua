@@ -58,3 +58,7 @@ K('n', '<C-\\>', '<C-w>v',
 ---@brief Copy selected text to system clipboard
 K('v', '<C-c>', '+y',
   { noremap = true, silent = true, nowait = true, desc = 'Copy selected text to system clipboard' })
+
+---@brief Jump to next or previous buffer in normal mode
+vim.keymap.set('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
