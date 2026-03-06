@@ -5,7 +5,8 @@
 -- vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
 
 return {
-  'ggandor/leap.nvim',
+  -- 'ggandor/leap.nvim', The repository has been moved to codeberg
+  url = "https://codeberg.org/andyg/leap.nvim",
   enabled = true,
   keys = {
     {
