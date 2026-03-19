@@ -12,10 +12,7 @@ return {
     virtual_text = {
       enabled = true,
       manual = false,
-      map_keys = true,
-      key_bindings = {
-        accept = "<Tab>",
-      },
+      map_keys = false,
     },
   },
   config = function(_, opts)

@@ -24,6 +24,23 @@ return {
     local cmp = require("cmp")
     -- local lspkind = require("lspkind")
     local luasnip = require("luasnip")
+    local function codeium_accept()
+      local ok, codeium_virtual_text = pcall(require, "codeium.virtual_text")
+      if not ok then
+        return false
+      end
+
+      if codeium_virtual_text.get_current_completion_item() then
+        local keys = codeium_virtual_text.accept()
+        if type(keys) == "string" and keys ~= "" then
+          local termcodes = vim.api.nvim_replace_termcodes(keys, true, true, true)
+          vim.api.nvim_feedkeys(termcodes, "i", true)
+          return true
+        end
+      end
+
+      return false
+    end
 
     cmp.setup {
       mapping = cmp.mapping.preset.insert {
@@ -44,8 +61,8 @@ return {
         end),
 
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
+          if codeium_accept() then
+            return
           elseif luasnip.locally_jumpable(1) then
             luasnip.jump(1)
           else
