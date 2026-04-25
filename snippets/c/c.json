@@ -3,14 +3,12 @@
     "prefix": "fhc",
     "description": "File header comment",
     "body": [
-      "/**",
-      " * @brief ${1}",
-      " * @file ${TM_FILENAME}",
-      " * @author Oswin",
-      " * @date $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
-      " * @details",
+      "/*",
+      " * Copyright (c) $CURRENT_YEAR Oswin",
+      " * SPDX-License-Identifier: MIT",
       " *",
-      " * @copyright (c) 2025 Oswin. All Rights Reserved.",
+      " * File: ${TM_DIRECTORY/(.*[\\\\\\/])?([^\\\\\\/]+)$/${2}/}/${TM_FILENAME}",
+      " * Author: Oswin <ouzw.mail@gmail.com>",
       " */"
     ]
   },
