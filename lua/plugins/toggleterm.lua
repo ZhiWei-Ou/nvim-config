@@ -54,21 +54,66 @@ return {
     vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 
+    local function parse_file_target(text)
+      if text == "" then
+        return nil
+      end
+
+      local path, line, col = text:match("^(.+):(%d+):(%d+):?$")
+      if path then
+        return path, tonumber(line), tonumber(col)
+      end
+
+      path, line = text:match("^(.+):(%d+):?$")
+      if path then
+        return path, tonumber(line), nil
+      end
+
+      return text, nil, nil
+    end
+
+    local function get_file_target()
+      local word = vim.fn.expand("<cfile>")
+      local path, line, col = parse_file_target(word)
+
+      if path and vim.fn.file_readable(path) == 1 then
+        return path, line, col
+      end
+
+      local current_line = vim.api.nvim_get_current_line()
+      for match in current_line:gmatch("%S+:%d+:%d+:?") do
+        path, line, col = parse_file_target(match)
+        if path and vim.fn.file_readable(path) == 1 then
+          return path, line, col
+        end
+      end
+
+      for match in current_line:gmatch("%S+:%d+:?") do
+        path, line, col = parse_file_target(match)
+        if path and vim.fn.file_readable(path) == 1 then
+          return path, line, col
+        end
+      end
+    end
+
     -- open existing file in buffer
     vim.api.nvim_create_autocmd("TermEnter", {
       pattern = "term://*toggleterm#*",
       callback = function()
         vim.keymap.set("n", "gx", function()
-          local word = vim.fn.expand("<cfile>")
+          local path, line, col = get_file_target()
 
-          if vim.fn.file_readable(word) ~= 1 then
+          if not path then
             -- vim.notify("File does not exist: " .. path, vim.log.levels.WARN)
             return
           end
 
-          if word ~= "" then
-            vim.cmd("q")             -- exit toggleterm
-            vim.cmd("edit " .. word) -- open file
+          if path ~= "" then
+            vim.cmd("q")                               -- exit toggleterm
+            vim.cmd("edit " .. vim.fn.fnameescape(path)) -- open file
+            if line then
+              vim.api.nvim_win_set_cursor(0, { line, math.max((col or 1) - 1, 0) })
+            end
           end
         end, { buffer = true, desc = "Open file in buffer inside toggleterm" })
       end,
