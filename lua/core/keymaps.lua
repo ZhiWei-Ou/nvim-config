@@ -62,3 +62,10 @@ K('v', '<C-c>', '+y',
 ---@brief Jump to next or previous buffer in normal mode
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true })
+
+---@brief Copy the current file path and line number to the clipboard
+vim.keymap.set("n", "<leader>pwd", function()
+  local text = vim.fn.expand("%") .. ":" .. vim.fn.line(".")
+  vim.fn.setreg("+", text)
+  print("Copied " .. text)
+end)
