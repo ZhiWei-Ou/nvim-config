@@ -2,7 +2,7 @@
 ---@see https://github.com/bash-lsp/bash-language-server
 
 ---@type vim.lsp.Config
-vim.lsp.config('bashls', {
+return {
   cmd = { 'bash-language-server', 'start' },
   settings = {
     bashIde = {
@@ -21,4 +21,4 @@ vim.lsp.config('bashls', {
   on_init = function(client, init_result)
     client.alias_name = 'Bash(bashls)'
   end,
-})
+}

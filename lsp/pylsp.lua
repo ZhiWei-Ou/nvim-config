@@ -27,7 +27,7 @@
 --- Note: This is a community fork of `pyls`.
 
 ---@type vim.lsp.Config
-vim.lsp.config('pylsp', {
+return {
   cmd = { 'pylsp' },
   filetypes = { 'python' },
   root_markers = {
@@ -41,4 +41,4 @@ vim.lsp.config('pylsp', {
   on_init = function(client, init_result)
     client.alias_name = 'Python(pylsp)'
   end
-})
+}

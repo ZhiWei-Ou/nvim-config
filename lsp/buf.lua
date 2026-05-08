@@ -6,7 +6,7 @@
 --- buf beta lsp is a Protobuf language server compatible with Buf modules and workspaces
 
 ---@type vim.lsp.Config
-vim.lsp.config('buf', {
+return {
   cmd = { 'buf', 'lsp', 'serve', '--timeout=0', '--log-format=text' },
   filetypes = { 'proto' },
   root_markers = { 'buf.yaml', '.git' },
@@ -17,4 +17,4 @@ vim.lsp.config('buf', {
   on_init = function(client, init_result)
     client.alias_name = 'Protobuf(buf)'
   end
-})
+}

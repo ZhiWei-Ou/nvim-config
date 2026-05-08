@@ -108,4 +108,4 @@ local config = {
   end,
 }
 
-vim.lsp.config('clangd', config)
+return config

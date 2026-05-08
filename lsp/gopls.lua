@@ -115,7 +115,8 @@ local function imports_and_formatting()
 end
 
 
-vim.lsp.config('gopls', {
+---@type vim.lsp.Config
+return {
   cmd = { 'gopls' },
   filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
   settings = {
@@ -164,4 +165,4 @@ vim.lsp.config('gopls', {
     client.alias_name = 'Golang(gopls)'
     imports_and_formatting()
   end,
-})
+}

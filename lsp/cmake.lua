@@ -5,7 +5,7 @@
 --- CMake LSP Implementation
 
 ---@type vim.lsp.Config
-vim.lsp.config('cmake', {
+return {
   cmd = { 'cmake-language-server' },
   filetypes = { 'cmake' },
   root_markers = { 'CMakePresets.json', 'CTestConfig.cmake', '.git', 'build', 'cmake' },
@@ -15,4 +15,4 @@ vim.lsp.config('cmake', {
   on_init = function(client, init_result)
     client.alias_name = 'CMake(cmake)'
   end
-})
+}
