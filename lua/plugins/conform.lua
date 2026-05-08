@@ -12,7 +12,7 @@ return {
       c = { 'clang_format' },
       cpp = { 'clang_format' },
       proto = { 'clang_format' },
-      go = { 'gofmt', 'gopls', 'goimports', top_after_first = true },
+      go = { 'gofmt', 'goimports', top_after_first = true },
       javascript = { 'prettier' },
       typescript = { 'prettier' },
       javascriptreact = { 'prettier' },
