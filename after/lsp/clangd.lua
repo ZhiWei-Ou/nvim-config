@@ -104,7 +104,7 @@ local config = {
     end, { desc = 'Show symbol info' })
 
     vim.keymap.set('n', '<M-o>', ':LspClangdSwitchSourceHeader<CR>',
-      { buffer = false, noremap = true, silent = true, desc = 'Switch C/C++ Source/Header' })
+      { buffer = true, noremap = true, silent = true, desc = 'Switch C/C++ Source/Header' })
   end,
 }
 
