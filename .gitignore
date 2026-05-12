@@ -8,6 +8,7 @@
 /.vscode
 /lazy-lock.json
 /nvim-personal.json
+/after/syntax
 
 .gemini/
 gha-creds-*.json
