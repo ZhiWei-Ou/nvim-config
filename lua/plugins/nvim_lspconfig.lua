@@ -132,6 +132,16 @@ return {
     ---@brief open float diagnostic
     vim.api.nvim_create_user_command("Diagnostic", 'lua vim.diagnostic.open_float()', { nargs = 0 })
 
+    ---@brief compatibility alias for Nvim 0.12+ LSP command
+    vim.api.nvim_create_user_command("LspRestart", function(opts)
+      vim.cmd("lsp restart " .. opts.args)
+    end, { nargs = '*', bang = true })
+
+    ---@brief compatibility alias for checking LSP health/status
+    vim.api.nvim_create_user_command("LspStatus", function()
+      vim.cmd("checkhealth vim.lsp")
+    end, { nargs = 0 })
+
     ---@brief toggle inlay hint
     vim.api.nvim_create_user_command("Hint",
       function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { nargs = 0 })
