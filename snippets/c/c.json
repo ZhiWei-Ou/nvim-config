@@ -9,15 +9,29 @@
       " *",
       " * File: ${TM_DIRECTORY/(.*[\\\\\\/])?([^\\\\\\/]+)$/${2}/}/${TM_FILENAME}",
       " * Author: Oswin <ouzw.mail@gmail.com>",
-      " */"
+      " */",
+      ""
+    ]
+  },
+  "WorkFileHeaderComments": {
+    "prefix": "wfhc",
+    "description": "File header comment",
+    "body": [
+      "/*",
+      " * Copyright (c) $CURRENT_YEAR Intretech Ltd.",
+      " *",
+      " * File: ${TM_DIRECTORY/(.*[\\\\\\/])?([^\\\\\\/]+)$/${2}/}/${TM_FILENAME}",
+      " * Author: Oswin <oswin_ou@intretech.com>",
+      " */",
+      ""
     ]
   },
   "C-FileGuard": {
     "prefix": "fg",
     "description": "File guard",
     "body": [
-      "#ifndef ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H_",
-      "#define ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H_",
+      "#ifndef __${TM_DIRECTORY/(.*[\\\\\\/])?([^\\\\\\/]+)$/${2:/upcase}/}_${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H",
+      "#define __${TM_DIRECTORY/(.*[\\\\\\/])?([^\\\\\\/]+)$/${2:/upcase}/}_${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H",
       "#ifdef __cplusplus",
       "extern \"C\" {",
       "#endif /* __cplusplus */",
@@ -27,7 +41,8 @@
       "#ifdef __cplusplus",
       "}",
       "#endif /* __cplusplus */",
-      "#endif /* ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H_ */"
+      "#endif /* __${TM_DIRECTORY/(.*[\\\\\\/])?([^\\\\\\/]+)$/${2:/upcase}/}_${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H */",
+      ""
     ]
   }
 }
