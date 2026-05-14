@@ -18,42 +18,14 @@
   </a>
 </p>
 
-## ⭐ Philosophy & Key Features
+## Introduction
 
-This configuration is built with three core principles in mind: **automation**, **aesthetics**, and **efficiency**. It aims to be a "just works" setup that is both powerful and visually pleasing.
-
--   **Auto-Everything**:
-    -   **Automatic Treesitter Installation**: When you open a file of a new language, the required Treesitter parser is **automatically installed** in the background. No manual `:TSInstall` needed.
-    -   **On-the-fly Formatting**: Code is automatically formatted on save via `conform.nvim`.
-    -   **Lazy-loaded Plugins**: All plugins are lazy-loaded for a fast startup time.
-
--   **Beautiful & Informative UI**:
-    -   **Custom Completion Menu**: The `nvim-cmp` completion menu is meticulously themed with custom icons and a clean layout for a unique look. See `docs/theme.md` for details.
-    -   **Symbol Highlighting**: The symbol under your cursor is automatically highlighted after a short delay, making it easy to spot all references.
-    -   **Clean & Modern Theme**: A cohesive and beautiful colorscheme.
-
--   **Efficient Workflow**:
-    -   **Powerful Keymaps**: Sensible keybindings are provided for the most common actions. See the section below and `docs/keymaps.md` for more.
-    -   **Fast Fuzzy Finding**: `telescope.nvim` is configured for lightning-fast file, text, and command searching.
-
-## 🔑 Default Keymaps
-
-This configuration uses `which-key.nvim` to help you discover keybindings. Press the `<leader>` key (`space`) and wait to see available options.
-
-Here are some of the most important global keybindings:
-
-| Keybinding | Action                                 |
-| :--------- | :------------------------------------- |
-| `<C-p>`    | Find files                             |
-| `<C-F>`    | Find text in files (live grep)         |
-| `<C-l>`    | Toggle file explorer                   |
-| `<leader>ca` | List code actions for the current symbol |
-
-For a more comprehensive list of keybindings, including those for LSP and specific plugins, please see the **[Keymaps documentation](./docs/keymaps.md#Usage)**.
+This is my personal neovim configuration. I usually use it to editing and browsing files.
+I will continue to update both Neovim and this configuration regularly to try out new features and improvements.
 
 ## 🚀 Prerequisites
 
--   **Neovim v0.9.0** or higher.
+-   **Neovim v0.12.2** or higher.
 -   **Git** for cloning the configuration and managing plugins.
 -   A **[Nerd Font](https://www.nerdfonts.com/font-downloads)** (e.g., FiraCode Nerd Font) installed and configured in your terminal.
 -   A C compiler for `nvim-treesitter`.
@@ -88,17 +60,6 @@ For a more comprehensive list of keybindings, including those for LSP and specif
     ```
 
     Plugins will be automatically installed on the first launch. You can monitor the progress in the `lazy.nvim` UI.
-
-## 📄 Documentation
-
-For more details on specific configurations, please refer to the `docs/` directory.
-
--   **[Keymaps](./docs/keymaps.md#Keymaps)**
--   **[Theme](./docs/theme.md)**
--   **[Git Integration](./docs/git.md)**
--   **[Autocommands](./docs/autocmd.md)**
-
----
 
 ## FAQ
 
