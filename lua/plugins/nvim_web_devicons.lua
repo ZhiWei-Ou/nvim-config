@@ -14,7 +14,7 @@ return {
         color = "#428850",
         cterm_color = "65",
         name = "Zsh"
-      }
+      },
     },
     -- globally enable different highlight colors per icon (default to true)
     -- if set to false all icons will have the default icon's color
@@ -29,7 +29,7 @@ return {
     strict = true,
     -- set the light or dark variant manually, instead of relying on `background`
     -- (default to nil)
-    variant = "light|dark",
+    variant = "dark",
     -- same as `override` but specifically for overrides by filename
     -- takes effect when `strict` is true
     override_by_filename = {
@@ -53,6 +53,25 @@ return {
         color = "#81e043",
         name = "Log"
       },
+
+      ["css"] = {
+        icon = "",
+        color = "#1572B6",
+        cterm_color = "32",
+        name = "Css",
+      },
+      ["yaml"] = {
+        icon = "",
+        color = "#CB171E",
+        cterm_color = "160",
+        name = "Yaml",
+      },
+      ["yml"] = {
+        icon = "",
+        color = "#CB171E",
+        cterm_color = "160",
+        name = "Yaml",
+      }
     },
     -- same as `override` but specifically for operating system
     -- takes effect when `strict` is true
