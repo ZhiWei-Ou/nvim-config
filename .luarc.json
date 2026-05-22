@@ -1,13 +1,70 @@
 {
   "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
   "runtime": {
-    "version": "LuaJIT"
+    "version": "LuaJIT",
+    "path": [
+      "?.lua",
+      "?/init.lua",
+      "lua/?.lua",
+      "lua/?/init.lua"
+    ]
+  },
+  "diagnostics": {
+    "globals": [
+      "vim"
+    ]
   },
   "workspace": {
     "library": [
       "lua",
-      "$VIMRUNTIME",
-      "${3rd}/luv/library"
+      "$VIMRUNTIME/lua",
+      "$VIMRUNTIME/lua/vim/lsp",
+      "${3rd}/luv/library",
+      "$HOME/.local/share/nvim/lazy/Comment.nvim",
+      "$HOME/.local/share/nvim/lazy/LuaSnip",
+      "$HOME/.local/share/nvim/lazy/catppuccin",
+      "$HOME/.local/share/nvim/lazy/cmake-tools.nvim",
+      "$HOME/.local/share/nvim/lazy/cmp-buffer",
+      "$HOME/.local/share/nvim/lazy/cmp-cmdline",
+      "$HOME/.local/share/nvim/lazy/cmp-nvim-lsp",
+      "$HOME/.local/share/nvim/lazy/cmp-nvim-lua",
+      "$HOME/.local/share/nvim/lazy/cmp-path",
+      "$HOME/.local/share/nvim/lazy/cmp_luasnip",
+      "$HOME/.local/share/nvim/lazy/codeium.nvim",
+      "$HOME/.local/share/nvim/lazy/conform.nvim",
+      "$HOME/.local/share/nvim/lazy/copilot.vim",
+      "$HOME/.local/share/nvim/lazy/dashboard-nvim",
+      "$HOME/.local/share/nvim/lazy/dressing.nvim",
+      "$HOME/.local/share/nvim/lazy/dropbar.nvim",
+      "$HOME/.local/share/nvim/lazy/everforest",
+      "$HOME/.local/share/nvim/lazy/friendly-snippets",
+      "$HOME/.local/share/nvim/lazy/github-nvim-theme",
+      "$HOME/.local/share/nvim/lazy/gitsigns.nvim",
+      "$HOME/.local/share/nvim/lazy/lazy.nvim",
+      "$HOME/.local/share/nvim/lazy/leap.nvim",
+      "$HOME/.local/share/nvim/lazy/lspkind-nvim",
+      "$HOME/.local/share/nvim/lazy/lualine.nvim",
+      "$HOME/.local/share/nvim/lazy/mason-lspconfig.nvim",
+      "$HOME/.local/share/nvim/lazy/mason.nvim",
+      "$HOME/.local/share/nvim/lazy/mini.icons",
+      "$HOME/.local/share/nvim/lazy/mini.nvim",
+      "$HOME/.local/share/nvim/lazy/noice.nvim",
+      "$HOME/.local/share/nvim/lazy/nui.nvim",
+      "$HOME/.local/share/nvim/lazy/nvim-cmp",
+      "$HOME/.local/share/nvim/lazy/nvim-lspconfig",
+      "$HOME/.local/share/nvim/lazy/nvim-spectre",
+      "$HOME/.local/share/nvim/lazy/nvim-tree.lua",
+      "$HOME/.local/share/nvim/lazy/nvim-treesitter",
+      "$HOME/.local/share/nvim/lazy/nvim-treesitter-context",
+      "$HOME/.local/share/nvim/lazy/nvim-web-devicons",
+      "$HOME/.local/share/nvim/lazy/plenary.nvim",
+      "$HOME/.local/share/nvim/lazy/render-markdown.nvim",
+      "$HOME/.local/share/nvim/lazy/telescope-fzf-native.nvim",
+      "$HOME/.local/share/nvim/lazy/telescope.nvim",
+      "$HOME/.local/share/nvim/lazy/toggleterm.nvim",
+      "$HOME/.local/share/nvim/lazy/trouble.nvim",
+      "$HOME/.local/share/nvim/lazy/vim-sleuth",
+      "$HOME/.local/share/nvim/lazy/which-key.nvim"
     ],
     "checkThirdParty": false
   }
