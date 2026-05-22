@@ -15,6 +15,5 @@ return {
     return true
   end,
   on_init = function(client, init_result)
-    client.alias_name = 'Protobuf(buf)'
   end
 }

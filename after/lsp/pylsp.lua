@@ -39,6 +39,5 @@ return {
     '.git',
   },
   on_init = function(client, init_result)
-    client.alias_name = 'Python(pylsp)'
   end
 }

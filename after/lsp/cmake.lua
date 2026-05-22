@@ -13,6 +13,5 @@ return {
     buildDirectory = 'build',
   },
   on_init = function(client, init_result)
-    client.alias_name = 'CMake(cmake)'
   end
 }

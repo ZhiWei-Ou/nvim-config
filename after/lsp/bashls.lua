@@ -19,6 +19,5 @@ return {
   filetypes = { 'bash', 'sh' },
   root_markers = { '.git' },
   on_init = function(client, init_result)
-    client.alias_name = 'Bash(bashls)'
   end,
 }

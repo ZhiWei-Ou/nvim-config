@@ -88,8 +88,6 @@ local config = {
   },
   ---@param init_result ClangdInitializeResult
   on_init = function(client, init_result)
-    client.alias_name = 'C/C++(clangd)'
-
     if init_result.offsetEncoding then
       client.offset_encoding = init_result.offsetEncoding
     end

@@ -14,6 +14,5 @@ return {
   filetypes = { 'markdown', 'markdown.mdx' },
   root_markers = { '.marksman.toml', '.git' },
   on_init = function(client, init_result)
-    client.alias_name = 'Markdown(marksman)'
   end
 }
