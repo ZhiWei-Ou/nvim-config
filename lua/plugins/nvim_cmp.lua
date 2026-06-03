@@ -11,6 +11,7 @@ return {
     { "hrsh7th/cmp-cmdline" },
     { "saadparwaiz1/cmp_luasnip" },
     { "hrsh7th/cmp-nvim-lua" },
+    { "milanglacier/minuet-ai.nvim" },
     { "onsails/lspkind-nvim" },
     { "L3MON4D3/LuaSnip" },
   },
@@ -24,19 +25,15 @@ return {
     local cmp = require("cmp")
     -- local lspkind = require("lspkind")
     local luasnip = require("luasnip")
-    local function codeium_accept()
-      local ok, codeium_virtual_text = pcall(require, "codeium.virtual_text")
+    local function minuet_accept()
+      local ok, virtualtext = pcall(require, "minuet.virtualtext")
       if not ok then
         return false
       end
 
-      if codeium_virtual_text.get_current_completion_item() then
-        local keys = codeium_virtual_text.accept()
-        if type(keys) == "string" and keys ~= "" then
-          local termcodes = vim.api.nvim_replace_termcodes(keys, true, true, true)
-          vim.api.nvim_feedkeys(termcodes, "i", true)
-          return true
-        end
+      if virtualtext.action.is_visible() then
+        virtualtext.action.accept()
+        return true
       end
 
       return false
@@ -61,7 +58,7 @@ return {
         end),
 
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if codeium_accept() then
+          if minuet_accept() then
             return
           elseif luasnip.locally_jumpable(1) then
             luasnip.jump(1)
@@ -89,7 +86,7 @@ return {
         end
       },
       sources = {
-        { name = "codeium",       priority = 1000 },    -- AI completion
+        { name = "minuet",        priority = 1000 },    -- AI completion
         { name = "nvim_lsp" },                          -- For nvim-lsp
         { name = "ultisnips" },                         -- For ultisnips user.
         { name = "path" },                              -- for path completion
