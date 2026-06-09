@@ -13,6 +13,19 @@ return {
     end,
   },
   {
+    'folke/tokyonight.nvim',
+  },
+  {
+    'ellisonleao/gruvbox.nvim',
+  },
+  {
+    'rebelot/kanagawa.nvim',
+  },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+  },
+  {
     'catppuccin/nvim',
     os = 'catppuccin',
     name = 'catppuccin',
