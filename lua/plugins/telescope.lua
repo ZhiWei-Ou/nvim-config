@@ -2,55 +2,54 @@
 ---@refer https://github.com/nvim-telescope/telescope.nvim
 ---@note 需要下载ripgrep ```bash $ brew install ripgrep ```
 
+local function grep_visual_selection()
+  local selection = vim.fn.getregion(vim.fn.getpos('v'), vim.fn.getpos('.'), { type = vim.fn.mode() })
+  require('telescope.builtin').grep_string({ search = table.concat(selection, '\n') })
+end
+
 return {
   'nvim-telescope/telescope.nvim',
   version = '0.1.8',
-  dependencies = { { 'nvim-lua/plenary.nvim', opt = true } },
+  dependencies = { 'nvim-lua/plenary.nvim' },
   summary = "Find, Filter, Preview, Pick. All lua, all the time.",
   enabled = true,
 
   keys = {
     {
       '<C-p>',
-      '<cmd>lua require("telescope.builtin").find_files({find_command={"rg", "--files", "-i"}, theme="dropdown", previewer=false, layout_config={width=0.5, height=0.5}})<CR>',
+      function()
+        require('telescope.builtin').find_files()
+      end,
       mode = { 'n' },
-      desc = 'find files in current working directory'
+      desc = 'find files in current workspace'
     },
     {
       '<C-F>',
-      '<cmd>lua require("telescope.builtin").live_grep()<CR>',
+      function()
+        require('telescope.builtin').live_grep()
+      end,
       mode = { 'n' },
-      desc = 'live grep in current working directory'
+      desc = 'live grep in current workspace'
     },
     {
       '<C-F>',
-      '<cmd>lua require("telescope.builtin").grep_string()<CR>',
+      grep_visual_selection,
       mode = { 'v' },
-      desc = 'live grep in current working directory'
+      desc = 'grep visual selection in current workspace'
     },
     {
       '<C-K><C-p>',
-      '<cmd>lua require("telescope.builtin").builtin{include_extensions = true}<CR>',
+      function()
+        require('telescope.builtin').builtin({ include_extensions = true })
+      end,
       mode = { 'n' },
       desc = 'show all telescope built-in pickers'
     }
   },
   opts = {
     defaults = {
-      mappings = {
-        i = {
-          -- ["<C-p>"] = require('telescope.builtin').find_files,
-          -- ["<C-F>"] = require('telescope.builtin').live_grep,
-        },
-        n = {
-          -- ["<C-p>"] = require('telescope.builtin').find_files,
-          -- ["<C-F>"] = require('telescope.builtin').live_grep,
-        },
-      },
-      find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
-      file_ignore_patterns = { "node_modules", ".git/", "build/", "out/" },
-      -- prompt_prefix = "🔍 ",
-      selection_caret = "➤ ",
+      prompt_prefix = "🔍 ",
+      -- selection_caret = "➤ ",
       multi_icon = " ",
       wrap_results = false,
       results_title = "Results",
@@ -61,6 +60,15 @@ return {
       },
     },
     pickers = {
+      find_files = {
+        find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
+        theme = "dropdown",
+        previewer = false,
+        layout_config = {
+          width = 0.5,
+          height = 0.5,
+        },
+      },
       builtin = {
         theme = "dropdown",
         previewer = false,
@@ -76,10 +84,5 @@ return {
         show_buf_command = false
       }
     },
-    extensions = {
-    }
   },
-  config = function(_, opts)
-    require('telescope').setup(opts)
-  end,
 }
