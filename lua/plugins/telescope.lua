@@ -48,11 +48,32 @@ return {
   },
   opts = {
     defaults = {
-      prompt_prefix = "🔍 ",
-      -- selection_caret = "➤ ",
+      prompt_prefix = "   ",
+      selection_caret = " ",
+      entry_prefix = "  ",
       multi_icon = " ",
       wrap_results = false,
-      results_title = "Results",
+      sorting_strategy = 'ascending',
+      path_display = { 'smart' },
+      dynamic_preview_title = true,
+      results_title = false,
+      layout_strategy = 'flex',
+      layout_config = {
+        prompt_position = 'top',
+        width = 0.9,
+        height = 0.85,
+        horizontal = {
+          preview_width = 0.55,
+        },
+        vertical = {
+          preview_height = 0.5,
+        },
+      },
+      borderchars = {
+        prompt = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+        results = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+        preview = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+      },
 
       -- issue: https://github.com/nvim-telescope/telescope.nvim/issues/3487
       preview = {
@@ -64,18 +85,26 @@ return {
         find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
         theme = "dropdown",
         previewer = false,
+        prompt_title = ' Find Files ',
         layout_config = {
-          width = 0.5,
-          height = 0.5,
+          width = 0.65,
+          height = 0.6,
         },
       },
       builtin = {
         theme = "dropdown",
         previewer = false,
+        prompt_title = ' Telescope ',
         layout_config = {
-          width = 0.5,
-          height = 0.5,
+          width = 0.65,
+          height = 0.6,
         },
+      },
+      live_grep = {
+        prompt_title = ' Live Grep ',
+      },
+      grep_string = {
+        prompt_title = ' Grep Selection ',
       },
       colorscheme = {
         enable_preview = true,
