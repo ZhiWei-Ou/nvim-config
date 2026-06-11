@@ -4,7 +4,7 @@
 return {
   "akinsho/toggleterm.nvim",
   version = "*",
-  enabled = true,
+  enabled = false,
   keys = {
     {
       "<C-t>",
@@ -109,7 +109,7 @@ return {
           end
 
           if path ~= "" then
-            vim.cmd("q")                               -- exit toggleterm
+            vim.cmd("q")                                 -- exit toggleterm
             vim.cmd("edit " .. vim.fn.fnameescape(path)) -- open file
             if line then
               vim.api.nvim_win_set_cursor(0, { line, math.max((col or 1) - 1, 0) })
