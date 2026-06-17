@@ -34,6 +34,7 @@ These keybindings are active when an LSP server is attached to the buffer.
 | `<leader>ca`  | Code actions            | `nvim-lspconfig` |
 | `<leader>cl`  | Run CodeLens action     | `nvim-lspconfig` |
 | `<leader>cr`  | Refresh CodeLens actions| `nvim-lspconfig` |
+| `<leader>df`  | Show line diagnostics   | `nvim-lspconfig` |
 | `[d` / `]d`  | Go to previous/next diagnostic | `nvim-lspconfig` |
 
 Refer to individual plugin files in `lua/plugins/` for more specific mappings.

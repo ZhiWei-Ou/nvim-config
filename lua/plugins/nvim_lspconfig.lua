@@ -48,6 +48,14 @@ return {
       desc = 'Hover'
     },
     {
+      '<leader>df',
+      function()
+        vim.diagnostic.open_float(nil, { border = 'rounded', source = true })
+      end,
+      mode = { 'n' },
+      desc = 'Show line diagnostics'
+    },
+    {
       'gr',
       function()
         vim.lsp.buf.references()

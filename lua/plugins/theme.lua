@@ -1,5 +1,15 @@
 return {
   {
+    'ZhiWei-Ou/grayveil.nvim',
+    priority = 1000,
+    config = function()
+      require("grayveil").setup({
+        transparent = false,
+        terminal_colors = true,
+      })
+    end,
+  },
+  {
     'projekt0n/github-nvim-theme',
   },
   {

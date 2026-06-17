@@ -1,50 +1,6 @@
 ---@brief nvim-tree setup
 ---@refer https://github.com/nvim-tree/nvim-tree.lua
 
-local function set_nvim_tree_highlights()
-  -- 1. 基础文件类型：颜色更饱满，区分度更高
-  -- 可执行文件：改成洋红色/玫红，在一堆文件中非常显眼
-  vim.api.nvim_set_hl(0, "NvimTreeExecFile", { fg = "#bb9af7", bold = true })
-  -- 特殊文件：深紫色+下划线
-  vim.api.nvim_set_hl(0, "NvimTreeSpecialFile", { fg = "#9d7cd8", underline = true, bold = true })
-  -- 软链接：青色斜体，代表“指向别处”
-  vim.api.nvim_set_hl(0, "NvimTreeSymlink", { fg = "#7dcfff", italic = true })
-
-  -- 图片文件：用淡黄色，与文字区分
-  vim.api.nvim_set_hl(0, "NvimTreeImageFile", { fg = "#e0af68" })
-
-  -- 2. 文件夹：使用深蓝色系，作为背景色很稳重
-  -- 普通文件夹：深天蓝
-  vim.api.nvim_set_hl(0, "NvimTreeFolderName", { fg = "#82aaff", bold = true })
-  -- 打开的文件夹：更亮一点的蓝色，或者白色高亮，表示“当前聚焦”
-  vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", { fg = "#c0caf5", bold = true })
-  -- 空文件夹：深灰色，表示“里面没东西，别看了”
-  vim.api.nvim_set_hl(0, "NvimTreeEmptyFolderName", { fg = "#565f89", italic = true })
-
-  -- 3. Git 状态：高对比度警告色
-  -- Dirty (修改过)：明亮的琥珀色/金色，表示“注意这里”
-  vim.api.nvim_set_hl(0, "NvimTreeGitDirty", { fg = "#ffc777", bold = true })
-  -- Staged (暂存)：纯正的绿色
-  vim.api.nvim_set_hl(0, "NvimTreeGitStaged", { fg = "#9ece6a" })
-  -- Merge (合并中)：紫色
-  vim.api.nvim_set_hl(0, "NvimTreeGitMerge", { fg = "#bb9af7" })
-  -- Renamed (重命名)：青色
-  vim.api.nvim_set_hl(0, "NvimTreeGitRenamed", { fg = "#7dcfff" })
-  -- New (新增)：孔雀绿/青绿色，比普通绿色更高级，区别于 Staged
-  vim.api.nvim_set_hl(0, "NvimTreeGitNew", { fg = "#4fd6be" })
-  -- Deleted (删除)：深红色
-  vim.api.nvim_set_hl(0, "NvimTreeGitDeleted", { fg = "#f7768e" })
-  -- Ignored (忽略)：深灰色
-  vim.api.nvim_set_hl(0, "NvimTreeGitIgnored", { fg = "#565f89", italic = true })
-
-  -- 4. 分割线：最关键的修改！
-  -- 不要用 PmenuMatch（太亮），要用深色。
-  -- 这里设置成深蓝灰色，让它存在但不可见，不抢眼。
-  vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", { fg = "#3b4261", bold = true })
-  -- 如果想要分割线完全消失，可以用下面这行：
-  -- vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", { fg = "#1f2335", bg = "#1f2335" })
-end
-
 return {
   "nvim-tree/nvim-tree.lua",
   enabled = true,
@@ -337,14 +293,6 @@ return {
 
   },
   config = function(_, opts)
-    -- file type highlight
-    set_nvim_tree_highlights()
-
-    vim.api.nvim_create_autocmd("ColorScheme", {
-      pattern = "*",
-      callback = set_nvim_tree_highlights,
-    })
-
     require('nvim-tree').setup(opts)
   end,
 }
