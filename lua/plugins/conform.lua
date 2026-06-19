@@ -24,6 +24,10 @@ return {
       markdown = { 'prettier' },
     },
     format_on_save = function()
+      if vim.g.conform_disable == true then
+        return
+      end
+
       if vim.b.conform_enable == false or vim.b.conform_enable == nil then
         return
       end
@@ -31,15 +35,25 @@ return {
     end,
   },
   config = function(_, opts)
-    ---@brief Create commands to enable formatting per buffer
-    vim.api.nvim_create_user_command('FormatEnable', function()
-      vim.b.conform_enable = true
-    end, {})
+    ---@brief Create commands to enable formatting per buffer, or globally with !
+    vim.api.nvim_create_user_command('FormatEnable', function(args)
+      if args.bang then
+        vim.g.conform_disable = false
+        return
+      end
 
-    ---@brief Create commands to disable formatting per buffer
-    vim.api.nvim_create_user_command('FormatDisable', function()
+      vim.b.conform_enable = true
+    end, { bang = true })
+
+    ---@brief Create commands to disable formatting per buffer, or globally with !
+    vim.api.nvim_create_user_command('FormatDisable', function(args)
+      if args.bang then
+        vim.g.conform_disable = true
+        return
+      end
+
       vim.b.conform_enable = false
-    end, {})
+    end, { bang = true })
 
     require('conform').setup(opts)
   end,
