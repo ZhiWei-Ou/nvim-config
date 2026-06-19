@@ -7,6 +7,18 @@ local function grep_visual_selection()
   require('telescope.builtin').grep_string({ search = table.concat(selection, '\n') })
 end
 
+local function fd_find_command()
+  local fd = vim.fn.executable('fd') == 1 and 'fd'
+      or vim.fn.executable('fdfind') == 1 and 'fdfind'
+      or nil
+
+  if not fd then
+    return nil
+  end
+
+  return { fd, '--type', 'f', '--strip-cwd-prefix' }
+end
+
 return {
   'nvim-telescope/telescope.nvim',
   version = '0.1.8',
@@ -82,7 +94,7 @@ return {
     },
     pickers = {
       find_files = {
-        find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
+        find_command = fd_find_command(),
         theme = "dropdown",
         previewer = false,
         prompt_title = ' Find Files ',
