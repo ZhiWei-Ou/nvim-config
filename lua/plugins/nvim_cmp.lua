@@ -19,6 +19,21 @@ return {
     local cmp = require("cmp")
     -- local lspkind = require("lspkind")
     local luasnip = require("luasnip")
+
+    local function apply_cmp_highlights()
+      vim.api.nvim_set_hl(0, "CmpNormal", { link = "Pmenu" })
+      vim.api.nvim_set_hl(0, "CmpBorder", { link = "FloatBorder" })
+      vim.api.nvim_set_hl(0, "CmpSel", { link = "PmenuSel" })
+      vim.api.nvim_set_hl(0, "CmpDocNormal", { link = "NormalFloat" })
+      vim.api.nvim_set_hl(0, "CmpDocBorder", { link = "FloatBorder" })
+    end
+
+    apply_cmp_highlights()
+    vim.api.nvim_create_autocmd("ColorScheme", {
+      group = vim.api.nvim_create_augroup("NvimCmpHighlights", { clear = true }),
+      callback = apply_cmp_highlights,
+    })
+
     local function minuet_accept()
       local ok, virtualtext = pcall(require, "minuet.virtualtext")
       if not ok then
