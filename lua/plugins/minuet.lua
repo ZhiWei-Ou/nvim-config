@@ -3,7 +3,7 @@
 
 return {
   "milanglacier/minuet-ai.nvim",
-  enabled = true,
+  enabled = false,
   event = "InsertEnter",
   dependencies = {
     "hrsh7th/nvim-cmp",

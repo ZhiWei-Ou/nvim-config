@@ -20,6 +20,20 @@ return {
     -- local lspkind = require("lspkind")
     local luasnip = require("luasnip")
 
+    local function supermaven_accept()
+      local ok, suggestion = pcall(require, "supermaven-nvim.completion_preview")
+      if not ok then
+        return false
+      end
+
+      if suggestion.has_suggestion() then
+        suggestion.on_accept_suggestion()
+        return true
+      end
+
+      return false
+    end
+
     local function apply_cmp_highlights()
       vim.api.nvim_set_hl(0, "CmpNormal", { link = "Pmenu" })
       vim.api.nvim_set_hl(0, "CmpBorder", { link = "FloatBorder" })
@@ -67,7 +81,9 @@ return {
         end),
 
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if minuet_accept() then
+          if supermaven_accept() then
+            return
+          elseif minuet_accept() then
             return
           elseif luasnip.locally_jumpable(1) then
             luasnip.jump(1)
