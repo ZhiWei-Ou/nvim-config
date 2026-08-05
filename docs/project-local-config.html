@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Neovim 项目级 .nvim.lua 常用配置</title>
+  <style>
+    :root {
+      --bg: #f2f0e9;
+      --bg-deep: #e9e6dc;
+      --surface: #faf8f2;
+      --surface-soft: #f4f2eb;
+      --code: #e8ece5;
+      --text: #2f3933;
+      --muted: #69736d;
+      --line: #d8d8cf;
+      --green: #426b4c;
+      --green-soft: #dfe9df;
+      --blue: #496b83;
+      --amber: #8a672d;
+      --shadow: 0 16px 42px rgba(45, 55, 48, 0.09);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(89, 130, 96, 0.10), transparent 30rem),
+        radial-gradient(circle at 94% 8%, rgba(73, 107, 131, 0.08), transparent 26rem),
+        var(--bg);
+      font: 16px/1.72 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--blue); }
+
+    code, pre, kbd {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 900px);
+      gap: 38px;
+      width: min(1210px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 38px 0 76px;
+    }
+
+    aside {
+      position: sticky;
+      top: 22px;
+      align-self: start;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(250, 248, 242, 0.9);
+      box-shadow: 0 10px 30px rgba(45, 55, 48, 0.06);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--green);
+      font-weight: 760;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      color: #f8faf6;
+      background: linear-gradient(135deg, #61856a, #426b4c);
+    }
+
+    nav a {
+      display: block;
+      margin: 2px 0;
+      padding: 8px 10px;
+      border-radius: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: 140ms ease;
+    }
+
+    nav a:hover {
+      color: var(--green);
+      background: var(--green-soft);
+    }
+
+    main { min-width: 0; }
+
+    .hero {
+      padding: 38px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(145deg, #fbfaf6, #f4f5ee);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: 0.82rem;
+      font-weight: 780;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 10px 0 14px;
+      font-size: clamp(2rem, 5vw, 3.45rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin: 58px 0 18px;
+      font-size: 1.72rem;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+    }
+
+    p { margin: 8px 0 14px; }
+
+    .lead {
+      max-width: 760px;
+      color: #56625b;
+      font-size: 1.08rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .pill {
+      padding: 5px 10px;
+      border: 1px solid #c8d7c9;
+      border-radius: 999px;
+      color: var(--green);
+      background: var(--green-soft);
+      font-size: 0.84rem;
+    }
+
+    .quick-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .quick-flow > div {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    .step {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--green);
+      font-size: 0.76rem;
+      font-weight: 780;
+    }
+
+    .topic {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(250, 248, 242, 0.92);
+      box-shadow: 0 10px 30px rgba(45, 55, 48, 0.055);
+    }
+
+    .topic + .topic { margin-top: 18px; }
+
+    .topic-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .number {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      color: var(--green);
+      background: var(--green-soft);
+      font-weight: 800;
+    }
+
+    .topic-head p {
+      margin: 2px 0 0;
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mini-card {
+      min-width: 0;
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface-soft);
+    }
+
+    .label {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 760;
+    }
+
+    .callout {
+      margin: 18px 0;
+      padding: 15px 17px;
+      border-left: 4px solid #b18a49;
+      border-radius: 0 11px 11px 0;
+      color: #5f5138;
+      background: #eee7d8;
+    }
+
+    .callout strong { color: var(--amber); }
+
+    .code-wrap {
+      position: relative;
+      margin-top: 13px;
+    }
+
+    pre {
+      overflow: auto;
+      margin: 0;
+      padding: 18px;
+      border: 1px solid #cfd5cd;
+      border-radius: 11px;
+      color: #2d3931;
+      background: var(--code);
+      font-size: 0.86rem;
+      line-height: 1.62;
+      tab-size: 2;
+    }
+
+    :not(pre) > code, kbd {
+      padding: 0.13em 0.4em;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: #4d6170;
+      background: #ebece6;
+      font-size: 0.9em;
+    }
+
+    .copy {
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      padding: 5px 9px;
+      border: 1px solid #c9d0c8;
+      border-radius: 7px;
+      color: #5d6962;
+      background: #f6f6f1;
+      cursor: pointer;
+    }
+
+    .copy:hover {
+      color: var(--green);
+      border-color: #aebfaf;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    th, td {
+      padding: 11px 13px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--green);
+      background: var(--surface-soft);
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .checklist {
+      padding: 0;
+      list-style: none;
+    }
+
+    .checklist li {
+      position: relative;
+      margin: 8px 0;
+      padding-left: 25px;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 19px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+        width: min(100% - 28px, 900px);
+        padding-top: 18px;
+      }
+
+      aside { position: static; }
+
+      nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .quick-flow { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 620px) {
+      .hero, .topic { padding: 22px; }
+      .grid-2, .quick-flow { grid-template-columns: 1fr; }
+      nav { grid-template-columns: 1fr; }
+      th, td { padding: 9px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <div class="brand">
+        <span class="brand-mark">N</span>
+        <span>Project Config</span>
+      </div>
+      <nav aria-label="页面目录">
+        <a href="#start">使用方式</a>
+        <a href="#format">格式化开关</a>
+        <a href="#indent">制表符与缩进</a>
+        <a href="#make">覆盖 make</a>
+        <a href="#commands">快捷键与命令</a>
+        <a href="#template">完整模板</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="eyebrow">Neovim 0.12 · .nvim.lua</div>
+        <h1>项目级配置，常用的四件事</h1>
+        <p class="lead">
+          这份手册只保留最常查的内容：项目格式化开关、不同文件类型的缩进、
+          项目 <code>:make</code> 以及快捷键和命令。所有示例都可以直接放进项目根目录的
+          <code>.nvim.lua</code>。
+        </p>
+        <div class="pill-row">
+          <span class="pill">格式化</span>
+          <span class="pill">ft 缩进</span>
+          <span class="pill">makeprg</span>
+          <span class="pill">keymap / command</span>
+        </div>
+      </header>
+
+      <section id="start">
+        <h2>使用方式</h2>
+        <div class="quick-flow">
+          <div><span class="step">01 · 创建</span><code>&lt;project&gt;/.nvim.lua</code></div>
+          <div><span class="step">02 · 审查</span><code>nvim .nvim.lua</code></div>
+          <div><span class="step">03 · 信任</span><code>:trust</code></div>
+          <div><span class="step">04 · 重启</span><code>nvim .</code></div>
+        </div>
+        <div class="callout">
+          <strong>注意：</strong>文件内容变化后需要重新 <code>:trust</code>。项目配置在全局配置和
+          lazy.nvim 初始化后执行，因此适合覆盖行为，不适合改变插件安装列表。
+        </div>
+      </section>
+
+      <section id="format">
+        <h2>1. 使能 / 禁用当前项目的格式化</h2>
+        <article class="topic">
+          <div class="topic-head">
+            <span class="number">1</span>
+            <div>
+              <h3>项目内永久设置</h3>
+              <p>当前配置使用 <code>vim.b.conform_enable</code> 决定某个 buffer 保存时是否执行 Conform。</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="mini-card">
+              <span class="label">为整个项目启用</span>
+              <p>任何有 filetype 的项目文件都会在保存时格式化。</p>
+              <div class="code-wrap">
+                <button class="copy" type="button">复制</button>
+                <pre><code>vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function(event)
+    vim.b[event.buf].conform_enable = true
+  end,
+  desc = 'Enable formatting for this project',
+})</code></pre>
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <span class="label">为整个项目禁用</span>
+              <p>即使其他全局自动命令打开格式化，项目规则也会明确关闭。</p>
+              <div class="code-wrap">
+                <button class="copy" type="button">复制</button>
+                <pre><code>vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function(event)
+    vim.b[event.buf].conform_enable = false
+  end,
+  desc = 'Disable formatting for this project',
+})</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 22px;">只使能指定文件类型</h3>
+          <div class="code-wrap">
+            <button class="copy" type="button">复制</button>
+            <pre><code>vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'c', 'cpp' },
+  callback = function(event)
+    vim.b[event.buf].conform_enable = true
+  end,
+  desc = 'Enable project formatting for C/C++',
+})</code></pre>
+          </div>
+
+          <table style="margin-top: 20px;">
+            <thead><tr><th>临时命令</th><th>影响范围</th></tr></thead>
+            <tbody>
+              <tr><td><code>:FormatEnable</code></td><td>打开当前 buffer 的保存格式化。</td></tr>
+              <tr><td><code>:FormatDisable</code></td><td>关闭当前 buffer 的保存格式化。</td></tr>
+              <tr><td><code>:FormatDisable!</code></td><td>设置全局总开关为关闭，当前 Neovim 会话都不格式化。</td></tr>
+              <tr><td><code>:FormatEnable!</code></td><td>重新打开全局总开关；各 buffer 仍以自己的开关为准。</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+
+      <section id="indent">
+        <h2>2. 覆盖当前项目 ft 的制表符参数</h2>
+        <article class="topic">
+          <div class="topic-head">
+            <span class="number">2</span>
+            <div>
+              <h3>用 FileType 设置 buffer-local 选项</h3>
+              <p>不要直接改全局缩进；按文件类型写入 <code>vim.bo[event.buf]</code>，不会影响帮助页或终端。</p>
+            </div>
+          </div>
+
+          <table>
+            <thead><tr><th>参数</th><th>含义</th></tr></thead>
+            <tbody>
+              <tr><td><code>expandtab</code></td><td><code>true</code> 用空格代替 Tab；<code>false</code> 保留真实 Tab。</td></tr>
+              <tr><td><code>tabstop</code></td><td>一个真实 Tab 在屏幕上显示多少列。</td></tr>
+              <tr><td><code>shiftwidth</code></td><td><code>&gt;&gt;</code>、<code>&lt;&lt;</code> 和自动缩进一次移动多少列。</td></tr>
+              <tr><td><code>softtabstop</code></td><td>插入模式按 Tab / Backspace 时一次操作多少列；设为 0 表示不做软 Tab 模拟。</td></tr>
+            </tbody>
+          </table>
+
+          <div class="grid-2" style="margin-top: 16px;">
+            <div class="mini-card">
+              <span class="label">C / C++：4 空格</span>
+              <div class="code-wrap">
+                <button class="copy" type="button">复制</button>
+                <pre><code>vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'c', 'cpp' },
+  callback = function(event)
+    local bo = vim.bo[event.buf]
+    bo.expandtab = true
+    bo.tabstop = 4
+    bo.shiftwidth = 4
+    bo.softtabstop = 4
+  end,
+})</code></pre>
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <span class="label">Go / Make：真实 Tab，宽 4</span>
+              <div class="code-wrap">
+                <button class="copy" type="button">复制</button>
+                <pre><code>vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'go', 'make' },
+  callback = function(event)
+    local bo = vim.bo[event.buf]
+    bo.expandtab = false
+    bo.tabstop = 4
+    bo.shiftwidth = 4
+    bo.softtabstop = 0
+  end,
+})</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 22px;">多个 ft 使用一张配置表</h3>
+          <div class="code-wrap">
+            <button class="copy" type="button">复制</button>
+            <pre><code>local indent = {
+  c =    { expandtab = true,  width = 4 },
+  cpp =  { expandtab = true,  width = 4 },
+  lua =  { expandtab = true,  width = 2 },
+  go =   { expandtab = false, width = 4 },
+  make = { expandtab = false, width = 4 },
+}
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = vim.tbl_keys(indent),
+  callback = function(event)
+    local rule = indent[event.match]
+    local bo = vim.bo[event.buf]
+    bo.expandtab = rule.expandtab
+    bo.tabstop = rule.width
+    bo.shiftwidth = rule.width
+    bo.softtabstop = rule.expandtab and rule.width or 0
+  end,
+  desc = 'Apply project indentation',
+})</code></pre>
+          </div>
+        </article>
+      </section>
+
+      <section id="make">
+        <h2>3. 覆盖当前项目的 <code>:make</code></h2>
+        <article class="topic">
+          <div class="topic-head">
+            <span class="number">3</span>
+            <div>
+              <h3>核心是 makeprg 与 errorformat</h3>
+              <p><code>:make</code> 执行 <code>makeprg</code>，输出按 <code>errorformat</code> 解析后进入 quickfix。</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="mini-card">
+              <span class="label">CMake 项目</span>
+              <div class="code-wrap">
+                <button class="copy" type="button">复制</button>
+                <pre><code>vim.opt.makeprg = 'cmake --build build --parallel 10'
+
+vim.keymap.set('n', '&lt;leader&gt;pm', '&lt;cmd&gt;make&lt;CR&gt;', {
+  desc = 'Make project',
+})</code></pre>
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <span class="label">普通 Makefile 项目</span>
+              <div class="code-wrap">
+                <button class="copy" type="button">复制</button>
+                <pre><code>vim.opt.makeprg = 'make -j10'
+
+vim.keymap.set('n', '&lt;leader&gt;pm', '&lt;cmd&gt;make&lt;CR&gt;', {
+  desc = 'Make project',
+})
+vim.keymap.set('n', '&lt;leader&gt;pc', '&lt;cmd&gt;copen&lt;CR&gt;', {
+  desc = 'Open build errors',
+})</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <strong>传递目标：</strong><code>:make clean</code>、<code>:make install</code> 会把参数追加到
+            <code>makeprg</code> 后面。构建失败后用 <code>:copen</code> 查看列表，<code>:cnext</code> / <code>:cprev</code>
+            跳转错误。
+          </div>
+
+          <h3>如果编译器输出没有被正确识别</h3>
+          <p>优先使用 Neovim 内置 compiler 配置，它会同时设置 <code>makeprg</code> 和 <code>errorformat</code>：</p>
+          <div class="code-wrap">
+            <button class="copy" type="button">复制</button>
+            <pre><code>-- 常见值包括 gcc、clang、go、pytest 等；以 :compiler 列表为准
+vim.cmd 'compiler gcc'
+vim.opt.makeprg = 'cmake --build build --parallel 10'</code></pre>
+          </div>
+        </article>
+      </section>
+
+      <section id="commands">
+        <h2>4. 新增项目快捷键 / 命令</h2>
+        <article class="topic">
+          <div class="topic-head">
+            <span class="number">4</span>
+            <div>
+              <h3>命令承载动作，快捷键只负责调用</h3>
+              <p>复杂动作先定义成 <code>:Project...</code> 命令，再绑定按键，更容易在命令行单独调试。</p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="mini-card">
+              <span class="label">最简单的快捷键</span>
+              <div class="code-wrap">
+                <button class="copy" type="button">复制</button>
+                <pre><code>vim.keymap.set('n', '&lt;leader&gt;pb', '&lt;cmd&gt;CMakeBuild&lt;CR&gt;', {
+  desc = 'Build project',
+  silent = true,
+})</code></pre>
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <span class="label">Lua 回调快捷键</span>
+              <div class="code-wrap">
+                <button class="copy" type="button">复制</button>
+                <pre><code>vim.keymap.set('n', '&lt;leader&gt;pr', function()
+  vim.cmd 'CMakeRun'
+  vim.notify 'Started project target'
+end, {
+  desc = 'Run project',
+})</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 22px;">新增项目命令，再绑定快捷键</h3>
+          <div class="code-wrap">
+            <button class="copy" type="button">复制</button>
+            <pre><code>vim.api.nvim_create_user_command('ProjectBuild', function()
+  vim.cmd 'make'
+end, {
+  desc = 'Build current project',
+})
+
+vim.api.nvim_create_user_command('ProjectTest', function()
+  vim.cmd 'botright new'
+  vim.fn.termopen {
+    'ctest', '--test-dir', 'build', '--output-on-failure',
+  }
+  vim.cmd 'startinsert'
+end, {
+  desc = 'Test current project',
+})
+
+vim.keymap.set('n', '&lt;leader&gt;pb', '&lt;cmd&gt;ProjectBuild&lt;CR&gt;', {
+  desc = 'Build project',
+})
+vim.keymap.set('n', '&lt;leader&gt;pt', '&lt;cmd&gt;ProjectTest&lt;CR&gt;', {
+  desc = 'Test project',
+})</code></pre>
+          </div>
+
+          <h3 style="margin-top: 22px;">只在某种 ft 中出现的快捷键</h3>
+          <div class="code-wrap">
+            <button class="copy" type="button">复制</button>
+            <pre><code>vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'c', 'cpp' },
+  callback = function(event)
+    vim.keymap.set('n', '&lt;leader&gt;ph', '&lt;cmd&gt;LspClangdSwitchSourceHeader&lt;CR&gt;', {
+      buffer = event.buf,
+      desc = 'Switch source/header',
+    })
+  end,
+})</code></pre>
+          </div>
+
+          <div class="callout">
+            <strong>建议：</strong>项目快捷键统一使用一个前缀，例如 <code>&lt;leader&gt;p...</code>，并始终填写
+            <code>desc</code>，这样 which-key 和 Telescope keymaps 中更容易识别。
+          </div>
+        </article>
+      </section>
+
+      <section id="template">
+        <h2>完整模板：四件事放在一起</h2>
+        <div class="topic">
+          <div class="code-wrap">
+            <button class="copy" type="button">复制</button>
+            <pre><code>-- .nvim.lua
+
+-- 1. 当前项目：只格式化 C / C++
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'c', 'cpp' },
+  callback = function(event)
+    vim.b[event.buf].conform_enable = true
+  end,
+})
+
+-- 2. 当前项目：覆盖不同 ft 的缩进
+local indent = {
+  c =    { expandtab = true,  width = 4 },
+  cpp =  { expandtab = true,  width = 4 },
+  cmake = { expandtab = true, width = 2 },
+  make = { expandtab = false, width = 4 },
+}
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = vim.tbl_keys(indent),
+  callback = function(event)
+    local rule = indent[event.match]
+    local bo = vim.bo[event.buf]
+    bo.expandtab = rule.expandtab
+    bo.tabstop = rule.width
+    bo.shiftwidth = rule.width
+    bo.softtabstop = rule.expandtab and rule.width or 0
+  end,
+})
+
+-- 3. 当前项目：覆盖 :make
+vim.cmd 'compiler gcc'
+vim.opt.makeprg = 'cmake --build build --parallel 10'
+
+-- 4. 当前项目：命令与快捷键
+vim.api.nvim_create_user_command('ProjectBuild', function()
+  vim.cmd 'make'
+end, { desc = 'Build current project' })
+
+vim.keymap.set('n', '&lt;leader&gt;pb', '&lt;cmd&gt;ProjectBuild&lt;CR&gt;', {
+  desc = 'Build project',
+})
+vim.keymap.set('n', '&lt;leader&gt;pe', '&lt;cmd&gt;copen&lt;CR&gt;', {
+  desc = 'Open build errors',
+})</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="notes">
+        <h2>最后检查</h2>
+        <ul class="checklist">
+          <li>修改 `.nvim.lua` 后重新执行 <code>:trust</code>。</li>
+          <li>用 <code>:setlocal expandtab? tabstop? shiftwidth? softtabstop?</code> 检查当前 buffer。</li>
+          <li>用 <code>:set makeprg?</code> 和 <code>:set errorformat?</code> 检查 make 配置。</li>
+          <li>用 <code>:map &lt;leader&gt;p</code> 检查项目快捷键，用 <code>:command Project</code> 检查项目命令。</li>
+          <li>格式化异常时先检查 <code>:FormatEnable</code>，再运行 <code>:ConformInfo</code>。</li>
+        </ul>
+      </section>
+
+      <footer>
+        本页采用柔和浅色主题，可离线打开；示例对应当前配置中的 Conform、cmake-tools.nvim 和原生 <code>:make</code>。
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const copyText = async (text) => {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+
+      const area = document.createElement('textarea');
+      area.value = text;
+      area.style.position = 'fixed';
+      area.style.opacity = '0';
+      document.body.appendChild(area);
+      area.select();
+      document.execCommand('copy');
+      area.remove();
+    };
+
+    document.querySelectorAll('.copy').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const code = button.parentElement.querySelector('code').innerText;
+        const original = button.textContent;
+        try {
+          await copyText(code);
+          button.textContent = '已复制';
+        } catch (_) {
+          button.textContent = '复制失败';
+        }
+        window.setTimeout(() => { button.textContent = original; }, 1200);
+      });
+    });
+  </script>
+</body>
+</html>

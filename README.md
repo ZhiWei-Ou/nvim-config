@@ -61,6 +61,44 @@ I will continue to update both Neovim and this configuration regularly to try ou
 
     Plugins will be automatically installed on the first launch. You can monitor the progress in the `lazy.nvim` UI.
 
+## Project-local configuration
+
+Project-specific settings can be placed in a `.nvim.lua` file at the project
+root. Neovim searches the startup working directory and its parent directories
+for this file, then loads it after the global configuration.
+
+See the [project-local configuration cookbook](docs/project-local-config.html)
+for practical formatting, indentation, `:make`, keymap, and command examples.
+
+For example:
+
+```lua
+-- .nvim.lua
+vim.opt.makeprg = 'cmake --build build'
+vim.keymap.set('n', '<leader>b', '<cmd>make<CR>', {
+  desc = 'Build project',
+})
+```
+
+Project-local files can execute arbitrary Lua, so Neovim only loads files that
+you explicitly trust. Review the file first, then trust the current buffer:
+
+```vim
+:edit .nvim.lua
+:trust
+```
+
+Restart Neovim from the project directory after trusting it. If the file
+contents change, review and trust the new version again.
+
+To load project-specific LSP configurations from `.nvim/lsp/*.lua`, append the
+directory relative to the `.nvim.lua` file itself:
+
+```lua
+local project_root = vim.fs.dirname(debug.getinfo(1, 'S').source:sub(2))
+vim.opt.runtimepath:append(project_root .. '/.nvim')
+```
+
 ## FAQ
 
 - **How to install `tree-sitter` CLI?**

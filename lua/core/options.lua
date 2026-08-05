@@ -36,6 +36,7 @@ vim.o.cursorline = true
 vim.o.wrap = false
 vim.o.showmatch = true
 vim.o.termguicolors = true
+vim.o.exrc = true
 
 -- Views can only be fully collapsed with the global statusline.
 vim.o.laststatus = 0
