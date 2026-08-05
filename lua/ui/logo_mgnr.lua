@@ -37,7 +37,7 @@ vim.api.nvim_create_user_command(
 
     local style = args["style"]
 
-    if not table.contains(vim.tbl_keys(logo_tbl), style) then
+    if not vim.tbl_contains(vim.tbl_keys(logo_tbl), style) then
       vim.notify('Invalid logo style: ' .. style, vim.log.levels.ERROR)
       vim.notify('Available styles: ' .. table.concat(vim.tbl_keys(logo_tbl), ', '), vim.log.levels.INFO)
       return

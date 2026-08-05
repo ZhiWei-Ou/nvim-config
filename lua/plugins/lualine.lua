@@ -2,6 +2,7 @@
 ---@refer https://github.com/nvim-lualine/lualine.nvim
 
 local copilot_icon = ''
+local copilot_timer
 
 local function is_named_buffer()
   return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
@@ -75,10 +76,10 @@ local function start_copilot_status_refresh()
     return
   end
 
-  if _G.__lualine_copilot_status_timer then
-    _G.__lualine_copilot_status_timer:stop()
-    _G.__lualine_copilot_status_timer:close()
-    _G.__lualine_copilot_status_timer = nil
+  if copilot_timer then
+    copilot_timer:stop()
+    copilot_timer:close()
+    copilot_timer = nil
   end
 
   local last_state = copilot_state()
@@ -96,7 +97,7 @@ local function start_copilot_status_refresh()
     last_state = state
     refresh_lualine()
   end))
-  _G.__lualine_copilot_status_timer = timer
+  copilot_timer = timer
 
   local group = vim.api.nvim_create_augroup('LualineCopilotStatus', { clear = true })
   vim.api.nvim_create_autocmd({ 'BufEnter', 'FileType', 'InsertEnter', 'InsertLeave', 'VimResume' }, {
@@ -110,10 +111,10 @@ local function start_copilot_status_refresh()
   vim.api.nvim_create_autocmd('VimLeavePre', {
     group = group,
     callback = function()
-      if _G.__lualine_copilot_status_timer then
-        _G.__lualine_copilot_status_timer:stop()
-        _G.__lualine_copilot_status_timer:close()
-        _G.__lualine_copilot_status_timer = nil
+      if copilot_timer then
+        copilot_timer:stop()
+        copilot_timer:close()
+        copilot_timer = nil
       end
     end,
     desc = 'Stop lualine Copilot status timer',
@@ -129,40 +130,17 @@ return {
   },
   opts = {
     options = {
-      icons_enabled = true,
-      theme = 'auto',
       component_separators = { left = ' ', right = ' ' },
       section_separators = { left = '', right = '' },
       disabled_filetypes = {
-        statusline = {},
-        winbar = {},
         'dashboard',
         'packer',
         'TelescopePrompt',
-        -- 'trouble',
         'toggleterm',
-        -- 'NvimTree',
       },
-      ignore_focus = {},
-      always_divide_middle = true,
       globalstatus = true,
       refresh = {
-        statusline = 1000,
-        tabline = 1000,
-        winbar = 1000,
         refresh_time = 100,
-        events = {
-          'WinEnter',
-          'BufEnter',
-          'BufWritePost',
-          'SessionLoadPost',
-          'FileChangedShellPost',
-          'VimResized',
-          'Filetype',
-          'CursorMoved',
-          'CursorMovedI',
-          'ModeChanged',
-        },
       },
     },
     sections = {
@@ -191,22 +169,12 @@ return {
       lualine_c = {
         {
           'filename',
-          file_status = true,     -- Displays file status (readonly status, modified status)
-          newfile_status = false, -- Display new file status (new file means no write after created)
-          path = 1,               -- Relative path
-          -- 2: Absolute path
-          -- 3: Absolute path, with tilde as the home directory
-          -- 4: Filename and parent dir, with tilde as the home directory
-
-          shorting_target = 40, -- Shortens path to leave 40 spaces in the window
-          -- for other components. (terrible name, any suggestions?)
-          -- It can also be a function that returns
-          -- the value of `shorting_target` dynamically.
+          path = 1,
           symbols = {
-            modified = ' ●', -- Text to show when the file is modified.
-            readonly = ' ', -- Text to show when the file is non-modifiable or readonly.
-            unnamed = '[No Name]', -- Text to show for unnamed buffers.
-            newfile = ' ', -- Text to show for newly created file before first write
+            modified = ' ●',
+            readonly = ' ',
+            unnamed = '[No Name]',
+            newfile = ' ',
           },
         },
       },
@@ -235,9 +203,7 @@ return {
             done = '',
             separator = '',
           },
-          -- List of LSP names to ignore (e.g., `null-ls`):
           ignore_lsp = { 'GitHub Copilot' },
-          -- Display the LSP name
           show_name = false,
         },
         {
@@ -246,9 +212,7 @@ return {
         },
         {
           'filetype',
-          colored = true,   -- Displays filetype icon in color if set to true
-          icon_only = true, -- Display only an icon for filetype
-          icon = { align = 'left' },
+          icon_only = true,
         },
       },
       lualine_y = {
@@ -274,9 +238,6 @@ return {
       lualine_y = {},
       lualine_z = {},
     },
-    tabline = {},
-    winbar = {},
-    inactive_winbar = {},
     extensions = {
       'trouble',
       'fugitive',
