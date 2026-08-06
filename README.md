@@ -91,6 +91,13 @@ you explicitly trust. Review the file first, then trust the current buffer:
 Restart Neovim from the project directory after trusting it. If the file
 contents change, review and trust the new version again.
 
+For projects with `.nvim/config.lua`, or Git repositories when no project-local
+config exists, the five most recently visited file buffers are saved
+automatically in `.nvim/cache.json`. Starting Neovim from the project without
+file arguments restores those buffers and opens the most recent one instead of
+the portal. Add `.nvim/cache.json` to the project's `.gitignore` if the cache
+should remain local to each developer.
+
 To load project-specific LSP configurations from `.nvim/lsp/*.lua`, append the
 directory containing `.nvim/config.lua` itself:
 

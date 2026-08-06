@@ -1,5 +1,6 @@
 *.log
 .cache
+/.nvim/
 .DS_Store
 /test/*
 /lua/build

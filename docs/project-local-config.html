@@ -423,6 +423,12 @@
           <strong>注意：</strong>文件内容变化后需要重新 <code>:trust</code>。项目配置在全局配置和
           lazy.nvim 初始化后执行，因此适合覆盖行为，不适合改变插件安装列表。
         </div>
+        <div class="callout">
+          存在 <code>.nvim/config.lua</code> 的项目，以及没有项目配置时识别到的 Git 仓库，会把最近访问的
+          5 个文件 buffer 自动保存到 <code>.nvim/cache.json</code>。下次从项目目录无参数启动 Neovim 时会
+          恢复这些 buffer，并直接打开最近使用的文件而不是 Portal。建议将 <code>.nvim/cache.json</code>
+          加入项目的 <code>.gitignore</code>。
+        </div>
       </section>
 
       <section id="format">
