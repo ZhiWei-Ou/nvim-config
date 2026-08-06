@@ -1,5 +1,5 @@
 -- lua/ui/logo.lua
----@brief logo styles
+---@brief Portal logo styles
 ---@date 2025-12-17
 
 local default_logo = {

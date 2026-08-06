@@ -134,6 +134,7 @@ return {
       section_separators = { left = '', right = '' },
       disabled_filetypes = {
         'dashboard',
+        'portal',
         'packer',
         'TelescopePrompt',
         'toggleterm',

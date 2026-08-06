@@ -4,6 +4,9 @@
 /test/*
 /lua/build
 /plugin
+!/plugin/
+/plugin/*
+!/plugin/portal.lua
 /plugin/packer_compiled.lua
 /.vscode
 /lazy-lock.json
