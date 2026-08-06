@@ -9,5 +9,5 @@
 - Plugin specifications live in `lua/plugins/`; Lite mode selects a curated subset through `lua/plugins_lite/`.
 - The full configuration uses the native `portal` module as a logo-only startup screen; it owns the logo styles and its runtime entry is `plugin/portal.lua`.
 - Language-server-specific configuration lives in `after/lsp/`.
-- Project-local `.nvim.lua` files are enabled through Neovim's native `exrc` and trust mechanism.
+- Project-local `.nvim/config.lua` is loaded from the nearest parent through `core.project_config` and Neovim's trust mechanism.
 - Keep the existing `spec/` tests unchanged unless the user explicitly requests test work.

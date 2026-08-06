@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <title>Neovim 项目级 .nvim.lua 常用配置</title>
+  <title>Neovim 项目级 .nvim/config.lua 常用配置</title>
   <style>
     :root {
       --bg: #f2f0e9;
@@ -396,12 +396,12 @@
 
     <main>
       <header class="hero">
-        <div class="eyebrow">Neovim 0.12 · .nvim.lua</div>
+        <div class="eyebrow">Neovim 0.12 · .nvim/config.lua</div>
         <h1>项目级配置，常用的四件事</h1>
         <p class="lead">
           这份手册只保留最常查的内容：项目格式化开关、不同文件类型的缩进、
           项目 <code>:make</code> 以及快捷键和命令。所有示例都可以直接放进项目根目录的
-          <code>.nvim.lua</code>。
+          <code>.nvim/config.lua</code>。
         </p>
         <div class="pill-row">
           <span class="pill">格式化</span>
@@ -414,8 +414,8 @@
       <section id="start">
         <h2>使用方式</h2>
         <div class="quick-flow">
-          <div><span class="step">01 · 创建</span><code>&lt;project&gt;/.nvim.lua</code></div>
-          <div><span class="step">02 · 审查</span><code>nvim .nvim.lua</code></div>
+          <div><span class="step">01 · 创建</span><code>&lt;project&gt;/.nvim/config.lua</code></div>
+          <div><span class="step">02 · 审查</span><code>nvim .nvim/config.lua</code></div>
           <div><span class="step">03 · 信任</span><code>:trust</code></div>
           <div><span class="step">04 · 重启</span><code>nvim .</code></div>
         </div>
@@ -723,7 +723,7 @@ vim.keymap.set('n', '&lt;leader&gt;pt', '&lt;cmd&gt;ProjectTest&lt;CR&gt;', {
         <div class="topic">
           <div class="code-wrap">
             <button class="copy" type="button">复制</button>
-            <pre><code>-- .nvim.lua
+            <pre><code>-- .nvim/config.lua
 
 -- 1. 当前项目：只格式化 C / C++
 vim.api.nvim_create_autocmd('FileType', {
@@ -775,7 +775,7 @@ vim.keymap.set('n', '&lt;leader&gt;pe', '&lt;cmd&gt;copen&lt;CR&gt;', {
       <section id="notes">
         <h2>最后检查</h2>
         <ul class="checklist">
-          <li>修改 `.nvim.lua` 后重新执行 <code>:trust</code>。</li>
+          <li>修改 <code>.nvim/config.lua</code> 后重新执行 <code>:trust</code>。</li>
           <li>用 <code>:setlocal expandtab? tabstop? shiftwidth? softtabstop?</code> 检查当前 buffer。</li>
           <li>用 <code>:set makeprg?</code> 和 <code>:set errorformat?</code> 检查 make 配置。</li>
           <li>用 <code>:map &lt;leader&gt;p</code> 检查项目快捷键，用 <code>:command Project</code> 检查项目命令。</li>
