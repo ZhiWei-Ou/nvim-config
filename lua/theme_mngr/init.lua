@@ -22,6 +22,10 @@ vim.api.nvim_create_autocmd('ColorScheme', {
       return
     end
 
+    if require('core.project_cache').is_active() then
+      return
+    end
+
     config.update(function(config_table)
       config_table.theme = config_table.theme or {}
       config_table.theme.colorscheme = event.match

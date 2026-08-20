@@ -5,6 +5,7 @@ return {
   'nvim-tree/nvim-tree.lua',
   enabled = true,
   summary = 'File Explorer',
+  cmd = { 'NvimTreeOpen', 'NvimTreeClose', 'NvimTreeToggle', 'NvimTreeFocus' },
   keys = {
     {
       '<C-l>',
@@ -49,4 +50,12 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require('nvim-tree').setup(opts)
+
+    local api = require 'nvim-tree.api'
+    api.events.subscribe(api.events.Event.Ready, function()
+      require('core.project_cache').restore_nvim_tree_filters()
+    end)
+  end,
 }
