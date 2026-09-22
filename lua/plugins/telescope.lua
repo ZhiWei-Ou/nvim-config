@@ -7,6 +7,20 @@ local function grep_visual_selection()
   require('telescope.builtin').grep_string({ search = table.concat(selection, '\n') })
 end
 
+local function open_with_system_app(prompt_bufnr)
+  local entry = require('telescope.actions.state').get_selected_entry()
+  if not entry then
+    return
+  end
+
+  local path = entry.path
+  require('telescope.actions').close(prompt_bufnr)
+  local _, err = vim.ui.open(path)
+  if err then
+    vim.notify(err, vim.log.levels.ERROR)
+  end
+end
+
 local function fd_find_command()
   local fd = vim.fn.executable('fd') == 1 and 'fd'
       or vim.fn.executable('fdfind') == 1 and 'fdfind'
@@ -95,6 +109,11 @@ return {
     pickers = {
       find_files = {
         find_command = fd_find_command(),
+        mappings = {
+          n = {
+            s = open_with_system_app,
+          },
+        },
         theme = "dropdown",
         previewer = false,
         prompt_title = ' Find Files ',
