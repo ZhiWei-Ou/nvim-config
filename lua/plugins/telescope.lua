@@ -109,6 +109,7 @@ return {
     pickers = {
       find_files = {
         find_command = fd_find_command(),
+        path_display = { 'relative' },
         mappings = {
           n = {
             s = open_with_system_app,
