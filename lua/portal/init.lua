@@ -46,16 +46,18 @@ local function configure_buffer(bufnr)
 end
 
 local function configure_window(winid)
-  vim.wo[winid].colorcolumn = ''
-  vim.wo[winid].cursorcolumn = false
-  vim.wo[winid].cursorline = false
-  vim.wo[winid].foldcolumn = '0'
-  vim.wo[winid].list = false
-  vim.wo[winid].number = false
-  vim.wo[winid].relativenumber = false
-  vim.wo[winid].signcolumn = 'no'
-  vim.wo[winid].spell = false
-  vim.wo[winid].wrap = false
+  -- Only change the portal view, not the defaults inherited by new buffers.
+  local options = vim.wo[winid][0]
+  options.colorcolumn = ''
+  options.cursorcolumn = false
+  options.cursorline = false
+  options.foldcolumn = '0'
+  options.list = false
+  options.number = false
+  options.relativenumber = false
+  options.signcolumn = 'no'
+  options.spell = false
+  options.wrap = false
 end
 
 local function is_empty_buffer(bufnr)
