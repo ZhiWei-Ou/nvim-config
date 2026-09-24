@@ -52,7 +52,7 @@ return {
     {
       '<C-F>',
       function()
-        require('telescope.builtin').live_grep()
+        require('helper.live_grep').live_grep()
       end,
       mode = { 'n' },
       desc = 'live grep in current workspace'
