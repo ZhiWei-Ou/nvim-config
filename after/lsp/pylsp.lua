@@ -38,6 +38,4 @@ return {
     'Pipfile',
     '.git',
   },
-  on_init = function(client, init_result)
-  end
 }

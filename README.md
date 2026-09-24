@@ -61,6 +61,30 @@ I will continue to update both Neovim and this configuration regularly to try ou
 
     Plugins will be automatically installed on the first launch. You can monitor the progress in the `lazy.nvim` UI.
 
+## Language servers
+
+Full mode installs and enables the servers listed in
+`lua/plugins/mason_lspconfig.lua`. Adding a server to that list opts it into both
+installation and activation; installing another server in Mason alone does not
+activate it. Server overrides live in `after/lsp/` and inherit nvim-lspconfig's
+defaults.
+
+Python uses basedpyright for type analysis, completion and hover, and Ruff for
+linting, formatting and import organization. The installed pylsp package is not
+automatically enabled. CMake uses neocmakelsp (`neocmake`), and Protobuf uses
+Buf (`buf_ls`).
+
+Go formats on save by default; other languages opt in with `:FormatEnable` for
+the current buffer. `:FormatDisable` overrides the default for the current
+buffer, and `:FormatDisable!` disables save formatting globally.
+Go first organizes imports with gopls (adding missing imports and removing unused
+ones), then formats with gofumpt enabled. Each LSP request has a two-second timeout.
+Python uses Ruff for formatting; organize its imports with the LSP code action.
+Project formatting preferences are persisted as described below. An unset
+preference follows the language default. Existing cached `FormatEnabled: false`
+preferences are respected; use `:FormatEnable` once to enable formatting in such
+a project.
+
 ## Project-local configuration
 
 Project-specific settings can be placed in `.nvim/config.lua` at the project

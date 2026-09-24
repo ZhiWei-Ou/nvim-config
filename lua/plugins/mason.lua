@@ -2,7 +2,7 @@
 ---@refer https://github.com/mason-org/mason.nvim
 
 return {
-  'williamboman/mason.nvim',
+  'mason-org/mason.nvim',
   enabled = true,
   opts = {
     log_level = vim.log.levels.ERROR,

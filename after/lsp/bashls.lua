@@ -18,6 +18,4 @@ return {
   },
   filetypes = { 'bash', 'sh' },
   root_markers = { '.git' },
-  on_init = function(client, init_result)
-  end,
 }

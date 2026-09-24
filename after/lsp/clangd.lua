@@ -74,8 +74,7 @@ local config = {
     '--function-arg-placeholders=false',
   },
   filetypes = {
-    "c", "cpp", "objc", "objcpp", "cc",
-    "hh", "hpp", "h", "hxx"
+    'c', 'c.doxygen', 'cpp', 'cpp.doxygen', 'objc', 'objcpp', 'cuda',
   },
   root_markers = {
     '.clangd',
@@ -102,7 +101,7 @@ local config = {
     end, { desc = 'Show symbol info' })
 
     vim.keymap.set('n', '<M-o>', ':LspClangdSwitchSourceHeader<CR>',
-      { buffer = true, noremap = true, silent = true, desc = 'Switch C/C++ Source/Header' })
+      { buffer = bufnr, noremap = true, silent = true, desc = 'Switch C/C++ Source/Header' })
   end,
 }
 

@@ -72,6 +72,12 @@ local function nonnegative_integer(value)
   return type(value) == 'number' and value >= 0 and value == math.floor(value)
 end
 
+local function optional_boolean(value)
+  if type(value) == 'boolean' then
+    return value
+  end
+end
+
 local function decode_buffer(root, value)
   local relative_path
   local entry = {}
@@ -88,7 +94,7 @@ local function decode_buffer(root, value)
     if positive_integer(value.IndentSize) then
       entry.legacy_indent_size = value.IndentSize
     end
-    entry.legacy_format_enabled = value.FormatEnabled == true
+    entry.legacy_format_enabled = optional_boolean(value.FormatEnabled)
   end
 
   if type(relative_path) ~= 'string' then
@@ -120,7 +126,7 @@ local function decode_file_types(value)
         file_types[filetype] = {
           indent_style = indent_style,
           indent_size = indent_size,
-          format_enabled = profile.FormatEnabled == true,
+          format_enabled = optional_boolean(profile.FormatEnabled),
         }
       end
     end
@@ -222,7 +228,7 @@ local function capture_filetype(bufnr)
   state.file_types[filetype] = {
     indent_style = vim.bo[bufnr].expandtab and 'space' or 'tab',
     indent_size = vim.bo[bufnr].shiftwidth > 0 and vim.bo[bufnr].shiftwidth or vim.bo[bufnr].tabstop,
-    format_enabled = vim.b[bufnr].conform_enable == true,
+    format_enabled = optional_boolean(vim.b[bufnr].conform_enable),
   }
 end
 
@@ -278,7 +284,7 @@ local function restore_filetype(bufnr, entry)
     profile = {
       indent_style = entry.legacy_indent_style,
       indent_size = entry.legacy_indent_size,
-      format_enabled = entry.legacy_format_enabled == true,
+      format_enabled = entry.legacy_format_enabled,
     }
     state.file_types[filetype] = profile
   end
@@ -369,7 +375,7 @@ local function encode_file_types()
   local file_types = {}
   for filetype, profile in pairs(state.file_types) do
     file_types[filetype] = {
-      FormatEnabled = profile.format_enabled == true,
+      FormatEnabled = profile.format_enabled,
       IndentSize = profile.indent_size,
       IndentStyle = profile.indent_style,
     }
