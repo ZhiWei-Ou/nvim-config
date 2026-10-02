@@ -1,11 +1,10 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/ZhiWei-Ou/nvim-config/main/assets/logo.png" width="120" style="border-radius: 50%" />
   <h1>Neovim Config</h1>
   <p>A modern, feature-rich, and fast Neovim configuration based on Lua.</p>
 </div>
 
 <p align="center">
-  <img alt="Neovim Version" src="https://img.shields.io/badge/Neovim-0.9%2B-57A143?style=for-the-badge&logo=neovim&logoColor=white">
+  <img alt="Neovim Version" src="https://img.shields.io/badge/Neovim-0.12.2%2B-57A143?style=for-the-badge&logo=neovim&logoColor=white">
   <img alt="Language" src="https://img.shields.io/badge/Made%20with-Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=white">
   <a href="https://github.com/ZhiWei-Ou/nvim-config/blob/main/LICENSE">
     <img alt="License" src="https://img.shields.io/github/license/ZhiWei-Ou/nvim-config?style=for-the-badge&color=blue">
@@ -18,24 +17,33 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="#installation">Installation</a> ·
+  <a href="#language-servers">Language Servers</a> ·
+  <a href="#project-local-configuration">Project Configuration</a> ·
+  <a href="#faq">FAQ</a>
+</p>
+
 ## Introduction
 
-This is my personal neovim configuration. I usually use it to editing and browsing files.
-I will continue to update both Neovim and this configuration regularly to try out new features and improvements.
+This is my personal Neovim configuration for editing and browsing files.
+I regularly update both Neovim and this configuration to try new features and
+improvements.
 
-## 🚀 Prerequisites
+## Prerequisites
 
--   **Neovim v0.12.2** or higher.
--   **Git** for cloning the configuration and managing plugins.
--   A **[Nerd Font](https://www.nerdfonts.com/font-downloads)** (e.g., FiraCode Nerd Font) installed and configured in your terminal.
--   A C compiler for `nvim-treesitter`.
--   `ripgrep` for Telescope's live grep functionality.
--   `fd` for fast file listing (optional but recommended).
--   `tree-sitter` CLI for managing Treesitter parsers (optional but recommended).
+- **Neovim v0.12.2** or higher.
+- **Git** for cloning the configuration and managing plugins.
+- A **[Nerd Font](https://www.nerdfonts.com/font-downloads)** (e.g., FiraCode Nerd Font)
+  installed and configured in your terminal.
+- A **C compiler** for `nvim-treesitter`.
+- **`ripgrep`** for Telescope's live grep functionality.
+- **`fd`** for fast file listing (optional but recommended).
+- **`tree-sitter` CLI** for managing Treesitter parsers (optional but recommended).
 
-## 📦 Installation
+## Installation
 
-1.  **Backup your old Neovim configuration (if you have one):**
+1.  **Back up your old Neovim configuration (if you have one):**
 
     ```bash
     # Required
@@ -59,33 +67,43 @@ I will continue to update both Neovim and this configuration regularly to try ou
     nvim
     ```
 
-    Plugins will be automatically installed on the first launch. You can monitor the progress in the `lazy.nvim` UI.
+    Plugins will be automatically installed on the first launch. You can monitor
+    the progress in the `lazy.nvim` UI.
 
-## Language servers
+## Language Servers
 
 Full mode installs and enables the servers listed in
-`lua/plugins/mason_lspconfig.lua`. Adding a server to that list opts it into both
+[mason_lspconfig.lua](lua/plugins/mason_lspconfig.lua). Adding a server to that list opts it into both
 installation and activation; installing another server in Mason alone does not
 activate it. Server overrides live in `after/lsp/` and inherit nvim-lspconfig's
 defaults.
 
-Python uses basedpyright for type analysis, completion and hover, and Ruff for
-linting, formatting and import organization. The installed pylsp package is not
-automatically enabled. CMake uses neocmakelsp (`neocmake`), and Protobuf uses
-Buf (`buf_ls`).
+- **Python:** basedpyright for type analysis, completion and hover; Ruff for
+  linting, formatting and import organization. The installed pylsp package is not
+  automatically enabled.
+- **CMake:** neocmakelsp (`neocmake`).
+- **Protobuf:** Buf (`buf_ls`).
 
-Go formats on save by default; other languages opt in with `:FormatEnable` for
-the current buffer. `:FormatDisable` overrides the default for the current
-buffer, and `:FormatDisable!` disables save formatting globally.
-Go first organizes imports with gopls (adding missing imports and removing unused
-ones), then formats with gofumpt enabled. Each LSP request has a two-second timeout.
-Python uses Ruff for formatting; organize its imports with the LSP code action.
-Project formatting preferences are persisted as described below. An unset
-preference follows the language default. Existing cached `FormatEnabled: false`
-preferences are respected; use `:FormatEnable` once to enable formatting in such
-a project.
+### Formatting on save
 
-## Project-local configuration
+Go formats on save by default; other languages opt in for the current buffer:
+
+| Command | Effect |
+| --- | --- |
+| `:FormatEnable` | Enable formatting on save for the current buffer. |
+| `:FormatDisable` | Disable formatting on save for the current buffer, overriding the language default. |
+| `:FormatDisable!` | Disable formatting on save globally. |
+
+- **Go:** organizes imports with gopls (adding missing imports and removing unused
+  ones), then formats with gofumpt enabled. Each LSP request has a two-second timeout.
+- **Python:** uses Ruff for formatting; organize imports with the LSP code action.
+
+Project formatting preferences are [saved per filetype](#saved-project-state).
+An unset preference follows the language default. Existing cached
+`FormatEnabled: false` preferences are respected; use `:FormatEnable` once to
+enable formatting in such a project.
+
+## Project-local Configuration
 
 Project-specific settings can be placed in `.nvim/config.lua` at the project
 root. This configuration searches the startup working directory and its parent
@@ -104,6 +122,8 @@ vim.keymap.set('n', '<leader>b', '<cmd>make<CR>', {
 })
 ```
 
+### Trusting project files
+
 Project-local files can execute arbitrary Lua, so Neovim only loads files that
 you explicitly trust. Review the file first, then trust the current buffer:
 
@@ -115,16 +135,24 @@ you explicitly trust. Review the file first, then trust the current buffer:
 Restart Neovim from the project directory after trusting it. If the file
 contents change, review and trust the new version again.
 
+### Saved project state
+
 For projects with `.nvim/config.lua`, or Git repositories when no project-local
-config exists, `.nvim/cache.json` stores the ten most recently visited buffers
-and their cursor positions. Indentation and formatting preferences are stored
-once per project filetype, so C, C++, shell, and other filetypes can differ. The
-cache also records whether nvim-tree is open and whether it shows dotfiles or
-git-ignored files. A project colorscheme is added only after it is selected in
-that project. Starting Neovim from the project without file arguments restores
-that state and opens the most recent file instead of the portal. Add
-`.nvim/cache.json` to the project's `.gitignore` if the cache should remain
+config exists, `.nvim/cache.json` stores:
+
+- The ten most recently visited buffers and their cursor positions.
+- Indentation and formatting preferences per project filetype, so C, C++, shell,
+  and other filetypes can differ.
+- Whether nvim-tree is open and whether it shows dotfiles or git-ignored files.
+- A project colorscheme, added only after it is selected in that project.
+
+Starting Neovim from the project without file arguments restores that state and
+opens the most recent file instead of the portal.
+
+Add `.nvim/cache.json` to the project's `.gitignore` if the cache should remain
 local to each developer.
+
+### Project-specific language servers
 
 To load project-specific LSP configurations from `.nvim/lsp/*.lua`, append the
 directory containing `.nvim/config.lua` itself:
@@ -136,60 +164,64 @@ vim.opt.runtimepath:append(project_config_dir)
 
 ## FAQ
 
-- **How to install `tree-sitter` CLI?**
+### How to install `tree-sitter` CLI?
 
-  You can install it via `npm`:
+You can install it via **npm**:
 
-  ```bash
-  npm install -g tree-sitter-cli
-  ```
+```bash
+npm install -g tree-sitter-cli
+```
 
-> [!Warning]
+> [!WARNING]
 > On some Linux systems, you might encounter a GLIBC version error when installing via `npm`:
-> ```error
+>
+> ```text
 > sitter-cli/tree-sitter: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.39' not found
 > ```
 
-  Or use `cargo`:
+Or use **Cargo**:
 
-  ```bash
-  cargo install tree-sitter-cli
-  ```
+```bash
+cargo install tree-sitter-cli
+```
 
-- **What are `rg` and `fd`, and how do I install them?**
+### What are `rg` and `fd`, and how do I install them?
 
-  `rg` is `ripgrep`, a fast text searcher used by `telescope.nvim` for live grep.
-  `fd` is a fast file finder used by `telescope.nvim` for `find_files`.
+`rg` is `ripgrep`, a fast text searcher used by `telescope.nvim` for live grep.
+`fd` is a fast file finder used by `telescope.nvim` for `find_files`.
 
-  macOS (Homebrew):
-  ```bash
-  brew install ripgrep fd
-  ```
+**macOS (Homebrew)**
 
-  Ubuntu/Debian:
-  ```bash
-  sudo apt install ripgrep fd-find
-  ```
-  Note: on some distros `fd` is installed as `fdfind`.
+```bash
+brew install ripgrep fd
+```
 
-  Arch:
-  ```bash
-  sudo pacman -S ripgrep fd
-  ```
+**Ubuntu / Debian**
 
-- **How to enter Lite mode?**
+```bash
+sudo apt install ripgrep fd-find
+```
 
-  Lite mode disables heavy plugins (e.g. LSP) and keeps only file explorer and Telescope basics.
+> **Note:** On some distros `fd` is installed as `fdfind`.
 
-  ```bash
-  NVIM_LITE=1 nvim
-  ```
+**Arch Linux**
 
-  Or:
-  ```bash
-  nvim --cmd "let g:lite_mode=1"
-  ```
+```bash
+sudo pacman -S ripgrep fd
+```
 
+### How to enter Lite mode?
 
+Lite mode disables heavy plugins (e.g. LSP) and keeps only file explorer and Telescope basics.
+
+```bash
+NVIM_LITE=1 nvim
+```
+
+Or:
+
+```bash
+nvim --cmd "let g:lite_mode=1"
+```
 
 *Made with ❤️ and Lua*
