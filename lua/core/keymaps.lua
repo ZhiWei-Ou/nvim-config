@@ -51,6 +51,12 @@ K('n', '<C-s>', ':update<CR>',
 K('i', '<C-s>', '<Esc>:update<CR>a',
   { noremap = true, silent = true, nowait = true, desc = 'Save file in insert mode(only write when modified)' })
 
+---@brief Move to line boundaries in insert mode (cmp consumes <C-e> while its menu is visible)
+K('i', '<C-a>', '<Home>',
+  { noremap = true, silent = true, desc = 'Move to beginning of line' })
+K('i', '<C-e>', '<End>',
+  { noremap = true, silent = true, desc = 'Move to end of line' })
+
 ---@brief Vertical split
 K('n', '<C-\\>', '<C-w>v',
   { noremap = true, silent = true, nowait = true, desc = 'Vertical split' })
