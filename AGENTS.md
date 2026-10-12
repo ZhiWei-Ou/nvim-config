@@ -1,15 +1,18 @@
 # AGENTS.md
 
-## Commit attribution
+## 仓库定位
 
-- When preparing a commit message for changes that Codex contributed to, append
-  the following trailer after a blank line:
+- 这是个人 Neovim Lua 配置仓库，以个人编辑习惯和实际需求为准。
+- 修改时沿用现有配置结构和代码风格，保持改动直接、简洁。
+
+## Git 提交
+
+- 提交标题统一使用 `type(scope): brief`，其中 scope 必填，brief 简短准确地描述实际改动。
+- 生成提交信息前检查实际差异，沿用仓库现有的英文提交风格。
+- 仅在用户明确要求时提交、推送或改写历史。
+- 保留用户的 Git 作者身份和已有共同作者署名。仅当 Codex 参与了该提交的改动时，
+  在提交信息末尾空一行后添加：
 
   ```text
   Co-authored-by: Codex <noreply@openai.com>
   ```
-
-- Preserve the human author's Git identity and any existing co-author trailers.
-- Do not attribute changes to Codex when it did not contribute to them.
-- This attribution rule does not authorize committing, pushing, or rewriting
-  existing commits; perform those actions only when explicitly requested.
