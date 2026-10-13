@@ -1,17 +1,17 @@
 # AGENTS.md
 
-## 仓库定位
+## Repository Purpose
 
-- 这是个人 Neovim Lua 配置仓库，以个人编辑习惯和实际需求为准。
-- 修改时沿用现有配置结构和代码风格，保持改动直接、简洁。
+- This is a personal Neovim Lua configuration repository, guided by personal editing habits and practical needs.
+- Follow the existing configuration structure and code style, keeping changes direct and concise.
 
-## Git 提交
+## Git Commits
 
-- 提交标题统一使用 `type(scope): brief`，其中 scope 必填，brief 简短准确地描述实际改动。
-- 生成提交信息前检查实际差异，沿用仓库现有的英文提交风格。
-- 仅在用户明确要求时提交、推送或改写历史。
-- 保留用户的 Git 作者身份和已有共同作者署名。仅当 Codex 参与了该提交的改动时，
-  在提交信息末尾空一行后添加：
+- Use `type(scope): brief` for commit titles. The scope is required, and the brief must describe the actual changes concisely and accurately.
+- Inspect the actual diff before writing a commit message, and follow the repository's existing English commit style.
+- Commit, push, or rewrite history only when explicitly requested by the user.
+- Preserve the user's Git author identity and any existing co-author attributions. Only when Codex contributed to the changes in the commit,
+  append the following to the commit message after a blank line:
 
   ```text
   Co-authored-by: Codex <noreply@openai.com>
