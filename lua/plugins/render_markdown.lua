@@ -3,7 +3,7 @@
 
 return {
   'MeanderingProgrammer/render-markdown.nvim',
-  dependencies = { 'echasnovski/mini.nvim', 'nvim-treesitter' },
+  dependencies = { 'echasnovski/mini.icons', 'nvim-treesitter' },
   opts = {},
   enabled = true,
   config = function(_, opts)

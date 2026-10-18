@@ -11,13 +11,10 @@ return {
     { "hrsh7th/cmp-cmdline" },
     { "saadparwaiz1/cmp_luasnip" },
     { "hrsh7th/cmp-nvim-lua" },
-    { "milanglacier/minuet-ai.nvim" },
-    { "onsails/lspkind-nvim" },
     { "L3MON4D3/LuaSnip" },
   },
   config = function()
     local cmp = require("cmp")
-    -- local lspkind = require("lspkind")
     local luasnip = require("luasnip")
 
     local function supermaven_accept()
@@ -48,20 +45,6 @@ return {
       callback = apply_cmp_highlights,
     })
 
-    local function minuet_accept()
-      local ok, virtualtext = pcall(require, "minuet.virtualtext")
-      if not ok then
-        return false
-      end
-
-      if virtualtext.action.is_visible() then
-        virtualtext.action.accept()
-        return true
-      end
-
-      return false
-    end
-
     cmp.setup {
       mapping = cmp.mapping.preset.insert {
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -82,8 +65,6 @@ return {
 
         ["<Tab>"] = cmp.mapping(function(fallback)
           if supermaven_accept() then
-            return
-          elseif minuet_accept() then
             return
           elseif luasnip.locally_jumpable(1) then
             luasnip.jump(1)
@@ -111,7 +92,6 @@ return {
         end
       },
       sources = {
-        { name = "minuet",        priority = 1000 },    -- AI completion
         { name = "nvim_lsp" },                          -- For nvim-lsp
         { name = "ultisnips" },                         -- For ultisnips user.
         { name = "path" },                              -- for path completion
