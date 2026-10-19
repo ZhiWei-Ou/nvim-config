@@ -22,14 +22,33 @@ local function is_lite_mode()
   return vim.g.lite_mode == true
 end
 
+-- Plugin groups, each a directory under `lua/plugins/`
+local plugin_groups = { "ui", "editor", "coding", "lsp", "treesitter", "lang", "util" }
+
+-- Curated subset loaded in lite mode
+local lite_plugins = {
+  "plugins.ui.theme",
+  "plugins.ui.nvim_web_devicons",
+  "plugins.editor.nvim_tree",
+  "plugins.editor.telescope",
+  "plugins.editor.leap",
+  "plugins.editor.gitsigns",
+  "plugins.editor.vim_sleuth",
+  "plugins.util.plenary",
+}
+
+local function plugin_spec()
+  local modules = is_lite_mode() and lite_plugins or vim.tbl_map(function(group)
+    return "plugins." .. group
+  end, plugin_groups)
+  return vim.tbl_map(function(module)
+    return { import = module }
+  end, modules)
+end
+
 -- Setup lazy.nvim
 require("lazy").setup({
-  spec = is_lite_mode() and {
-    { import = "plugins_lite" },
-  } or {
-    -- import your plugins
-    { import = "plugins" },
-  },
+  spec = plugin_spec(),
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },

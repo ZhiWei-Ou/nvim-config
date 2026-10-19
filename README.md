@@ -76,7 +76,7 @@ improvements.
 ## Language Servers
 
 Full mode installs and enables the servers listed in
-[mason_lspconfig.lua](lua/plugins/mason_lspconfig.lua). Adding a server to that list opts it into both
+[mason_lspconfig.lua](lua/plugins/lsp/mason_lspconfig.lua). Adding a server to that list opts it into both
 installation and activation; installing another server in Mason alone does not
 activate it. Server overrides live in `after/lsp/` and inherit nvim-lspconfig's
 defaults.
