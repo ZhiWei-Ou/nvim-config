@@ -7,6 +7,7 @@
 
 - Neovim configuration using lazy.nvim.
 - Plugin specifications live in `lua/plugins/`; Lite mode selects a curated subset through `lua/plugins_lite/`.
+- The personal grayveil colorscheme is vendored as a git submodule in `plugins/grayveil.nvim` and loaded onto the runtimepath after lazy.nvim setup.
 - The full configuration uses the native `portal` module as a logo-only startup screen; it owns the logo styles and its runtime entry is `plugin/portal.lua`.
 - Language-server-specific configuration lives in `after/lsp/`.
 - Project-local `.nvim/config.lua` is loaded from the nearest parent through `core.project_config` and Neovim's trust mechanism.

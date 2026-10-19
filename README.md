@@ -58,8 +58,11 @@ improvements.
 2.  **Clone this repository:**
 
     ```bash
-    git clone https://github.com/ZhiWei-Ou/nvim-config.git ~/.config/nvim
+    git clone --recurse-submodules https://github.com/ZhiWei-Ou/nvim-config.git ~/.config/nvim
     ```
+
+    For an existing clone, fetch the bundled submodules with
+    `git submodule update --init`.
 
 3.  **Launch Neovim:**
 

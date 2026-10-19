@@ -1,0 +1,3 @@
+[submodule "plugins/grayveil.nvim"]
+	path = plugins/grayveil.nvim
+	url = https://github.com/ZhiWei-Ou/grayveil.nvim

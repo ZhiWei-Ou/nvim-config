@@ -44,3 +44,13 @@ require("lazy").setup({
     notify = false, -- get a notification when changes are found
   },
 })
+
+-- Local plugins tracked as git submodules under `plugins/`
+local grayveil_path = vim.fn.stdpath("config") .. "/plugins/grayveil.nvim"
+if (vim.uv or vim.loop).fs_stat(grayveil_path) then
+  vim.opt.rtp:prepend(grayveil_path)
+  require("grayveil").setup({
+    transparent = false,
+    terminal_colors = true,
+  })
+end
